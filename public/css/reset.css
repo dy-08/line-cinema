@@ -1,0 +1,28 @@
+/* reset.css - 최소화 버전 */
+/* 기본 마진/패딩 제거 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 리스트 불릿 제거 */
+ul,
+ol {
+  list-style: none;
+}
+/* 링크 기본 스타일 제거 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* 이미지 크기 부모 기준으로 맞춤 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+/* 기본 폰트 상속 */
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+}

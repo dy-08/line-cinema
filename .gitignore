@@ -1,0 +1,2 @@
+# API 키 설정 파일 제외
+/src/js/config/config.js
