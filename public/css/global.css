@@ -23,11 +23,12 @@
     format('truetype');
 }
 
+/* 브렌치별 수정 */
 :root {
-  --font-size-xl: 20px;
+  --font-size-xl: 21px;
   --font-size-lg: 18px;
   --font-size-md: 15px;
-  --font-size-sm: 12px;
+  --font-size-sm: 14px;
   --btn-font-size: 14px;
 }
 .text-xl {
