@@ -51,13 +51,15 @@ body {
   transform: translateX(-50%);
   z-index: 1;
   font-size: var(--font-size-sm);
-  display: none;
-  background-color: #11111180;
-}
-.selected {
   display: flex;
   justify-content: center;
   gap: 30px;
+  background-color: #111111;
+  opacity: 0;
+  transition: all 0.3s linear;
+}
+.selected {
+  opacity: 1;
 }
 .header-navi-sub {
   color: #ededed;
@@ -71,6 +73,12 @@ body {
   height: 0.5px;
   background-color: #11111180;
 }
+
+/* .header-navi-main:hover ~ .header-navi-depth {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+} */
 
 /* App */
 #app {
