@@ -78,3 +78,19 @@ body {
 }
 
 /* Footer */
+.footer-inner {
+  width: 100%;
+  display: flex;
+}
+.footer-contents-wrap {
+  width: 1440px;
+  height: 100px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  font-size: var(--font-size-sm);
+  color: #59636e;
+}
