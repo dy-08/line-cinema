@@ -1,6 +1,103 @@
 body {
   width: 100vw;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* Header */
+.header-inner {
+  /* max-width: 1440px; */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.header-logo-wrap {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+}
+.header-navi-wrap {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+/* 스크롤이벤트 추가예정: Fixed */
+.header-navi {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  text-align: center;
+}
+.header-navi-main {
+  font-weight: 500;
+  font-size: var(--font-size-md);
+}
+.header-navi-depth {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: var(--font-size-sm);
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background-color: #111111;
+  opacity: 0;
+  transition: all 0.3s linear;
+}
+.selected {
+  opacity: 1;
+}
+.header-navi-sub {
+  color: #ededed;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-align: center;
+}
+.row {
+  width: 1440px;
+  margin: 0 auto;
+  height: 0.5px;
+  background-color: #11111180;
+}
+
+/* 지유님 슬라이더 작업섹션 */
+
+/* 철원님 랭킹 작업섹션 */
+
+/* App: #App은 공용 섹션이기에 스타일 지정 ❌❌❌ */
+/* 지유님, 철원님은 #app에 height만 지우고 작업 시작 */
+#app {
+  height: 1000px;
+}
+
+/* Footer */
+.footer-inner {
+  width: 100%;
+  display: flex;
+}
+.footer-contents-wrap {
+  width: 1440px;
+  height: 100px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  font-size: var(--font-size-sm);
+  color: #59636e;
 }
