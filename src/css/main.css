@@ -74,13 +74,12 @@ body {
   background-color: #11111180;
 }
 
-/* .header-navi-main:hover ~ .header-navi-depth {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-} */
+/* 지유님 슬라이더 작업섹션 */
 
-/* App */
+/* 철원님 랭킹 작업섹션 */
+
+/* App: #App은 공용 섹션이기에 스타일 지정 ❌❌❌ */
+/* 지유님, 철원님은 #app에 height만 지우고 작업 시작 */
 #app {
   height: 1000px;
 }
