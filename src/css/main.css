@@ -69,15 +69,14 @@ body {
     transform: translateX(-50%);
     z-index: 1;
     font-size: var(--font-size-sm);
-    display: flex;
+    display: none;
     justify-content: center;
     gap: 30px;
     background-color: #111111;
-    opacity: 0;
     transition: all 0.3s linear;
 }
 .selected {
-    opacity: 1;
+    display: flex;
 }
 .header-navi-sub {
     display: block;
