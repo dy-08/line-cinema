@@ -1,1 +1,43 @@
 /* 승아님 카드 ui 작업섹션 */
+    .container{
+        width: 1200px;
+        background-color: aliceblue;
+        margin: 0 auto;
+    }
+    h2{padding-top: 50px; }
+    .inBox{
+        width: 100%;
+        margin: 50px auto;
+        background-color: antiquewhite;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+    }
+    .cardBox{
+        height: 400px;
+        background-color: pink;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .movImg{
+        width: 100%;
+        height: 75%;
+        background-color: gold;
+    }
+    .movImg .img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .info{
+        width: 100%;
+        height: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .movTitle{
+        font-size: var(--font-size-xl);
+    }
