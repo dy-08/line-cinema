@@ -1,92 +1,94 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>라인시네마</title>
-    <link rel="stylesheet" href="./public/css/reset.css" />
-    <link rel="stylesheet" href="./public/css/global.css" />
-    <link rel="stylesheet" href="./src/css/main.css" />
-  </head>
-  <body>
-    <header>
-      <div class="header-inner">
-        <div class="header-logo-wrap">
-          <a href="#">LINE CINEMA</a>
-          <div class="row"></div>
-        </div>
-        <div class="header-navi-wrap">
-          <ul class="header-navi">
-            <li>
-              <a href="#" class="header-navi-main">영화</a>
-              <ul class="header-navi-depth">
-                <li><a href="" class="header-navi-sub">TOP5</a></li>
-                <li><a href="" class="header-navi-sub">현재상영작</a></li>
-                <li><a href="" class="header-navi-sub">개봉예정작</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" class="header-navi-main">예매</a>
-              <ul class="header-navi-depth">
-                <li><a href="" class="header-navi-sub">빠른예매</a></li>
-                <li><a href="" class="header-navi-sub">예매조회</a></li>
-                <li><a href="" class="header-navi-sub">할인안내</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" class="header-navi-main">이벤트</a>
-              <ul class="header-navi-depth">
-                <li><a href="" class="header-navi-sub">진행중 이벤트</a></li>
-                <li><a href="" class="header-navi-sub">시사회</a></li>
-                <li>
-                  <a href="" class="header-navi-sub">지금 뜨는 이벤트</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#" class="header-navi-main">스토어</a>
-              <ul class="header-navi-depth">
-                <li><a href="" class="header-navi-sub">관람권</a></li>
-                <li><a href="" class="header-navi-sub">스낵</a></li>
-                <li><a href="" class="header-navi-sub">포토카드</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
-    <section id="app">
-      <!-- 지유님 슬라이더 작업섹션 -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>라인시네마</title>
+        <link rel="stylesheet" href="./public/css/reset.css" />
+        <link rel="stylesheet" href="./public/css/global.css" />
+        <link rel="stylesheet" href="./src/css/main.css" />
+    </head>
+    <body>
+        <header>
+            <div class="header-inner">
+                <div class="header-logo-wrap">
+                    <div class="header-logoBox">
+                        <a href="#" class="header-logo"
+                            ><img src="./public/img/ui/logo-g.png" alt="라인시네마 로고이미지"
+                        /></a>
+                    </div>
+                    <div class="row"></div>
+                </div>
+                <div class="header-navi-wrap">
+                    <ul class="header-navi">
+                        <li>
+                            <a href="#" class="header-navi-main">영화</a>
+                            <ul class="header-navi-depth">
+                                <li>
+                                    <a href="#" class="header-navi-sub" data-page="page__top5">TOP5</a>
+                                </li>
+                                <li><a href="#" class="header-navi-sub" data-page="page__nowplaying">현재상영작</a></li>
+                                <li><a href="#" class="header-navi-sub" data-page="page__upcoming">개봉예정작</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="header-navi-main">예매</a>
+                            <ul class="header-navi-depth">
+                                <li><a href="#" class="header-navi-sub" data-page="page__quickbooking">빠른예매</a></li>
+                                <li><a href="#" class="header-navi-sub" data-page="page__bookingcheck">예매조회</a></li>
+                                <li><a href="#" class="header-navi-sub" data-page="page__discount">할인안내</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="header-navi-main">이벤트</a>
+                            <ul class="header-navi-depth">
+                                <li>
+                                    <a href="#" class="header-navi-sub" data-page="page__eventnow">진행중 이벤트</a>
+                                </li>
+                                <li><a href="#" class="header-navi-sub" data-page="page__premiere">시사회</a></li>
+                                <li>
+                                    <a href="#" class="header-navi-sub" data-page="page__hotevent">지금 뜨는 이벤트</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="header-navi-main">스토어</a>
+                            <ul class="header-navi-depth">
+                                <li><a href="#" class="header-navi-sub" data-page="page__ticket">관람권</a></li>
+                                <li><a href="#" class="header-navi-sub" data-page="page__snack">스낵</a></li>
+                                <li><a href="#" class="header-navi-sub" data-page="page__photocard">포토카드</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <section id="app">
+            <!-- 지유님 슬라이더 작업섹션 -->
 
-      <!-- 철원님 랭킹 작업 섹션 -->
-    </section>
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-contents-wrap">
-          <p>© 2025 Team Avengers. All rights reserved.</p>
-          <p>
-            <span class="footer-FE">Frontend:</span>
-            <a href="https://github.com/gwonseungmin351-create" target="_blank"
-              >권승민</a
-            >,
-            <a href="https://github.com/seungaaaaa" target="_blank">김승아</a>,
-            <a href="https://github.com/lee-ji-u" target="_blank">이지유</a>,
-            <a href="https://github.com/JICHEOLWON" target="_blank">지철원</a>,
-            <a href="https://github.com/dy-08" target="_blank">권영호</a>
-          </p>
-          <p>
-            <a href="https://github.com/dy-08/line-cinema" target="_blank"
-              >GitHub</a
-            >
-            |
-            <a href="https://dy-08.github.io/line-cinema/" target="_blank"
-              >Live Site</a
-            >
-          </p>
-          <p><a href="">기획서 다운로드</a></p>
-        </div>
-      </div>
-    </footer>
-    <script type="module" src="./src/js/pages/main.js"></script>
-  </body>
+            <!-- 철원님 랭킹 작업 섹션 -->
+        </section>
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-contents-wrap">
+                    <p>© 2025 Team Avengers. All rights reserved.</p>
+                    <p>
+                        <span class="footer-FE">Frontend:</span>
+                        <a href="https://github.com/gwonseungmin351-create" target="_blank">권승민</a>,
+                        <a href="https://github.com/seungaaaaa" target="_blank">김승아</a>,
+                        <a href="https://github.com/lee-ji-u" target="_blank">이지유</a>,
+                        <a href="https://github.com/JICHEOLWON" target="_blank">지철원</a>,
+                        <a href="https://github.com/dy-08" target="_blank">권영호</a>
+                    </p>
+                    <p>
+                        <a href="https://github.com/dy-08/line-cinema" target="_blank">GitHub</a>
+                        |
+                        <a href="https://dy-08.github.io/line-cinema/" target="_blank">Live Site</a>
+                    </p>
+                    <p><a href="">기획서 다운로드</a></p>
+                </div>
+            </div>
+        </footer>
+        <script type="module" src="./src/js/pages/main.js"></script>
+    </body>
 </html>
