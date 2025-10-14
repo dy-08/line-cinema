@@ -77,7 +77,102 @@ body {
 /* 지유님 슬라이더 작업섹션 */
 
 /* 철원님 랭킹 작업섹션 */
+body {
+  /* width: 1440px; */
+  width: 100%;
+  height: auto;
+  background-color: rgba(0,0,0,0.9);
+  /* font-family: 'AppleSDGothicNeo', sans-serif; */
+}
+#rank{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.rank-movie-wrap {
+  width: 1440px;
+  display: flex;
+  justify-content: center;
+  /* grid-template-columns: repeat(4, 1fr); */
+  gap: 15px;
+  max-width: 1000px;
+  margin: 50px;
+}
+
+.rank-movie-card {
+  position: relative; /* 오버레이 위치 기준 */
+  overflow: hidden;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.rank-movie-card img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+  overflow: hidden;
+  /* transition: transform 0.3s ease; */
+}
+
+/* 오버레이 영역 */
+.rank-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rank-movie-card:hover .rank-overlay {
+  opacity: 1;
+}
+
+/* 버튼 스타일 */
+.rank-overlay button {
+  width: 120px;
+  margin: 8px;
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.rank-reserve-btn {
+  background-color: rgba(0,0,0,0.65);
+  color: white;
+}
+
+.rank-reserve-btn:hover {
+  /* background-color: #0c7bdc; */
+}
+
+.rank-detail-btn {
+  background-color: rgba(0,0,0,0.65);
+  color: white;
+}
+
+.rank-detail-btn:hover {
+  /* background-color: #e84118; */
+}
+
+.rank-info{
+  color: white;
+}
 /* App: #App은 공용 섹션이기에 스타일 지정 ❌❌❌ */
 /* 지유님, 철원님은 #app에 height만 지우고 작업 시작 */
 #app {
