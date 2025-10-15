@@ -1,4 +1,5 @@
 import { API_KEYS } from '../config/config.js'; // 키 요청
+import { eventNow } from './eventnow.js';
 
 // 네비게이션 hover 효과
 const navi = document.querySelectorAll('.header-navi-main');
@@ -53,9 +54,13 @@ async function fetchPage(page) {
 document.querySelectorAll('.header-navi-sub').forEach((item) =>
   item.addEventListener('click', async (e) => {
     const page = e.target.dataset.page.slice(6);
-    const result = await fetchPage(page);
-    if (!result) return;
-    await renderPage(result);
+    const html = await fetchPage(page);
+    if (!html) return;
+    await renderPage(html);
+
+    if (page === 'eventnow') {
+      eventNow();
+    }
   })
 );
 

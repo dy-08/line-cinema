@@ -1,11 +1,10 @@
 body {
-    width: 100vw;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
 /* Header */
 .header-inner {
   width: 1200px;
@@ -105,7 +104,7 @@ body {
 /* App: #App은 공용 섹션이기에 스타일 지정 ❌❌❌ */
 /* 지유님, 철원님은 #app에 height만 지우고 작업 시작 */
 #app {
-  height: 1000px;
+  height: auto;
 }
 
 /* Footer */
