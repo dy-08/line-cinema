@@ -1,0 +1,29 @@
+{
+    "events": [
+        {
+            "title": "오리지널 티켓 SPECIAL <BTS MOVIE WEEKS>",
+            "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/18/C0PmigcFcHnsprLACSd1WhIYWWOpL9Fl.jpg",
+            "startDate": "2025.09.18",
+            "endDate": "2025.10.25"
+        },
+        {
+            "title": "<BTS MOVIE WEEKS> 상영 안내",
+            "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/08/z41jVeQWcKNi6EzqNOWIzoV4rLxAmGty.jpg",
+            "startDate": "2025.09.23",
+            "endDate": "2025.10.21"
+        },
+
+        {
+            "title": "[2025 시네애(愛)카데미] 사랑, 연애, 그리고 우리",
+            "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/29/z0vtxnAWaRU95mosXk0ntfZZLTLPXr6z.jpg",
+            "startDate": "2025.09.29",
+            "endDate": "2025.10.28"
+        },
+        {
+            "title": "메가박스 드로잉 카드 No.58 <연의 편지>",
+            "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/22/azIn4sCq0gechMo031yRqI1U0reFLF91.jpg",
+            "startDate": "2025.10.01",
+            "endDate": "2025.10.28"
+        }
+    ]
+}
