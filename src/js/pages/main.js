@@ -1,39 +1,40 @@
 import { API_KEYS } from '../config/config.js'; // 키 요청
+import { eventNow } from './eventnow.js';
 
 // 네비게이션 hover 효과
 const navi = document.querySelectorAll('.header-navi-main');
 let current = '';
 navi.forEach((item) => {
-    item.addEventListener('mouseover', () => {
-        if (current) {
-            current.classList.remove('selected');
-            current = item.nextElementSibling;
-            current.classList.add('selected');
-        }
-        current = item.nextElementSibling;
-        current.classList.add('selected');
+  item.addEventListener('mouseover', () => {
+    if (current) {
+      current.classList.remove('selected');
+      current = item.nextElementSibling;
+      current.classList.add('selected');
+    }
+    current = item.nextElementSibling;
+    current.classList.add('selected');
 
-        current.addEventListener('mouseleave', () => {
-            current.classList.remove('selected');
-        });
+    current.addEventListener('mouseleave', () => {
+      current.classList.remove('selected');
     });
+  });
 });
 
 // TMDB API 테스트 코드
 // console.log(API_KEYS); // 키 응답
 async function tmdb() {
-    try {
-        const options = { method: 'GET', headers: { accept: 'application/json' } };
-        // v3
-        const res = await fetch(
-            `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEYS.TMDB}&language=ko-KR`,
-            options
-        );
-        const data = await res.json();
-        console.log(data);
-    } catch (e) {
-        console.error(e);
-    }
+  try {
+    const options = { method: 'GET', headers: { accept: 'application/json' } };
+    // v3
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEYS.TMDB}&language=ko-KR`,
+      options
+    );
+    const data = await res.json();
+    console.log(data);
+  } catch (e) {
+    console.error(e);
+  }
 }
 tmdb();
 
@@ -53,9 +54,13 @@ async function fetchPage(page) {
 document.querySelectorAll('.header-navi-sub').forEach((item) =>
   item.addEventListener('click', async (e) => {
     const page = e.target.dataset.page.slice(6);
-    const result = await fetchPage(page);
-    if (!result) return;
-    await renderPage(result);
+    const html = await fetchPage(page);
+    if (!html) return;
+    await renderPage(html);
+
+    if (page === 'eventnow') {
+      eventNow();
+    }
   })
 );
 
