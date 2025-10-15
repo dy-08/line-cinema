@@ -1,0 +1,23 @@
+page : 페이지 수
+adult:false : "성인용 아님"을 뜻함
+
+backdrop_path : url
+
+genre_ids : 장르 식별번호
+
+id : 영화 식별 번호인듯
+
+original_language : 영화내에서의 주 대화 언어종류
+original_title : 영화 이름(원제)
+overview : 영화 내용 개요
+popularity : 영화관에서의 관람 횟수
+poster_path : 포스터 사진
+relase_date : 개봉일자
+
+title : 영화제목 /
+ original_title과의 차이점:
+
+video : false 영상 출력스타이을 말한듯
+vote_average: 좋아요 평균;평점 8.7
+vote_count: 좋아요 투표수 17806
+
