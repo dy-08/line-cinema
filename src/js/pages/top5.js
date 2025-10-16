@@ -123,9 +123,6 @@
         })
 
         let dragTop = document.querySelectorAll('.dragTop')
-        let dragBox = document.querySelector('.dragBox').offsetWidth
-        let dragRight = document.querySelector('.dragTop').offsetWidth
-        console.log(dragRight)
 
         function dragAble( a ){
             let down = false, transX = 0, pointX = 0
@@ -143,9 +140,6 @@
                 pointX = e.clientX
                 transX += deltaX
                 a.style.transform  = `translateX( ${transX}px)`
-                if( dragRight == dragBox){
-                    dragBox.offsetWidth = 1200
-                }
             })
 
             window.addEventListener('mouseup', (e)=>{
