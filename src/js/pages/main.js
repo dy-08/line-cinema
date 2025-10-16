@@ -24,6 +24,8 @@ navi.forEach((item) => {
 // TMDB API 테스트 코드
 // console.log(API_KEYS); // 키 응답
 async function tmdb() {
+  console.log('123');
+  
   try {
     const options = { method: 'GET', headers: { accept: 'application/json' } };
     // v3
