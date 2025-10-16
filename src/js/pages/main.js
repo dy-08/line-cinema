@@ -1,6 +1,14 @@
 import { API_KEYS } from '../config/config.js'; // 키 요청
 import { eventNow } from './eventnow.js';
 import { premiere } from './premiere.js';
+import {
+  fetchTop5Data1,
+  fetchTop5Data2,
+  fetchTop5Data3,
+  drag,
+} from './top5.js';
+import { fetchNowplayingData } from './nowplaying.js';
+import { fetchUpcomingData } from './upcoming.js';
 
 // 네비게이션 hover 효과
 const navi = document.querySelectorAll('.header-navi-main');
@@ -24,8 +32,6 @@ navi.forEach((item) => {
 // TMDB API 테스트 코드
 // console.log(API_KEYS); // 키 응답
 async function tmdb() {
-  console.log('123');
-  
   try {
     const options = { method: 'GET', headers: { accept: 'application/json' } };
     // v3
@@ -66,6 +72,18 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
     }
     if (page === 'premiere') {
       premiere();
+    }
+    if (page === 'top5') {
+      fetchTop5Data1();
+      fetchTop5Data2();
+      fetchTop5Data3();
+      drag();
+    }
+    if (page === 'nowplaying') {
+      fetchNowplayingData();
+    }
+    if (page === 'upcoming') {
+      fetchUpcomingData();
     }
   })
 );
