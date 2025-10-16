@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.upcoming-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.upcoming-title {
+    padding-top: 50px;
+}
+
+.upcoming-inBox {
+    width: 100%;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+
+}
+
+.upcoming-cardBox {
+    height: 520px;
+    border-radius: 10px;
+}
+
+.upcoming-movImg {
+    width: 100%;
+    height: 75%;
+}
+
+.upcoming-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.upcoming-info {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.upcoming-movTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
