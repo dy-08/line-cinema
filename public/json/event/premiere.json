@@ -1,0 +1,37 @@
+{
+  "events": [
+    {
+      "category": "영화",
+      "title": "<나쁜계집애: 달려라 하니> 포스터 증정 상영회",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/f23d6a0d032e487da7d0a3b6d6959651.jpg",
+      "startDate": "2025.10.18",
+      "endDate": "2025.10.19",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925289"
+    },
+    {
+      "category": "영화",
+      "title": "<세계의 주인><br>스페셜 GV with 변영주 감독",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/7ad1bba6aac849ce80d7126ac2a6781a.jpg",
+      "startDate": "2025.10.22",
+      "endDate": "2025.10.22",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925288"
+    },
+
+    {
+      "category": "영화",
+      "title": "<퍼스트 라이드> 개봉주 무대인사",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/cd1067e5f2b241b0a852f7af613d4168.jpg",
+      "startDate": "2025.10.29",
+      "endDate": "2025.11.02",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925287"
+    },
+    {
+      "category": "영화",
+      "title": "<양양> 스페셜 시사회 & GV",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/ace3546df55f4a56b3adeedc517727d7.jpg",
+      "startDate": "2025.10.14",
+      "endDate": "2025.10.20",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateButton?eventId=401110024725001"
+    }
+  ]
+}
