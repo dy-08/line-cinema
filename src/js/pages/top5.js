@@ -1,16 +1,12 @@
-// 승아님 카드 ui 작업섹션
 let API_KEY = '8d869a3edc1dfa42039f24c2c4e4d19f'
 
 async function fetchTop5Data1() {
-
     const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_genres=28`)
     const data = await res.json()
     const movies3 = data.results
-
     let dragTop1 = document.querySelector('.top5-dragTop1')
-
+    
     for (let i = 0; i < 5; i++) {
-
         let cardBox = document.createElement('div')
         cardBox.className = 'top5-cardBox'
         cardBox.classList.add('top5-cardBox2')
