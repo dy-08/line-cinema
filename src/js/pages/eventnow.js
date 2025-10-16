@@ -14,7 +14,7 @@ async function fetchEventNowData() {
 }
 
 function renderEventNowList(events) {
-  const container = document.getElementById('event-inner');
+  const container = document.getElementById('eventnow-inner');
   if (!container) return;
   if (!events) return;
 
