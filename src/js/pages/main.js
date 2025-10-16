@@ -1,5 +1,6 @@
 import { API_KEYS } from '../config/config.js'; // 키 요청
 import { eventNow } from './eventnow.js';
+import { premiere } from './premiere.js';
 
 // 네비게이션 hover 효과
 const navi = document.querySelectorAll('.header-navi-main');
@@ -60,6 +61,9 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
 
     if (page === 'eventnow') {
       eventNow();
+    }
+    if (page === 'premiere') {
+      premiere();
     }
   })
 );
