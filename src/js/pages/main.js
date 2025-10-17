@@ -47,6 +47,8 @@ async function tmdb() {
 }
 tmdb();
 
+<<<<<<< HEAD
+=======
 async function renderPage(data) {
   document.getElementById('app').innerHTML = await data;
 }
@@ -111,6 +113,70 @@ const observer = new IntersectionObserver((entries) => {
   }
 });
 observer.observe(sentinel);
+>>>>>>> 0c0a4b5624ad698f5e5bf4dcbb391302912fc370
+
 // 지유님: 슬라이더 작업섹션
+  window.onload = function(){
+    let count = 1;
+    let imgBox = document.querySelector(".main-inBox-imgbox");
+    let imgTotal = document.querySelectorAll(".main-inBox-imgbox .main-img").length;
+    let imgSize = 100 / imgTotal;
+
+    let autoSlide; // 자동 슬라이드 타이머
+
+    function show(){
+      imgBox.style.transform = `translateX(${-imgSize * count}%)`;
+    }
+
+    function leftf(){
+      count--;
+      show();
+      resetAutoSlide(); 
+    }
+
+    function rightf(){
+      count++;
+      show();
+      resetAutoSlide(); 
+    }
+
+    function tend(){
+      // 양끝 이미지 복제 구간 처리
+      if(count >= imgTotal - 1){
+        imgBox.style.transition = "none";
+        count = 1;
+        show();
+        imgBox.offsetWidth; // 리렌더링
+        imgBox.style.transition = "all 0.5s linear";
+      } else if(count <= 0){
+        imgBox.style.transition = "none";
+        count = imgTotal - 2;
+        show();
+        imgBox.offsetWidth;
+        imgBox.style.transition = "all 0.5s linear";
+      }
+    }
+
+    // 자동 슬라이드 
+    function startAutoSlide(){
+      autoSlide = setInterval(() => {
+        count++;
+        show();
+      }, 5000); // 초 간격
+    }
+
+    // 클릭 시 자동 슬라이드 잠시 멈췄다가 다시 시작
+    function resetAutoSlide(){
+      clearInterval(autoSlide);
+      startAutoSlide();
+    }
+
+    show();
+    startAutoSlide();
+
+    window.leftf = leftf;
+    window.rightf = rightf;
+    window.tend = tend;
+  }
 
 // 철원님: 랭킹 작업섹션
