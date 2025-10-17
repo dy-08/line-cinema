@@ -56,36 +56,6 @@ async function tmdb() {
 }
 tmdb();
 
-// api 메인슬라이드 작업중
-  // function makeImg() {
-  //   const imgBox = document.querySelector(".main-inBox-imgbox");
-  //   console.log(slidePath);
-    
-  //   slidePath.forEach(item => {
-  //     console.log('item: ',item);
-      
-  //   });
-  //   const div1 = document.createElement('div');
-  //   div1.className = 'main-img img1';
-  //   const div2 = document.createElement('div');
-  //   div2.className = 'main-img img2';
-  //   const div3 = document.createElement('div');
-  //   div3.className = 'main-img img3';
-  //   const div4 = document.createElement('div');
-  //   div4.className = 'main-img img4';
-  //   const div5 = document.createElement('div');
-  //   div5.className = 'main-img img5';
-    
-  //   imgBox.appendChild(div5);
-  //   imgBox.appendChild(div1);
-  //   imgBox.appendChild(div2);
-  //   imgBox.appendChild(div3);
-  //   imgBox.appendChild(div4);
-  //   imgBox.appendChild(div5);
-  //   imgBox.appendChild(div1);
-  // }
-  // makeImg();
-
 
 // 지유님: 슬라이더 작업섹션
   window.onload = function(){
