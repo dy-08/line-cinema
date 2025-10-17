@@ -1,4 +1,14 @@
 import { API_KEYS } from '../config/config.js'; // 키 요청
+import { eventNow } from './eventnow.js';
+import { premiere } from './premiere.js';
+import {
+  fetchTop5Data1,
+  fetchTop5Data2,
+  fetchTop5Data3,
+  drag,
+} from './top5.js';
+import { fetchNowplayingData } from './nowplaying.js';
+import { fetchUpcomingData } from './upcoming.js';
 
 // 네비게이션 hover 효과
 const navi = document.querySelectorAll('.header-navi-main');
@@ -21,41 +31,89 @@ navi.forEach((item) => {
 
 // TMDB API 테스트 코드
 // console.log(API_KEYS); // 키 응답
-const slidePath = [];
 async function tmdb() {
   try {
     const options = { method: 'GET', headers: { accept: 'application/json' } };
     // v3
     const res = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEYS.TMDB}&language=ko-KR/`,
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEYS.TMDB}&language=ko-KR`,
       options
     );
     const data = await res.json();
-    // console.log(data.results);
-    
-    // 파싱
-    data.results.forEach((item, idx) => {
-      // backdrop_path
-      if(idx<5) slidePath.push(item.backdrop_path);
-    });
-    } catch (e) {
+    console.log(data);
+  } catch (e) {
     console.error(e);
   }
-    // const div1 = document.createElement('div')
-    // div1.className = `main-img img5`; 
-    // forEach(item, index) {
-    //   let path = data.results[item.length].backdrop_path
-    //   const div = document.createElement('div')
-    //   div.className = `main-img img${index+1}`;
-    //   div.style.background = url(`https://image.tmdb.org/t/p/w500/${path}`)
-      // https://image.tmdb.org/t/p/w500/9DYFYhmbXRGsMhfUgXM3VSP9uLX.jpg
-      // }
-      
-      // const div2 = document.createElement('div')
-      // div.className = `main-img img1`;   
 }
 tmdb();
 
+<<<<<<< HEAD
+=======
+async function renderPage(data) {
+  document.getElementById('app').innerHTML = await data;
+}
+async function fetchPage(page) {
+  try {
+    const res = await fetch(`./src/html/${page}.html`);
+    if (!res.ok) throw new Error('page is not found');
+    const data = await res.text();
+    return data;
+  } catch (error) {
+    console.error('fetchPageError:', error.message);
+  }
+}
+document.querySelectorAll('.header-navi-sub').forEach((item) =>
+  item.addEventListener('click', async (e) => {
+    const page = e.target.dataset.page.slice(6);
+    const html = await fetchPage(page);
+    if (!html) return;
+    await renderPage(html);
+
+    if (page === 'eventnow') {
+      eventNow();
+    }
+    if (page === 'premiere') {
+      premiere();
+    }
+    if (page === 'top5') {
+      fetchTop5Data1();
+      fetchTop5Data2();
+      fetchTop5Data3();
+      drag();
+    }
+    if (page === 'nowplaying') {
+      fetchNowplayingData();
+    }
+    if (page === 'upcoming') {
+      fetchUpcomingData();
+    }
+  })
+);
+
+const headerLogo = document.querySelector('.header-logo-wrap');
+const headerNav = document.querySelector('.header-navi-wrap');
+
+const sentinel = document.createElement('div');
+sentinel.style.height = '1px';
+headerLogo.after(sentinel);
+
+const spacer = document.createElement('div');
+spacer.style.display = 'none';
+headerNav.after(spacer);
+
+const observer = new IntersectionObserver((entries) => {
+  const entry = entries[0];
+  const fixing = !entry.isIntersecting;
+  headerNav.classList.toggle('fixed', fixing);
+  if (fixing) {
+    spacer.style.height = headerNav.offsetHeight + 'px';
+    spacer.style.display = 'block';
+  } else {
+    spacer.style.display = 'none';
+  }
+});
+observer.observe(sentinel);
+>>>>>>> 0c0a4b5624ad698f5e5bf4dcbb391302912fc370
 
 // 지유님: 슬라이더 작업섹션
   window.onload = function(){
@@ -120,6 +178,5 @@ tmdb();
     window.rightf = rightf;
     window.tend = tend;
   }
-
 
 // 철원님: 랭킹 작업섹션
