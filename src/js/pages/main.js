@@ -47,8 +47,6 @@ async function tmdb() {
 }
 tmdb();
 
-<<<<<<< HEAD
-=======
 async function renderPage(data) {
   document.getElementById('app').innerHTML = await data;
 }
@@ -113,7 +111,6 @@ const observer = new IntersectionObserver((entries) => {
   }
 });
 observer.observe(sentinel);
->>>>>>> 0c0a4b5624ad698f5e5bf4dcbb391302912fc370
 
 // 지유님: 슬라이더 작업섹션
   window.onload = function(){
