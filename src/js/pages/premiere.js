@@ -29,7 +29,7 @@ function renderPremiereList(events) {
             </div>
         </div>
         <div class="premiere-card-bottom">
-            <p><span>${event.startDate}</span> &#126; <span>${event.endDate}</span></p>
+            <p class="font-numeric"><span>${event.startDate}</span> &#126; <span>${event.endDate}</span></p>
         </div>
       </a>
     </div>

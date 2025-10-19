@@ -27,7 +27,7 @@ function renderEventNowList(events) {
         </div>
         <div class="eventnow-card-bottom">
           <p>${event.title}</p>
-          <p><span>${event.startDate}</span> &#126; <span>${event.endDate}</span></p>
+          <p class="font-numeric"><span>${event.startDate}</span> &#126; <span>${event.endDate}</span></p>
         </div>
     </div>
     `
