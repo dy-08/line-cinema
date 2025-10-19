@@ -22,7 +22,7 @@ function renderPremiereList(events) {
     .map(
       (event) => `
     <div class="premiere-card-wrap">
-      <a href="${event.url}" target="_blank">
+      <a href="${event.url}">
         <div class="premiere-card-top" style="background-image: url('${event.imagePath}');")">
             <div class="premiere-card-eventAlert">
                 <p class="font-numeric">D &#45; <span>2</span></p>

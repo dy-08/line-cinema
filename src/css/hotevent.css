@@ -24,6 +24,10 @@
   padding-top: 14px;
   padding-bottom: 14px;
   border-bottom: 1px solid #11111110;
+}
+.hotevent-item-link {
+  display: block;
+  width: 100%;
   display: flex;
   gap: 16px;
 }

@@ -22,6 +22,7 @@ function renderEventNowList(events) {
     .map(
       (event) => `
     <div class="eventnow-card-wrap">
+      <a href="${event.url}">
         <div class="eventnow-card-top">
           <img src="${event.imagePath}" alt="${event.title}" />
         </div>
@@ -29,6 +30,7 @@ function renderEventNowList(events) {
           <p>${event.title}</p>
           <p class="font-numeric"><span>${event.startDate}</span> &#126; <span>${event.endDate}</span></p>
         </div>
+      </a>
     </div>
     `
     )
