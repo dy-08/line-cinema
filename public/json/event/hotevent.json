@@ -1,0 +1,28 @@
+{
+  "events": [
+    {
+      "category": "극장",
+      "title": "[덕천] 내 안에 뭐 있게~? 5월의 럭키박스!",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/04/30/WKfkH72vE7NX2rjje5dvwlTgOv1k8Elz.jpg",
+      "startDate": "2025.05.01",
+      "endDate": "2026.12.31",
+      "url": "https://www.megabox.co.kr/event/detail?eventNo=17785"
+    },
+    {
+      "category": "극장",
+      "title": "[성수,이수] 피크닉 준비 완료!",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/04/16/L2VafyvhAO3eFgNJjn1G04iPp6e1uyjx.jpg",
+      "startDate": "2025.04.09",
+      "endDate": "2026.12.31",
+      "url": "https://www.megabox.co.kr/event/detail?eventNo=17687"
+    },
+    {
+      "category": "극장",
+      "title": "[성수] 꿀잠 자고 조조 영화 즐기기!",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/06/24/AqEpQGUk0lSj1XVwDADLaEHeLeeUX1KB.jpg",
+      "startDate": "2025.06.13",
+      "endDate": "2026.12.31",
+      "url": "https://www.megabox.co.kr/event/detail?eventNo=18142"
+    }
+  ]
+}
