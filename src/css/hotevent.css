@@ -1,0 +1,25 @@
+#hotevent {
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto;
+}
+.hotevent-title {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  padding-left: 4px;
+}
+#hotevent-inner {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-top: 1px solid #11111130;
+  border-bottom: 1px solid #11111130;
+  padding: 10px 0;
+}
+.hotevent-item-wrap {
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #11111110;
+}
