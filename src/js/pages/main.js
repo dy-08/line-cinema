@@ -11,7 +11,7 @@ import {
 import { fetchNowplayingData } from './nowplaying.js';
 import { fetchUpcomingData } from './upcoming.js';
 
-// 네비게이션 hover 효과
+// 네비게이션 효과
 const navi = document.querySelectorAll('.header-navi-main');
 let current = '';
 navi.forEach((item) => {
@@ -48,15 +48,32 @@ async function tmdb() {
 }
 tmdb();
 
-async function renderPage(data) {
-  document.getElementById('app').innerHTML = await data;
+async function renderPage({ html, index = false }) {
+  if (index) {
+    console.log('index!');
+  }
+  document.getElementById('app').innerHTML = await html;
 }
 async function fetchPage(page) {
   try {
-    const res = await fetch(`./src/html/${page}.html`);
+    const isIndex = page === 'index';
+
+    const res = isIndex
+      ? await fetch(`./${page}.html`)
+      : await fetch(`./src/html/${page}.html`);
+
     if (!res.ok) throw new Error('page is not found');
     const data = await res.text();
-    return data;
+    if (isIndex) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, 'text/html');
+
+      const target = doc.querySelector('#app');
+      const content = target ? target.innerHTML : '';
+
+      return { html: content, index: isIndex };
+    }
+    return { html: data, index: isIndex };
   } catch (error) {
     console.error('fetchPageError:', error.message);
   }
@@ -64,11 +81,48 @@ async function fetchPage(page) {
 document.querySelectorAll('.header-navi-sub').forEach((item) =>
   item.addEventListener('click', async (e) => {
     const page = e.target.dataset.page.slice(6);
-    const html = await fetchPage(page);
-    if (!html) return;
-    await renderPage(html);
+    const { html } = await fetchPage(page);
 
-    // event
+    if (!html) return;
+    await renderPage({ html });
+
+    if (page === 'index') {
+      initSlider();
+    }
+    if (page === 'eventnow') {
+      eventNow();
+    }
+    if (page === 'premiere') {
+      premiere();
+    }
+    if (page === 'hotevent') {
+      eventHot();
+    }
+    if (page === 'top5') {
+      fetchTop5Data1();
+      fetchTop5Data2();
+      fetchTop5Data3();
+      drag();
+    }
+    if (page === 'nowplaying') {
+      fetchNowplayingData();
+    }
+    if (page === 'upcoming') {
+      fetchUpcomingData();
+    }
+  })
+);
+
+document.querySelectorAll('.header-navi-default').forEach((item) =>
+  item.addEventListener('click', async (e) => {
+    const page = e.target.dataset.page.slice(6);
+    const { html, index } = await fetchPage(page);
+    if (!html) return;
+    await renderPage({ html, index });
+
+    if (page === 'index') {
+      initSlider();
+    }
     if (page === 'eventnow') {
       eventNow();
     }
@@ -118,7 +172,7 @@ const observer = new IntersectionObserver((entries) => {
 observer.observe(sentinel);
 
 // 지유님: 슬라이더 작업섹션
-window.onload = function () {
+function initSlider() {
   let count = 1;
   let imgBox = document.querySelector('.main-inBox-imgbox');
   let imgTotal = document.querySelectorAll(
@@ -181,6 +235,7 @@ window.onload = function () {
   window.leftf = leftf;
   window.rightf = rightf;
   window.tend = tend;
-};
+}
+initSlider();
 
 // 철원님: 랭킹 작업섹션
