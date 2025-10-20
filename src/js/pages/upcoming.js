@@ -1,18 +1,51 @@
 import { API_KEYS } from '../config/config.js';
 
 export async function fetchUpcomingData() {
+
+  const movies2 = []
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEYS.TMDB}&language=ko-KR&page=1`
   );
   const data = await res.json();
-  const movies2 = data.results;
+  const datas = data.results;
+
+  const res2 = await fetch(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEYS.TMDB}&language=ko-KR&page=2`
+  );
+  const data2 = await res2.json();
+  const datas2 = data2.results;
+
+  const res3 = await fetch(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEYS.TMDB}&language=ko-KR&page=3`
+  );
+
+  const data3 = await res3.json();
+  const datas3 = data3.results;
+
+  const res4 = await fetch(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEYS.TMDB}&language=ko-KR&page=4`
+  );
+  const data4 = await res4.json();
+  const datas4 = data4.results;
+
+  const res5 = await fetch(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEYS.TMDB}&language=ko-KR&page=5`
+  );
+  const data5 = await res5.json();
+  const datas5 = data5.results;
+
+  movies2.push(...datas)
+  movies2.push(...datas2)
+  movies2.push(...datas3)
+  movies2.push(...datas4)
+  movies2.push(...datas5)
 
   let inBox2 = document.querySelector('.upcoming-inBox2');
 
   let date = new Date();
   let today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < movies2.length; i++) {
     let cardBox = document.createElement('div');
     cardBox.className = 'upcoming-cardBox';
     let movImg = document.createElement('div');
@@ -20,12 +53,6 @@ export async function fetchUpcomingData() {
     let img = document.createElement('img');
     img.className = 'upcoming-img';
 
-    // 이슈: release_date가 현재보다 1개빼고 전이라 src가 할당되지 못하였음 by.영호
-    // 리뷰:
-    // 만약 20개를 보여주고싶다면,
-    // 8번째 줄에서 데이터를 받을 때
-    // 원하는 데이터 정보를 원하는 수만큼 받아오고
-    // 바로 랜더링해주는게 좋아보임
     if (movies2[i].release_date > today) {
       img.src = `https://image.tmdb.org/t/p/w500/${movies2[i].poster_path}`;
     }
@@ -40,17 +67,14 @@ export async function fetchUpcomingData() {
     describe.className = 'upcoming-describe';
     if (movies2[i].release_date > today) {
       describe.textContent = `개봉일: ${movies2[i].release_date}`;
-    }
 
-    // 이슈:
-    // 45번 줄 (if( ){ ... inbox2.append... }) 스코프 안에서 append가 이루어져 랜더링되지못했음 by.영호
-    // 해결:
-    // 44번줄에서 46번줄로 스코프밖으로 이동해서 append 하였음
-    inBox2.appendChild(cardBox);
-    cardBox.appendChild(movImg);
-    cardBox.appendChild(info);
-    movImg.appendChild(img);
-    info.appendChild(movTitle);
-    info.appendChild(describe);
+      inBox2.appendChild(cardBox);
+      cardBox.appendChild(movImg);
+      cardBox.appendChild(info);
+      movImg.appendChild(img);
+      info.appendChild(movTitle);
+      info.appendChild(describe);
+    }
   }
 }
+

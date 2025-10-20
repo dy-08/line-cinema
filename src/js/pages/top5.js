@@ -1,8 +1,8 @@
-let API_KEY = '8d869a3edc1dfa42039f24c2c4e4d19f';
+import { API_KEYS } from "../config/config.js";
 
 export async function fetchTop5Data1() {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_genres=28`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEYS.TMDB}&language=ko-KR&with_genres=28`
   );
   const data = await res.json();
   const movies3 = data.results;
@@ -42,7 +42,7 @@ export async function fetchTop5Data1() {
 
 export async function fetchTop5Data2() {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_genres=35`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEYS.TMDB}&language=ko-KR&with_genres=35`
   );
   const data = await res.json();
   const movies4 = data.results;
@@ -83,7 +83,7 @@ export async function fetchTop5Data2() {
 
 export async function fetchTop5Data3() {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ko-KR&with_genres=53`
+    `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEYS.TMDB}&language=ko-KR&with_genres=53`
   );
   const data = await res.json();
   const movies5 = data.results;
