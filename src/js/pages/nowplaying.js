@@ -1,5 +1,6 @@
+import { API_KEYS } from "../config/config.js";
+
 export async function fetchNowplayingData() {
-  let API_KEY = '8d869a3edc1dfa42039f24c2c4e4d19f';
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=ko-KR&page=1`
   );
@@ -36,4 +37,3 @@ export async function fetchNowplayingData() {
     info.appendChild(movTitle);
     info.appendChild(describe);
   }
-}
