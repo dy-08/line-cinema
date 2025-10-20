@@ -16,7 +16,6 @@
       "endDate": "2025.10.22",
       "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925288"
     },
-
     {
       "category": "영화",
       "title": "<퍼스트 라이드> 개봉주 무대인사",
@@ -32,6 +31,94 @@
       "startDate": "2025.10.14",
       "endDate": "2025.10.20",
       "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateButton?eventId=401110024725001"
+    },
+    {
+      "category": "영화",
+      "title": "<모노노케 히메> 4K리마스터링 개봉기념 앵콜 굿즈 패키지",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/be91117ca78d43f3b2d1ee4eb2a97e9f.jpg",
+      "startDate": "2025.10.25",
+      "endDate": "2025.10.25",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925291"
+    },
+    {
+      "category": "영화",
+      "title": "<수학여행형주> 스페셜GV",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/f62f3bc25b264f2baf826051d304a9b3.jpg",
+      "startDate": "2025.10.24",
+      "endDate": "2025.10.20",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070024725005"
+    },
+    {
+      "category": "영화",
+      "title": "<영화 <홍이>> 스페셜GV",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/f20756143ad942f4b2563f7bcd16e5ca.jpg",
+      "startDate": "2025.10.14",
+      "endDate": "2025.10.22",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateButton?eventId=401110024725002"
+    },
+    {
+      "category": "영화",
+      "title": "<연의 편지> K-오리지널리티GV",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/d8560f3d017c43f28cf225cc5c292817.jpg",
+      "startDate": "2025.10.17",
+      "endDate": "2025.10.27",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925286"
+    },
+    {
+      "category": "영화",
+      "title": "<어쩔수가없다> 개봉 4주차 무대인사",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/48a96822a7954c3384845cde250a1fa5.jpg",
+      "startDate": "2025.10.18",
+      "endDate": "2025.10.18",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925285"
+    },
+    {
+      "category": "영화",
+      "title": "<극장판 주술회전:회옥.옥절> 팬심 굿즈 상영회",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/5703d64dc06947ccb99d9c360bb52db9.jpg",
+      "startDate": "2025.10.18",
+      "endDate": "2025.10.18",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925283"
+    },
+    {
+      "category": "영화",
+      "title": "<8번 출구> '걷는 남자'배우 코치 야마토<br>10/19(일) 내한 무대인사 이벤트",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/5a9f88ba6fec4cc3b8335c30f82b8050.jpg",
+      "startDate": "2025.10.19",
+      "endDate": "2025.10.19",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925284"
+    },
+    {
+      "category": "시사회/무대인사",
+      "title": "<보스> 스페셜GV with 장진 감독",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/f26f027a9cc34a57ad50e435cad6edca.jpg",
+      "startDate": "2025.10.20",
+      "endDate": "2025.10.20",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925281"
+    },
+    {
+      "category": "영화",
+      "title": "<보스> 흥행감사 무대인사",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/b3683cda1ccc4f58bfaf569c220a9431.jpg",
+      "startDate": "2025.10.20",
+      "endDate": "2025.10.20",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925282"
+    },
+    {
+      "category": "영화",
+      "title": "<극장판 주술회전:회옥.옥절> 쿠지비키도 가챠 상영회",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/08019a80c0194a7faeb8929d4eef0ca5.jpg",
+      "startDate": "2025.10.17",
+      "endDate": "2025.10.17",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925278"
+    },
+    {
+      "category": "영화",
+      "title": "<100 미터> 원작도서 증정 스페셜 상영회",
+      "imagePath": "https://cf.lottecinema.co.kr//Media/Event/60735d8802bf465f854479072c507048.jpg",
+      "startDate": "2025.10.18",
+      "endDate": "2025.10.18",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925280"
     }
   ]
 }

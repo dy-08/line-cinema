@@ -22,14 +22,14 @@ function renderPremiereList(events) {
     .map(
       (event) => `
     <div class="premiere-card-wrap">
-      <a href="${event.url}" target="_blank">
+      <a href="${event.url}">
         <div class="premiere-card-top" style="background-image: url('${event.imagePath}');")">
             <div class="premiere-card-eventAlert">
                 <p class="font-numeric">D &#45; <span>2</span></p>
             </div>
         </div>
         <div class="premiere-card-bottom">
-            <p><span>${event.startDate}</span> &#126; <span>${event.endDate}</span></p>
+            <p class="font-numeric"><span>${event.startDate}</span> &#126; <span>${event.endDate}</span></p>
         </div>
       </a>
     </div>

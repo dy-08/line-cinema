@@ -1,9 +1,8 @@
 import { API_KEYS } from "../config/config.js";
 
 export async function fetchNowplayingData() {
-
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEYS.TMDB}&language=ko-KR&page=1`
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=ko-KR&page=1`
   );
   const data = await res.json();
   const movies = data.results;
@@ -38,4 +37,3 @@ export async function fetchNowplayingData() {
     info.appendChild(movTitle);
     info.appendChild(describe);
   }
-}

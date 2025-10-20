@@ -4,7 +4,8 @@
       "title": "오리지널 티켓 SPECIAL <BTS MOVIE WEEKS>",
       "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/18/C0PmigcFcHnsprLACSd1WhIYWWOpL9Fl.jpg",
       "startDate": "2025.09.18",
-      "endDate": "2025.10.25"
+      "endDate": "2025.10.25",
+      "url": "https://www.lottecinema.co.kr/NLCHS/Event/EventTemplateStageGreeting?eventId=401070016925282"
     },
     {
       "title": "<BTS MOVIE WEEKS> 상영 안내",
@@ -12,7 +13,6 @@
       "startDate": "2025.09.23",
       "endDate": "2025.10.21"
     },
-
     {
       "title": "[2025 시네애(愛)카데미]<br>사랑, 연애, 그리고 우리",
       "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/29/z0vtxnAWaRU95mosXk0ntfZZLTLPXr6z.jpg",
@@ -24,6 +24,79 @@
       "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/22/azIn4sCq0gechMo031yRqI1U0reFLF91.jpg",
       "startDate": "2025.10.01",
       "endDate": "2025.10.28"
+    },
+    {
+      "title": "<베이비걸> 스크리닝 파티 초청 이벤트",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/10/16/LuTqBih2RvKffEkP6U3QnoPHSYBeQ5Bo.jpg",
+      "startDate": "2025.10.30",
+      "endDate": "2025.10.30",
+      "url": "https://www.megabox.co.kr/event/detail?eventNo=18973"
+    },
+    {
+      "title": "<후지모토 타츠키 17-26> '후지모토 타츠키관' 상영 이벤트",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/10/16/0njPzDn5DfbkKqRhQqrbY4Vp5MG3a2kn.jpg",
+      "startDate": "2025.10.24",
+      "endDate": "2025.10.31"
+    },
+    {
+      "title": "<베이비걸> 프리미어 메가토크",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/10/17/HDxKNK3cCPNgO5rLC9DQYdnmnf10f97d.jpg",
+      "startDate": "2025.10.28",
+      "endDate": "2025.10.28"
+    },
+    {
+      "title": "<마작> 조재휘 평론가 메가토크",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/10/17/7AIkHq8OTtGNWEJAGYqG6QFYOrpaZX5D.jpg",
+      "startDate": "2025.10.26",
+      "endDate": "2025.10.26"
+    },
+    {
+      "title": "<마작> 엽서 세트 굿즈패키지",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/10/17/CFIa6S9N2uYTBI8JjfcWtyzr0u6gD0r9.jpg",
+      "startDate": "2025.10.25",
+      "endDate": "2025.10.26"
+    },
+    {
+      "title": "<모노노케 히메> 앵글 굿즈패키지 상영회",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/10/17/pLR1zmMRnv41rgIY27JV67iIJumQnov9.jpg",
+      "startDate": "2025.10.25",
+      "endDate": "2025.10.25"
+    },
+    {
+      "title": "<구의 이스트폴> 지점전용 관람권 판매",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/30/htwBicYnzcwW0TMFsrGjndt9G8tJvAVC.jpg",
+      "startDate": "2025.10.01",
+      "endDate": "2025.10.31"
+    },
+    {
+      "title": "<하남스타필드> 10월의 가을밤, 인생 플리를 열다",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/30/htwBicYnzcwW0TMFsrGjndt9G8tJvAVC.jpg",
+      "startDate": "2025.10.01",
+      "endDate": "2025.10.31"
+    },
+    {
+      "title": "<양산증산> 조조할인연장",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/10/02/sW9cK1qJdPk1j31koHyNOupM4Wh9XSqA.jpg",
+      "startDate": "2025.10.13",
+      "endDate": "2025.11.12"
+    },
+    {
+      "title": "<센트럴> 더부티크 추석패키지",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/09/30/0TdjNfcBWTV9WSNKQujWuVjnkIvRaYn4.jpg",
+      "startDate": "2025.10.03",
+      "endDate": "2025.10.31"
+    },
+    {
+      "title": "<퍼스트 라이드> 개봉주 무대인사",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/10/17/NVkQeZhmcwToAh1QSx0PAuR0ie5tb9QN.jpg",
+      "startDate": "2025.10.29",
+      "endDate": "2025.11.02"
+    },
+    {
+      "title": "<만남의 집> 개봉주 무대인사",
+      "imagePath": "https://img.megabox.co.kr/SharedImg/event/2025/10/02/0E6bmFHThO2S3R13qpWCNRSv3Ld4gzbh.jpg",
+      "startDate": "2025.10.18",
+      "endDate": "2025.10.19"
     }
   ]
 }

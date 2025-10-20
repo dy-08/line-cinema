@@ -40,7 +40,7 @@ export async function fetchUpcomingData() {
   movies2.push(...datas4)
   movies2.push(...datas5)
 
-  console.log(movies2.total_pages);
+  const movies2 = data.results;
 
   let inBox2 = document.querySelector('.upcoming-inBox2');
 
@@ -69,6 +69,7 @@ export async function fetchUpcomingData() {
     describe.className = 'upcoming-describe';
     if (movies2[i].release_date > today) {
       describe.textContent = `개봉일: ${movies2[i].release_date}`;
+
       inBox2.appendChild(cardBox);
       cardBox.appendChild(movImg);
       cardBox.appendChild(info);
@@ -78,3 +79,4 @@ export async function fetchUpcomingData() {
     }
   }
 }
+

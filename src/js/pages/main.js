@@ -1,8 +1,17 @@
 import { API_KEYS } from '../config/config.js'; // 키 요청
 import { eventNow } from './eventnow.js';
 import { premiere } from './premiere.js';
+import { eventHot } from './hotevent.js';
+import {
+  fetchTop5Data1,
+  fetchTop5Data2,
+  fetchTop5Data3,
+  drag,
+} from './top5.js';
+import { fetchNowplayingData } from './nowplaying.js';
+import { fetchUpcomingData } from './upcoming.js';
 
-// 네비게이션 hover 효과
+// 네비게이션 효과
 const navi = document.querySelectorAll('.header-navi-main');
 let current = '';
 navi.forEach((item) => {
@@ -24,8 +33,6 @@ navi.forEach((item) => {
 // TMDB API 테스트 코드
 // console.log(API_KEYS); // 키 응답
 async function tmdb() {
-  console.log('123');
-  
   try {
     const options = { method: 'GET', headers: { accept: 'application/json' } };
     // v3
@@ -41,15 +48,32 @@ async function tmdb() {
 }
 tmdb();
 
-async function renderPage(data) {
-  document.getElementById('app').innerHTML = await data;
+async function renderPage({ html, index = false }) {
+  if (index) {
+    console.log('index!');
+  }
+  document.getElementById('app').innerHTML = await html;
 }
 async function fetchPage(page) {
   try {
-    const res = await fetch(`./src/html/${page}.html`);
+    const isIndex = page === 'index';
+
+    const res = isIndex
+      ? await fetch(`./${page}.html`)
+      : await fetch(`./src/html/${page}.html`);
+
     if (!res.ok) throw new Error('page is not found');
     const data = await res.text();
-    return data;
+    if (isIndex) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, 'text/html');
+
+      const target = doc.querySelector('#app');
+      const content = target ? target.innerHTML : '';
+
+      return { html: content, index: isIndex };
+    }
+    return { html: data, index: isIndex };
   } catch (error) {
     console.error('fetchPageError:', error.message);
   }
@@ -57,15 +81,68 @@ async function fetchPage(page) {
 document.querySelectorAll('.header-navi-sub').forEach((item) =>
   item.addEventListener('click', async (e) => {
     const page = e.target.dataset.page.slice(6);
-    const html = await fetchPage(page);
-    if (!html) return;
-    await renderPage(html);
+    const { html } = await fetchPage(page);
 
+    if (!html) return;
+    await renderPage({ html });
+
+    if (page === 'index') {
+      initSlider();
+    }
     if (page === 'eventnow') {
       eventNow();
     }
     if (page === 'premiere') {
       premiere();
+    }
+    if (page === 'hotevent') {
+      eventHot();
+    }
+    if (page === 'top5') {
+      fetchTop5Data1();
+      fetchTop5Data2();
+      fetchTop5Data3();
+      drag();
+    }
+    if (page === 'nowplaying') {
+      fetchNowplayingData();
+    }
+    if (page === 'upcoming') {
+      fetchUpcomingData();
+    }
+  })
+);
+
+document.querySelectorAll('.header-navi-default').forEach((item) =>
+  item.addEventListener('click', async (e) => {
+    const page = e.target.dataset.page.slice(6);
+    const { html, index } = await fetchPage(page);
+    if (!html) return;
+    await renderPage({ html, index });
+
+    if (page === 'index') {
+      initSlider();
+    }
+    if (page === 'eventnow') {
+      eventNow();
+    }
+    if (page === 'premiere') {
+      premiere();
+    }
+    if (page === 'hotevent') {
+      eventHot();
+    }
+    if (page === 'top5') {
+      fetchTop5Data1();
+      fetchTop5Data2();
+      fetchTop5Data3();
+      drag();
+    }
+    if (page === 'nowplaying') {
+      fetchNowplayingData();
+    }
+    if (page === 'upcoming') {
+      fetchUpcomingData();
     }
   })
 );
@@ -93,6 +170,72 @@ const observer = new IntersectionObserver((entries) => {
   }
 });
 observer.observe(sentinel);
+
 // 지유님: 슬라이더 작업섹션
+function initSlider() {
+  let count = 1;
+  let imgBox = document.querySelector('.main-inBox-imgbox');
+  let imgTotal = document.querySelectorAll(
+    '.main-inBox-imgbox .main-img'
+  ).length;
+  let imgSize = 100 / imgTotal;
+
+  let autoSlide; // 자동 슬라이드 타이머
+
+  function show() {
+    imgBox.style.transform = `translateX(${-imgSize * count}%)`;
+  }
+
+  function leftf() {
+    count--;
+    show();
+    resetAutoSlide();
+  }
+
+  function rightf() {
+    count++;
+    show();
+    resetAutoSlide();
+  }
+
+  function tend() {
+    // 양끝 이미지 복제 구간 처리
+    if (count >= imgTotal - 1) {
+      imgBox.style.transition = 'none';
+      count = 1;
+      show();
+      imgBox.offsetWidth; // 리렌더링
+      imgBox.style.transition = 'all 0.5s linear';
+    } else if (count <= 0) {
+      imgBox.style.transition = 'none';
+      count = imgTotal - 2;
+      show();
+      imgBox.offsetWidth;
+      imgBox.style.transition = 'all 0.5s linear';
+    }
+  }
+
+  // 자동 슬라이드
+  function startAutoSlide() {
+    autoSlide = setInterval(() => {
+      count++;
+      show();
+    }, 5000); // 초 간격
+  }
+
+  // 클릭 시 자동 슬라이드 잠시 멈췄다가 다시 시작
+  function resetAutoSlide() {
+    clearInterval(autoSlide);
+    startAutoSlide();
+  }
+
+  show();
+  startAutoSlide();
+
+  window.leftf = leftf;
+  window.rightf = rightf;
+  window.tend = tend;
+}
+initSlider();
 
 // 철원님: 랭킹 작업섹션
