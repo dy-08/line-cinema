@@ -1,0 +1,44 @@
+.quickbooking-inner {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #11111110;
+}
+
+.quickbooking-movie-list {
+    width: 40%;
+    height: 700px;
+    background-color: lightpink;
+}
+.quickbooking-movie-date {
+    width: 60%;
+    height: 700px;
+    background-color: lightgray;
+}
+
+.quickbooking-movie-item {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #11111110;
+    text-align: center;
+}
+.quickbooking-movie-item > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* limitAge */
+/* colors: e9b630, dd7430, 229c56, CD1327 추가예정 */
+.quickbooking-movie-limitAge {
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: var(--font-size-md);
+    color: white;
+    font-weight: bold;
+    background-color: #e9b630;
+}
