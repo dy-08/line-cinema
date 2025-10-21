@@ -1,0 +1,112 @@
+/* body {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 1200px;
+    width: 100%;
+} */
+
+.ticket-text{
+  font-size: 20px;
+  font-weight: 600;
+  width: 1000px;
+  margin: 30px auto;
+}
+
+/* ticket-container 중앙 정렬 */
+.ticket-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 가로 중앙 정렬 */
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.ticket {
+  width: 260px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+}
+
+.ticket:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  cursor: pointer; /* 마우스 포인터 변경 */
+}
+
+/* 이미지 비율 유지 + 중앙 정렬 */
+.ticket-img {
+  position: relative;
+  height: 250px;  /* 카드 높이 유지 */
+  width: 310px;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* div 안에서 잘림 방지 */
+}
+
+.ticket-img img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+.ticket-content {
+  padding: 15px;
+}
+
+.ticket-title {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.ticket-desc {
+  color: #666;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.ticket-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticket-price span {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.ticket-price .discount {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .ticket-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.store-mainImg {
+  width: 100%;
+  height: 296px;
+  background-image: url(https://cf.lottecinema.co.kr//Media/WebAdmin/f04df114813f45b18e63e06308211d0f.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
