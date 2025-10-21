@@ -24,7 +24,7 @@ mem.cart.movie = { id: 1, title: '베놈' };
 mem.cart.date = '2025-10-21T19:30:00+09:00';
 
 // 세션에 저장
-sessionStorage.setItem('LC_CART', JSON.stringify(mem.cart));
+// sessionStorage.setItem(KEY_CART, JSON.stringify(mem.cart));
 
 // 콘솔에서 확인
-JSON.parse(sessionStorage.getItem('LC_CART'));
+// JSON.parse(sessionStorage.getItem('LC_CART'));
