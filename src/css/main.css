@@ -5,29 +5,15 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-<<<<<<< HEAD
-
-/* Header */
-.header-inner {
-  /* max-width: 1440px; */
-=======
 /* Header */
 .header-inner {
   width: 1200px;
->>>>>>> develop
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-<<<<<<< HEAD
-
-.header-logo-wrap {
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-=======
 .row {
   width: 1200px;
   margin: 0 auto;
@@ -38,15 +24,11 @@ body {
   width: 100%;
   height: 80px;
   line-height: 80px;
->>>>>>> develop
   text-align: center;
   font-size: var(--font-size-xl);
   letter-spacing: 0.1rem;
   font-weight: 700;
 }
-<<<<<<< HEAD
-
-=======
 .header-logoBox {
   width: 100%;
   height: 100%;
@@ -65,22 +47,16 @@ body {
   object-fit: cover;
   overflow: hidden;
 }
->>>>>>> develop
 .header-navi-wrap {
   width: 100%;
   height: 50px;
   line-height: 50px;
 }
-<<<<<<< HEAD
-
-/* 스크롤이벤트 추가예정: Fixed */
-=======
 .header-navi-wrap.fixed {
   position: fixed;
   z-index: 1000;
   top: 0;
 }
->>>>>>> develop
 .header-navi {
   width: 100%;
   height: 100%;
@@ -89,18 +65,10 @@ body {
   gap: 50px;
   text-align: center;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 .header-navi-main {
   font-weight: 500;
   font-size: var(--font-size-md);
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 .header-navi-depth {
   width: 100%;
   height: 40px;
@@ -108,23 +76,6 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-<<<<<<< HEAD
-  z-index: 1;
-  font-size: var(--font-size-sm);
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  background-color: #111111;
-  opacity: 0;
-  transition: all 0.3s linear;
-}
-
-.selected {
-  opacity: 1;
-}
-
-.header-navi-sub {
-=======
   z-index: 1100;
   font-size: var(--font-size-sm);
   display: none;
@@ -140,79 +91,10 @@ body {
   display: block;
   width: 100%;
   height: 100%;
->>>>>>> develop
   color: #ededed;
   font-size: var(--font-size-sm);
   font-weight: 500;
   text-align: center;
-<<<<<<< HEAD
-}
-
-.row {
-  width: 1440px;
-  margin: 0 auto;
-  height: 0.5px;
-  background-color: #11111180;
-}
-
-/* 지유님 슬라이더 작업섹션 */
-
-/* 철원님 랭킹 작업섹션 */
-#rank {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #11111120;
-}
-
-.rank-movie {
-  width: 1200px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.rank-movie-wrap {
-  width: 24%;
-}
-
-.rank-movie-card {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.rank-movie-card img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-  overflow: hidden;
-}
-
-.rank-btn-wrap {
-  display: flex;
-  justify-content: space-between;
-}
-
-.rank-btns {
-  width: 120px;
-  padding: 10px 20px;
-  border: 1px solid white;
-  border-radius: 6px;
-  font-size: var(--font-size-md);
-  font-weight: 500;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.65);
-  color: white;
-  width: 48%;
-}
-
-/* App: #App은 공용 섹션이기에 스타일 지정 ❌❌❌ */
-/* 지유님, 철원님은 #app에 height만 지우고 작업 시작 */
-#app {
-  height: 1000px;
-=======
   cursor: pointer;
 }
 
@@ -270,7 +152,6 @@ body {
 /* App: #App은 공용 섹션이기에 스타일 지정 ❌❌❌ */
 #app {
   height: auto;
->>>>>>> develop
 }
 
 /* Footer */
@@ -278,18 +159,10 @@ body {
   width: 100%;
   display: flex;
 }
-<<<<<<< HEAD
-
-.footer-contents-wrap {
-  width: 1440px;
-  height: 100px;
-  max-width: 1440px;
-=======
 .footer-contents-wrap {
   width: 1200px;
   height: 100px;
   max-width: 1200px;
->>>>>>> develop
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -297,11 +170,4 @@ body {
   gap: 40px;
   font-size: var(--font-size-sm);
   color: #59636e;
-<<<<<<< HEAD
 }
-=======
-}
-
-
-
->>>>>>> develop
