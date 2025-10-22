@@ -24,6 +24,8 @@ export async function fetchNowPlayingInKorea() {
     try {
         const res = await fetch(url, options);
         const data = await res.json();
+        console.log('original: ', data.results);
+
         for (const item of data.results) {
             const movie = defaultMovies();
             movie.id = item.id;
@@ -37,12 +39,12 @@ export async function fetchNowPlayingInKorea() {
     } catch (err) {
         console.error('에러 발생:', err);
     } finally {
-        console.log(now_playing_movies);
+        console.log('parse:', now_playing_movies);
+        renderMoviesList();
     }
 }
 // https://image.tmdb.org/t/p/w500/i9VFlFOm0Ez6LXfjzWuhBxrcxJa.jpg"
 
-// 영화 ID를 이용해 예고편(티저/트레일러) 가져오기
 async function fetchMovieVideo(movieId) {
     const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEYS.TMDB}&language=ko-KR`;
 
@@ -62,4 +64,27 @@ async function fetchMovieVideo(movieId) {
     } catch (err) {
         console.error('영상 정보 에러:', err);
     }
+}
+
+function renderMoviesList() {
+    const container = document.getElementById('quickbooking-movie-itemWrap');
+
+    container.innerHTML = now_playing_movies
+        .map(
+            (item) => `
+    <div class="quickbooking-movie-item">
+        <a href="#">
+            <span class="quickbooking-movie-limitAge font-numeric">12</span>
+            <span class="quickbooking-movie-title">${item.title}</span>
+        </a>
+    </div>`
+        )
+        .join('');
+}
+
+async function fetchReleaseDates(movieId) {
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/release_dates?api_key=${API_KEYS.TMDB}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data.results);
 }
