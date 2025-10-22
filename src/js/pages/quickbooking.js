@@ -1,7 +1,19 @@
 import { API_KEYS } from '../config/config.js';
-import { defaultCart } from './state.js';
 
-async function fetchNowPlayingInKorea() {
+const now_playing_movies = [];
+
+function defaultMovies() {
+    return {
+        id: null,
+        adult: null,
+        title: null,
+        overview: null,
+        poster_path: null,
+        video_path: null,
+    };
+}
+
+export async function fetchNowPlayingInKorea() {
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEYS.TMDB}&language=ko-KR&region=KR&page=1`;
 
     const options = {
@@ -12,20 +24,23 @@ async function fetchNowPlayingInKorea() {
     try {
         const res = await fetch(url, options);
         const data = await res.json();
-        console.log(data.results); // 상영 중 영화 목록
-
-        // 첫 번째 영화의 id로 예고편(또는 티저) 영상 불러오기
-        if (data.results.length > 0) {
-            const firstMovie = data.results[0];
-            console.log(`첫 번째 영화: ${firstMovie.title}`);
-            await fetchMovieVideo(firstMovie.id);
+        for (const item of data.results) {
+            const movie = defaultMovies();
+            movie.id = item.id;
+            movie.adult = item.adult;
+            movie.title = item.title;
+            movie.overview = item.overview;
+            movie.poster_path = item.poster_path;
+            movie.video_path = await fetchMovieVideo(item.id);
+            now_playing_movies.push(movie);
         }
     } catch (err) {
         console.error('에러 발생:', err);
+    } finally {
+        console.log(now_playing_movies);
     }
 }
-defaultCart();
-// https://image.tmdb.org/t/p/w500/4nJcUMpWgnIPZPJ13TWKRxAdY9U.jpg
+// https://image.tmdb.org/t/p/w500/i9VFlFOm0Ez6LXfjzWuhBxrcxJa.jpg"
 
 // 영화 ID를 이용해 예고편(티저/트레일러) 가져오기
 async function fetchMovieVideo(movieId) {
@@ -40,7 +55,7 @@ async function fetchMovieVideo(movieId) {
 
         if (video) {
             const youtubeUrl = `https://www.youtube.com/watch?v=${video.key}`;
-            console.log('예고편(티저) URL:', youtubeUrl);
+            return youtubeUrl;
         } else {
             console.log('예고편(티저) 없음');
         }
@@ -48,5 +63,3 @@ async function fetchMovieVideo(movieId) {
         console.error('영상 정보 에러:', err);
     }
 }
-
-fetchNowPlayingInKorea();
