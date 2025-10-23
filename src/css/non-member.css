@@ -77,10 +77,18 @@ body {
 
 .login-input {
     width: 70%;
-    height: 38px;
+    height: 40px;
     padding-left: 10px;
     font-size: 14px;
     border: 1px solid #CCC;
+}
+
+.login-warnmsg {
+    width: 70%;
+    font-size: 12px;
+    padding-top: 1px;
+    padding-left: 10px;
+    color: #E81002;
 }
 
 .login-input:hover {

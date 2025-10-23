@@ -25,18 +25,24 @@
                     <div>비밀번호 확인</div>
                 </div>
                 <div class="login-inputs">
-                    <input class="login-input" type="text" placeholder="이름" />
-                    <input class="login-input" type="number" placeholder="생년월일 앞6자리" />
+                    <input id="loginName" class="login-input" type="text" placeholder="이름" />
+                    <input id="loginBirth" class="login-input" type="number" placeholder="생년월일 앞6자리" />
                     <div>
-                        <input class="login-input" type="number" placeholder="- 없이 입력" />
-                        <button>인증요청</button>
+                        <div>
+                            <input id="loginNumber" class="login-input" type="number" placeholder="- 없이 입력" />
+                            <button id="verifyBtn">인증요청</button>
+                        </div>
+                        <div id="loginWarn" class="login-warnmsg"></div>
                     </div>
                     <div>
-                        <input class="login-input" type="number" />
-                        <button>확인</button>
+                        <input id="loginVerify" class="login-input" type="number" />
+                        <button id="verifyBtn2">확인</button>
                     </div>
-                    <input class="login-input" type="number" placeholder="비밀번호(숫자 4자리)" />
-                    <input class="login-input" type="number" placeholder="비밀번호(숫자 4자리) 확인" />
+                    <input id="loginPassword" class="login-input" type="number" placeholder="비밀번호(숫자 4자리)" />
+                    <div>
+                        <input id="loginPassword2" class="login-input" type="number" placeholder="비밀번호(숫자 4자리) 확인" />
+                        <div id="loginWarn2" class="login-warnmsg"></div>
+                    </div>
                 </div>
             </div>
             <div class="login-contentBside">
@@ -68,7 +74,7 @@
             </div>
         </div>
         <div class="login-footer">
-            <p class="login-footer-title">[비회원 예매안내]</p>
+            <p>[비회원 예매안내]</p>
             <ul>
                 <li class="login-footer-text">온라인 예매시(메가박스 홈페이지 및 APP) 1회 결제 시 최대 8매까지 예매 가능합니다. 일 예매 제한 수량을 초과하는
                     경우,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
