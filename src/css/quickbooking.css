@@ -79,6 +79,9 @@
 }
 
 /* quickbooking-movie-date */
+.quickbooking-current-date {
+  padding-top: 2px;
+}
 .quickbooking-calendar-list {
   width: 100%;
   height: 100px;
@@ -118,6 +121,57 @@
 .quickbooking-calendar-day {
   font-size: 13px;
   /* xs: 12px, s: 14px */
+}
+
+.quickbooking-date-list {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.quickbooking-date-itemWrap {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 26%);
+  justify-content: space-around;
+  align-items: center;
+  gap: 12px;
+}
+.quickbooking-date-item {
+  display: grid;
+  place-items: center;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  text-align: center;
+  padding: 6px 20px;
+  border: 0.5px solid #ededed;
+  box-shadow: 0px 1px 1px rgba(49, 49, 49, 0.08);
+  cursor: pointer;
+}
+
+.quickbooking-startTime {
+  font-size: var(--font-size-md);
+  font-weight: bold;
+}
+.quickbooking-date-bottom {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.quickbooking-seats {
+  font-size: 11px;
+  font-weight: bold;
+}
+.quickbooking-screenNumber {
+  font-size: var(--font-size-xs);
+  color: #111;
+}
+.quickbooking-remainingSeats {
+  color: #427652;
+}
+.quickbooking-totalSeats {
+  color: #666;
 }
 
 /* active */

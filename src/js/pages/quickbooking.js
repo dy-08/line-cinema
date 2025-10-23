@@ -167,3 +167,18 @@ function getAgeClass(age) {
   if (age >= 12) return 'age-12';
   return 'age-all';
 }
+
+function getCurrentDate() {
+  const date = new Date();
+
+  const yy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, 0);
+  const dd = String(date.getDate()).padStart(2, 0);
+  const current = `${yy}–${mm}–${dd}(오늘)`;
+  return current;
+}
+export function renderDate() {
+  const container = document.querySelector('.quickbooking-current-date');
+  const dateText = getCurrentDate();
+  container.innerHTML = `<p>${dateText}</p>`;
+}

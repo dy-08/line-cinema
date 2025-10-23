@@ -9,7 +9,10 @@ import {
 } from './top5.js';
 import { fetchNowplayingData } from './nowplaying.js';
 import { fetchUpcomingData } from './upcoming.js';
-import { fetchNowPlayingInKorea as quickbooking } from './quickbooking.js';
+import {
+  fetchNowPlayingInKorea as quickbooking,
+  renderDate,
+} from './quickbooking.js';
 
 // 네비게이션 효과
 import { API_KEYS } from '../config/config.js'; // 키 요청
@@ -112,6 +115,7 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
     }
     if (page === 'quickbooking') {
       quickbooking();
+      renderDate();
     }
   })
 );
@@ -149,6 +153,7 @@ document.querySelectorAll('.header-navi-default').forEach((item) =>
     }
     if (page === 'quickbooking') {
       quickbooking();
+      renderDate();
     }
   })
 );
