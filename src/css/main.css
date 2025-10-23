@@ -1,132 +1,153 @@
 body {
-  width: 100vw;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 /* Header */
+/* ✅ */
 .header-inner {
-  width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1000;
 }
 .row {
-  width: 1200px;
-  margin: 0 auto;
-  height: 0.5px;
-  background-color: #11111180;
+    width: 100%;
+    margin: 0 auto;
+    height: 0.5px;
 }
 .header-logo-wrap {
-  width: 100%;
-  height: 80px;
-  line-height: 80px;
-  text-align: center;
-  font-size: var(--font-size-xl);
-  letter-spacing: 0.1rem;
-  font-weight: 700;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: var(--font-size-xl);
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    background-color: #11111160;
+    box-shadow: 0px 1px 2px #11111120;
 }
 .header-logoBox {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .header-logo {
-  display: inline-block;
-  width: 150px;
+    display: inline-block;
+    width: 200px;
 }
 .header-logo > img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
 }
+/* ✅ */
 .header-navi-wrap {
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    top: 80px;
+    background-color: #11111160;
 }
 .header-navi-wrap.fixed {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
 }
 .header-navi {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    text-align: center;
 }
 .header-navi-main {
-  font-weight: 500;
-  font-size: var(--font-size-md);
+    font-weight: 500;
+    font-size: var(--font-size-md);
+    color: white;
 }
 .header-navi-depth {
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1100;
-  font-size: var(--font-size-sm);
-  display: none;
-  justify-content: center;
-  gap: 30px;
-  background-color: #111111;
-  transition: all 0.3s linear;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+    font-size: var(--font-size-sm);
+    display: none;
+    justify-content: center;
+    gap: 30px;
+    background-color: #11111160;
+    transition: all 0.3s linear;
 }
 .selected {
-  display: flex;
+    display: flex;
 }
 .header-navi-sub {
-  display: block;
-  width: 100%;
-  height: 100%;
-  color: #ededed;
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  text-align: center;
-  cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #ededed;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
 }
 
 /* 지유님 슬라이더 작업섹션 */
-  .main {
+.main {
     width: 100%;
     height: calc(100vh - 50px);
-  }
-  .main-inBox {
+}
+.main-inBox {
     width: 100%;
     height: 100%;
     overflow: hidden;
     position: relative;
-  }
-  .main-inBox-imgbox {
+}
+.main-inBox-imgbox {
     width: 500%;
     height: 100%;
     display: flex;
     transition: all 0.5s ease-in-out;
-  }
-  .main-inBox-imgbox .main-img {
+}
+.main-inBox-imgbox .main-img {
     width: calc(100% / 5);
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
-  .main-inBox-imgbox .img1 { background-image: url(/public/img/main/main-img01.jpg); }
-  .main-inBox-imgbox .img2 { background-image: url(/public/img/main/main-img02.jpg); }
-  .main-inBox-imgbox .img3 { background-image: url(/public/img/main/main-img03.jpg); }
+}
+.main-inBox-imgbox .img1 {
+    background-image: url(/public/img/main/main-img01.jpg);
+}
+.main-inBox-imgbox .img2 {
+    background-image: url(/public/img/main/main-img02.jpg);
+}
+.main-inBox-imgbox .img3 {
+    background-image: url(/public/img/main/main-img03.jpg);
+}
 
-  button {
+button {
     width: 50px;
     height: 50px;
     background-color: transparent;
@@ -136,41 +157,43 @@ body {
     position: absolute;
     z-index: 100;
     cursor: pointer;
-  }
-  .main-leftBtn {
+}
+.main-leftBtn {
     top: 50%;
     left: 50px;
     transform: translateY(-50%);
-  }
-  .main-rightBtn {
+}
+.main-rightBtn {
     top: 50%;
     right: 50px;
     transform: translateY(-50%);
-  }
+}
 /* 철원님 랭킹 작업섹션 */
 
 /* App: #App은 공용 섹션이기에 스타일 지정 ❌❌❌ */
 #app {
-  height: auto;
+    height: auto;
 }
 
 /* Footer */
 .footer-inner {
-  width: 100%;
-  display: flex;
+    width: 100%;
+    display: flex;
 }
 .footer-contents-wrap {
-  width: 1200px;
-  height: 100px;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  font-size: var(--font-size-sm);
-  color: #59636e;
+    width: 1200px;
+    height: 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    font-size: var(--font-size-sm);
+    color: #59636e;
 }
 
-
-
+.u-pad {
+    width: 100%;
+    padding: 180px 0;
+}
