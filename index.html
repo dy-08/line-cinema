@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>라인시네마</title>
+    <link rel="icon" href="public/img/ui/favicon.ico?v=5" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="public/img/ui/favicon-32x32.png?v=5"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="public/img/ui/favicon-16x16.png?v=5"
+      sizes="16x16"
+    />
     <link rel="stylesheet" href="./public/css/reset.css" />
     <link rel="stylesheet" href="./public/css/global.css" />
     <link rel="stylesheet" href="./src/css/main.css" />
@@ -13,6 +26,8 @@
     <link rel="stylesheet" href="./src/css/nowplaying.css" />
     <link rel="stylesheet" href="./src/css/upcoming.css" />
     <link rel="stylesheet" href="./src/css/hotevent.css" />
+    <link rel="stylesheet" href="./src/css/discount.css" />
+    <link rel="stylesheet" href="./src/css/quickbooking.css" />
   </head>
   <body>
     <header>
@@ -21,7 +36,7 @@
           <div class="header-logoBox">
             <a href="#" class="header-logo header-navi-default"
               ><img
-                src="./public/img/ui/logo-g.png"
+                src="./public/img/ui/logo-w.png"
                 alt="라인시네마 로고이미지"
                 data-page="page__index"
             /></a>
@@ -142,6 +157,14 @@
                 </li>
               </ul>
             </li>
+            <li>
+              <a
+                href="#"
+                class="header-navi-main header-navi-default"
+                data-page="page__map"
+                >오시는 길</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -167,8 +190,6 @@
           </button>
         </div>
       </section>
-
-      <!-- 철원님 랭킹 작업 섹션 -->
     </section>
     <footer>
       <div class="footer-inner">
@@ -198,5 +219,6 @@
       </div>
     </footer>
     <script type="module" src="./src/js/pages/main.js"></script>
+    <script src="./src/js/pages/state.js" type="module"></script>
   </body>
 </html>

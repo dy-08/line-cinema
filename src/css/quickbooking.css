@@ -1,0 +1,156 @@
+.quickbooking-inner {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #11111110; */
+  border: 0.5px solid #11111110;
+}
+/* quickbooking-display */
+.quickbooking-trailer {
+  width: 30%;
+  height: 872px;
+  display: flex;
+  gap: 0;
+  flex-direction: column;
+}
+
+/* quickbooking-movie-wrap */
+.quickbooking-movie-wrap {
+  width: 30%;
+  height: 872px;
+  /* background-color: lightpink; */
+}
+/* .quickbooking-date-wrap */
+.quickbooking-date-wrap {
+  width: 40%;
+  height: 872px;
+  /* background-color: lightgray; */
+}
+
+.quickbooking-movie-item {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #11111110;
+  text-align: center;
+}
+.quickbooking-movie-list,
+.quickbooking-current-date,
+.quickbooking-trailer-movie {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background-color: #111111;
+  color: white;
+  font-size: var(--font-size-lg);
+}
+.quickbooking-movie-item > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.quickbooking-movie-title {
+  padding-left: 10px;
+}
+/* limitAge */
+/* colors: e9b630, dd7430, 229c56, CD1327 추가예정 */
+.quickbooking-movie-limitAge {
+  width: 20px;
+  height: 20px;
+  padding: 6px 8px 4px 8px;
+  border-radius: 6px;
+  border: 0;
+  font-size: var(--font-size-md);
+  color: white;
+  font-weight: bold;
+  background-color: #e9b630;
+}
+
+/* quickbooking-movie-date */
+.quickbooking-calendar-list {
+  width: 100%;
+  height: 100px;
+}
+/* ✅ */
+.quickbooking-calendar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding-top: 18px;
+  padding-left: 18px;
+  overflow: hidden;
+  border-bottom: 0.5px solid #11111110;
+}
+.quickbooking-calendar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px;
+  cursor: pointer;
+}
+.quickbooking-calendar-date {
+  width: 30px;
+  height: 30px;
+  line-height: 33px;
+  text-align: center;
+  font-weight: bold;
+  padding-right: 0.5px;
+  border-radius: 50%;
+  font-size: var(--font-size-md);
+}
+.quickbooking-calendar-day {
+  font-size: 13px;
+  /* xs: 12px, s: 14px */
+}
+
+/* active */
+.current {
+  width: 30px;
+  height: 30px;
+  line-height: 33px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding-right: 0.5px;
+  border-radius: 50%;
+}
+.quickbooking-current--active {
+  position: absolute;
+  left: 34px;
+  top: 12px;
+  font-size: 10px;
+}
+.sat {
+  color: #4556b0;
+}
+.sun {
+  color: #f24a6a;
+}
+
+.quickbooking-trailer-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+.quickbooking-trailer-wrap > iframe {
+  border: 0;
+}
+.quickbooking-poster-wrap {
+  width: 100%;
+  height: 512px;
+}
+quickbooking-poster-wrap > img {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+}
