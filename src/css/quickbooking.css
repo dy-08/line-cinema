@@ -52,6 +52,15 @@
   width: 100%;
   height: 100%;
 }
+.quickbooking-movie-item > a.selected {
+  background-color: #11111150;
+}
+#quickbooking-movie-itemWrap {
+  width: 100%;
+  height: 812px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
 .quickbooking-movie-title {
   padding-left: 10px;
 }
@@ -60,7 +69,7 @@
 .quickbooking-movie-limitAge {
   width: 20px;
   height: 20px;
-  padding: 6px 8px 4px 8px;
+  padding: 4px 6px 2px 6px;
   border-radius: 6px;
   border: 0;
   font-size: var(--font-size-md);
@@ -153,4 +162,20 @@ quickbooking-poster-wrap > img {
   height: 100%;
   overflow: hidden;
   object-fit: cover;
+}
+
+.age-19 {
+  background-color: #cd1327;
+}
+.age-15 {
+  background-color: #dd7430;
+}
+.age-12 {
+  background-color: #e9b630;
+}
+.age-all {
+  background-color: #229c56;
+  letter-spacing: -1px;
+  padding: 4px 6px 2px 6px;
+  font-size: var(--font-size-sm);
 }
