@@ -110,6 +110,7 @@
   gap: 4px;
   padding: 10px;
   cursor: pointer;
+  /* transform: translateX(-1100px); */
 }
 .quickbooking-calendar-date {
   width: 30px;

@@ -221,9 +221,13 @@ export function createCalendar() {
   const lastDayNum = endDateObj.getDate();
   const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
   const startWeekday = getStartDayOfMonth();
+  const currentMonth = startDateObj.getMonth() + 1;
 
   let weekdayIndex = weekdays.indexOf(startWeekday);
 
+  document.querySelector(
+    '.quickbooking-current--active'
+  ).textContent = `${currentMonth}월`;
   for (let i = firstDayNum; i <= lastDayNum; i++) {
     renderCalendar(i, weekdays[weekdayIndex++]);
 
@@ -231,7 +235,21 @@ export function createCalendar() {
       weekdayIndex = 0;
     }
   }
-  // initCalendarPosition()
+  initCalendarPosition();
 }
 
-function initCalendarPosition() {}
+function initCalendarPosition() {
+  const dateEls = document.querySelectorAll('.quickbooking-calendar-date');
+  let currentDateX = 0;
+  let defaultPaddingX = 28;
+  dateEls.forEach((item) => {
+    if (item.className.includes('current')) {
+      currentDateX = item.offsetLeft;
+    }
+  });
+  const itemEls = document.querySelectorAll('.quickbooking-calendar-item');
+  itemEls.forEach((item) => {
+    item.style.transition = 'transform 0.5s ease';
+    item.style.transform = `translateX(-${currentDateX - defaultPaddingX}px)`;
+  });
+}
