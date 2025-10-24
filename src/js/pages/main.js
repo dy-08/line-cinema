@@ -12,6 +12,7 @@ import { fetchUpcomingData } from './upcoming.js';
 import {
   fetchNowPlayingInKorea as quickbooking,
   renderDate,
+  createCalendar,
 } from './quickbooking.js';
 
 // 네비게이션 효과
@@ -116,6 +117,7 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
     if (page === 'quickbooking') {
       quickbooking();
       renderDate();
+      createCalendar();
     }
   })
 );
@@ -154,6 +156,7 @@ document.querySelectorAll('.header-navi-default').forEach((item) =>
     if (page === 'quickbooking') {
       quickbooking();
       renderDate();
+      createCalendar();
     }
   })
 );

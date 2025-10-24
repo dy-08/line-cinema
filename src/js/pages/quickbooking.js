@@ -168,13 +168,14 @@ function getAgeClass(age) {
   return 'age-all';
 }
 
+// Calendar
 function getCurrentDate() {
-  const date = new Date();
+  const now = new Date();
 
-  const yy = date.getFullYear();
-  const mm = String(date.getMonth() + 1).padStart(2, 0);
-  const dd = String(date.getDate()).padStart(2, 0);
-  const current = `${yy}–${mm}–${dd}(오늘)`;
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, 0);
+  const date = String(now.getDate()).padStart(2, 0);
+  const current = `${year}–${month}–${date}(오늘)`;
   return current;
 }
 export function renderDate() {
@@ -182,3 +183,55 @@ export function renderDate() {
   const dateText = getCurrentDate();
   container.innerHTML = `<p>${dateText}</p>`;
 }
+
+function getFirstDayOfMonth(date = new Date()) {
+  return new Date(date.getFullYear(), date.getMonth(), 1);
+}
+function getLastDayOfMonth(date = new Date()) {
+  // "다음 달의 0번째 날" → 현재 달의 마지막 날
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+}
+function getStartDayOfMonth(date = getFirstDayOfMonth()) {
+  const weekday = date.toLocaleDateString('ko-KR', {
+    weekday: 'short',
+  });
+  return weekday;
+}
+
+function renderCalendar(date, day) {
+  const container = document.querySelector('.quickbooking-calendar-itemWrap');
+  const now = new Date();
+  const isToday = date === now.getDate();
+  const weekendClass = day === '토' ? 'sat' : day === '일' ? 'sun' : '';
+
+  return (container.innerHTML += `
+    <div class="quickbooking-calendar-item">
+      <div class="quickbooking-calendar-date font-numeric${
+        isToday ? ' current' : ''
+      }">${date}</div>
+      <div class="quickbooking-calendar-day ${weekendClass}">${day}</div>
+    </div>
+  `);
+}
+
+export function createCalendar() {
+  const startDateObj = getFirstDayOfMonth();
+  const endDateObj = getLastDayOfMonth();
+  const firstDayNum = startDateObj.getDate();
+  const lastDayNum = endDateObj.getDate();
+  const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+  const startWeekday = getStartDayOfMonth();
+
+  let weekdayIndex = weekdays.indexOf(startWeekday);
+
+  for (let i = firstDayNum; i <= lastDayNum; i++) {
+    renderCalendar(i, weekdays[weekdayIndex++]);
+
+    if (weekdayIndex >= weekdays.length) {
+      weekdayIndex = 0;
+    }
+  }
+  // initCalendarPosition()
+}
+
+function initCalendarPosition() {}

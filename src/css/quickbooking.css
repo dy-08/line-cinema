@@ -90,11 +90,14 @@
 .quickbooking-calendar {
   width: 100%;
   height: 100%;
+  position: relative;
+}
+.quickbooking-calendar-itemWrap {
+  width: 100%;
+  height: 100%;
   display: flex;
-  gap: 16px;
   align-items: center;
   text-align: center;
-  position: relative;
   padding-top: 18px;
   padding-left: 18px;
   overflow: hidden;
