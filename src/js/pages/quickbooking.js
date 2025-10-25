@@ -1,6 +1,11 @@
 import { API_KEYS } from '../config/config.js';
+import { state } from './state.js';
 
 const now_playing_movies = [];
+const uiState = {
+  isMovieSelected: false,
+  isDateSelected: false,
+};
 
 function defaultState() {
   return {
@@ -118,12 +123,16 @@ function renderMoviesList() {
 
   const movies = document.querySelectorAll('.quickbooking-movie-item');
   console.log(movies);
+  console.log('before:', state);
 
   movies.forEach((movie, idx) =>
     movie.addEventListener('click', () => {
       // 🌟
+      uiState.isMovieSelected = true;
 
-      console.log(now_playing_movies[idx]);
+      // console.log('클릭된 영화:', now_playing_movies[idx]);
+      state.cart.setMovie(now_playing_movies[idx]);
+      console.log('after:', state);
       const videoKey = now_playing_movies[idx].videoKey;
       const videoName = now_playing_movies[idx].videoName;
       renderMovieTrailer(videoKey, videoName);
@@ -132,7 +141,25 @@ function renderMoviesList() {
       const prev = document.querySelector(
         '.quickbooking-movie-item a.selected'
       );
-      if (prev) prev.classList.remove('selected');
+
+      // 재클릭 시 초기화
+      if (prev) {
+        prev.classList.remove('selected');
+        const calendarPrev = document.querySelector(
+          '.quickbooking-calendar-item.selected'
+        );
+        if (calendarPrev) calendarPrev.classList.remove('selected');
+
+        const screenInfo = document.querySelector(
+          '.quickbooking-date-movieInfo'
+        );
+        const theaterInfo = document.querySelector(
+          '.quickbooking-date-itemWrap'
+        );
+
+        screenInfo.innerHTML = '';
+        theaterInfo.innerHTML = '';
+      }
       movie.querySelector('a').classList.add('selected');
     })
   );
@@ -152,12 +179,12 @@ async function fetchReleaseDates(movieId) {
     // ALL, 12, 15, 19
     return kr;
   } catch (error) {
-    console.error('영화등급 에러 발생:', err);
+    console.error('영화등급 에러 발생:', error);
   }
 }
 
 function getAgeClass(age) {
-  if (!age) return 'age-15';
+  if (!age || '') return 'age-15';
   if (age >= 19) return 'age-19';
   if (age >= 15) return 'age-15';
   if (age >= 12) return 'age-12';
@@ -224,6 +251,40 @@ function initCalendarPosition() {
     item.style.transform = `translateX(-${currentDateX - defaultPaddingX}px)`;
   });
 }
+function renderScreenInfo() {
+  const container = document.querySelector('.quickbooking-date-movieInfo');
+  return (container.innerHTML = `
+      <span class="quickbooking-movie-limitAge font-numeric ${getAgeClass(
+        state.cart.movie.age
+      )}"
+                >${state.cart.movie.age ? state.cart.movie.age : 15}</span
+              >
+              <span><strong>${state.cart.movie.title}</strong></span>
+            </div>
+    `);
+}
+function renderTheaterInfo() {
+  const container = document.querySelector('.quickbooking-date-itemWrap');
+  return (container.innerHTML = `
+      <div class="quickbooking-date-item">
+                <div class="quickbooking-date-top">
+                  <div class="quickbooking-startTime font-numeric">09:50</div>
+                </div>
+                <div class="quickbooking-date-bottom">
+                  <div class="quickbooking-seats">
+                    <span class="quickbooking-remainingSeats font-numeric"
+                      >40</span
+                    >&#47;<span class="quickbooking-totalSeats font-numeric"
+                      >40</span
+                    >
+                  </div>
+                  <span class="quickbooking-screenNumber font-numeric"
+                    >1관</span
+                  >
+                </div>
+              </div>
+    `);
+}
 
 export function createCalendar() {
   const startDateObj = getFirstDayOfMonth();
@@ -250,8 +311,10 @@ export function createCalendar() {
 
   const dateEls = document.querySelectorAll('.quickbooking-calendar-item');
   dateEls.forEach((item) => {
-    // 🌟
     item.addEventListener('click', () => {
+      // 🌟
+      uiState.isDateSelected = true;
+
       const prev = document.querySelector(
         '.quickbooking-calendar-item.selected'
       );
@@ -279,9 +342,19 @@ export function createCalendar() {
           ? `${currentYear}-${currentMonth + 1}-${selectedDate}`
           : `${currentYear}-${currentMonth + 2}-${selectedDate}`;
 
-      now_playing_movies.bookingDate = bookingDate;
-      now_playing_movies.bookingDay = day;
-      console.log(now_playing_movies);
+      console.log(bookingDate, day); // 🌟 정보 매핑 필요
+      state.cart.setDate({ bookingDate, day });
+      console.log('날짜요일매핑:', state);
+
+      console.log(uiState.isMovieSelected && uiState.isDateSelected);
+
+      if (uiState.isMovieSelected && uiState.isDateSelected) {
+        renderScreenInfo();
+        renderTheaterInfo();
+
+        uiState.isMovieSelected = false;
+        uiState.isDateSelected = false;
+      }
     });
   });
 }
