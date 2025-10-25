@@ -14,11 +14,6 @@ function defaultState() {
     age: null,
   };
 }
-// class GuestBooking{
-//   constructor(){
-
-//   }
-// }
 
 function renderMovieTrailer(videoKey, videoName) {
   console.trace('renderMovieTrailer called', videoKey, videoName);
@@ -127,6 +122,7 @@ function renderMoviesList() {
   movies.forEach((movie, idx) =>
     movie.addEventListener('click', () => {
       // 🌟
+
       console.log(now_playing_movies[idx]);
       const videoKey = now_playing_movies[idx].videoKey;
       const videoName = now_playing_movies[idx].videoName;
@@ -213,6 +209,21 @@ function renderCalendar(date, day) {
     </div>
   `);
 }
+function initCalendarPosition() {
+  const dateEls = document.querySelectorAll('.quickbooking-calendar-date');
+  let currentDateX = 0;
+  let defaultPaddingX = 28;
+  dateEls.forEach((item) => {
+    if (item.className.includes('current')) {
+      currentDateX = item.offsetLeft;
+    }
+  });
+  const itemEls = document.querySelectorAll('.quickbooking-calendar-item');
+  itemEls.forEach((item) => {
+    item.style.transition = 'transform 0.5s ease';
+    item.style.transform = `translateX(-${currentDateX - defaultPaddingX}px)`;
+  });
+}
 
 export function createCalendar() {
   const startDateObj = getFirstDayOfMonth();
@@ -236,20 +247,41 @@ export function createCalendar() {
     }
   }
   initCalendarPosition();
-}
 
-function initCalendarPosition() {
-  const dateEls = document.querySelectorAll('.quickbooking-calendar-date');
-  let currentDateX = 0;
-  let defaultPaddingX = 28;
+  const dateEls = document.querySelectorAll('.quickbooking-calendar-item');
   dateEls.forEach((item) => {
-    if (item.className.includes('current')) {
-      currentDateX = item.offsetLeft;
-    }
-  });
-  const itemEls = document.querySelectorAll('.quickbooking-calendar-item');
-  itemEls.forEach((item) => {
-    item.style.transition = 'transform 0.5s ease';
-    item.style.transform = `translateX(-${currentDateX - defaultPaddingX}px)`;
+    // 🌟
+    item.addEventListener('click', () => {
+      const prev = document.querySelector(
+        '.quickbooking-calendar-item.selected'
+      );
+      if (prev) prev.classList.remove('selected');
+
+      item.classList.add('selected');
+
+      const date = item
+        .querySelector('.quickbooking-calendar-date')
+        .textContent.trim();
+      const day = item
+        .querySelector('.quickbooking-calendar-day')
+        .textContent.trim();
+
+      const selectedDate = Number(date);
+
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      const currentMonth = now.getMonth();
+      const currentDate = now.getDate();
+
+      // 이슈: 전데이터 영역이 히든되지않고 눌리는 현상 (수정해야함)
+      const bookingDate =
+        selectedDate >= currentDate
+          ? `${currentYear}-${currentMonth + 1}-${selectedDate}`
+          : `${currentYear}-${currentMonth + 2}-${selectedDate}`;
+
+      now_playing_movies.bookingDate = bookingDate;
+      now_playing_movies.bookingDay = day;
+      console.log(now_playing_movies);
+    });
   });
 }
