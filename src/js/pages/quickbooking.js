@@ -68,12 +68,10 @@ export async function fetchNowPlayingInKorea() {
       movie.videoName = videoName;
       movie.age = await fetchReleaseDates(item.id);
       now_playing_movies.push(movie);
+      showtimesByMovie[item.id] = createShowtimes();
     }
     console.log(now_playing_movies);
 
-    now_playing_movies.forEach(
-      (movie) => (showtimesByMovie[movie.id] = createShowtimes())
-    );
     console.log(showtimesByMovie);
 
     renderMoviesList();
@@ -133,7 +131,7 @@ function renderMoviesList() {
 
   movies.forEach((movie, idx) =>
     movie.addEventListener('click', () => {
-      // 🌟
+      // 🌟 매핑 완료
       uiState.isMovieSelected = true;
 
       // console.log('클릭된 영화:', now_playing_movies[idx]);
@@ -269,27 +267,40 @@ function renderScreenInfo() {
             </div>
     `);
 }
-function renderTheaterInfo() {
+
+function createTheaterTemplate({ time, auditorium, total, remain }) {
   const container = document.querySelector('.quickbooking-date-itemWrap');
-  return (container.innerHTML = `
+
+  return (container.innerHTML += `
       <div class="quickbooking-date-item">
                 <div class="quickbooking-date-top">
-                  <div class="quickbooking-startTime font-numeric">09:50</div>
+                  <div class="quickbooking-startTime font-numeric">${time}</div>
                 </div>
                 <div class="quickbooking-date-bottom">
                   <div class="quickbooking-seats">
                     <span class="quickbooking-remainingSeats font-numeric"
-                      >40</span
+                      >${remain}</span
                     >&#47;<span class="quickbooking-totalSeats font-numeric"
-                      >40</span
+                      >${total}</span
                     >
                   </div>
                   <span class="quickbooking-screenNumber font-numeric"
-                    >1관</span
+                    >${auditorium}</span
                   >
                 </div>
               </div>
     `);
+}
+function renderTheaterInfo() {
+  const sortedShowtimes = showtimesByMovie[state.cart.movie.id].sort(
+    (a, b) => Number(a.time.replace(':', '')) - Number(b.time.replace(':', ''))
+  );
+  console.log(sortedShowtimes);
+
+  for (let showtime of sortedShowtimes) {
+    createTheaterTemplate(showtime);
+  }
+  console.log('state(303):', state);
 }
 
 export function createCalendar() {
@@ -348,7 +359,7 @@ export function createCalendar() {
           ? `${currentYear}-${currentMonth + 1}-${selectedDate}`
           : `${currentYear}-${currentMonth + 2}-${selectedDate}`;
 
-      console.log(bookingDate, day); // 🌟 정보 매핑 필요
+      console.log(bookingDate, day); // 🌟 정보 매핑 필요 => 완료
       state.cart.setDate({ bookingDate, day });
       console.log('날짜요일매핑:', state);
 
