@@ -2,6 +2,7 @@ import { API_KEYS } from '../config/config.js';
 import { state } from './state.js';
 
 const now_playing_movies = [];
+const showtimesByMovie = {};
 const uiState = {
   isMovieSelected: false,
   isDateSelected: false,
@@ -69,6 +70,11 @@ export async function fetchNowPlayingInKorea() {
       now_playing_movies.push(movie);
     }
     console.log(now_playing_movies);
+
+    now_playing_movies.forEach(
+      (movie) => (showtimesByMovie[movie.id] = createShowtimes())
+    );
+    console.log(showtimesByMovie);
 
     renderMoviesList();
   } catch (err) {
@@ -356,5 +362,27 @@ export function createCalendar() {
         uiState.isDateSelected = false;
       }
     });
+  });
+}
+
+function createShowtimes() {
+  const possibleTimes = [
+    '09:50',
+    '11:20',
+    '13:10',
+    '15:40',
+    '18:10',
+    '20:40',
+    '22:30',
+  ];
+  const numOfShows = Math.floor(Math.random() * 3 + 3); // 3 ~ 5
+  const shuffledTimes = possibleTimes.sort(() => Math.random() - 0.5);
+  const selected = shuffledTimes.slice(0, numOfShows);
+
+  return selected.map((time, idx) => {
+    const total = 40;
+    const remain = total - Math.floor(Math.random() * 15); // 24~40 남음
+    const auditorium = `${(idx % 3) + 1}관`; // 1~3관
+    return { time, auditorium, total, remain };
   });
 }
