@@ -1,6 +1,3 @@
-// const KEY_CART = 'LC_CART';
-// const KEY_BOOKINGS = 'LC_BOOKINGS';
-
 import { Cart } from './cart.js';
 import { Guest } from './guest.js';
 import { Payment } from './payment.js';

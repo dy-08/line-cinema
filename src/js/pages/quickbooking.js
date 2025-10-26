@@ -1,5 +1,6 @@
-import { API_KEYS } from '../config/config.js';
+import { API_KEYS, STORAGE_KEYS } from '../config/config.js';
 import { state } from './state.js';
+import { fetchPage } from './main.js';
 
 const now_playing_movies = [];
 const showtimesByMovie = {};
@@ -72,12 +73,16 @@ export async function fetchNowPlayingInKorea() {
     }
     console.log(now_playing_movies);
 
-    console.log(showtimesByMovie);
+    console.log('showtimesByMovie:', showtimesByMovie);
 
     renderMoviesList();
   } catch (err) {
     console.error('현재상영중(극장) 에러 발생:', err);
   } finally {
+    sessionStorage.setItem(
+      STORAGE_KEYS.SHOWTIMES,
+      JSON.stringify(showtimesByMovie)
+    );
   }
 }
 // https://image.tmdb.org/t/p/w500/i9VFlFOm0Ez6LXfjzWuhBxrcxJa.jpg"
@@ -133,8 +138,10 @@ function renderMoviesList() {
     movie.addEventListener('click', () => {
       // 🌟 매핑 완료
       uiState.isMovieSelected = true;
-
-      // console.log('클릭된 영화:', now_playing_movies[idx]);
+      // 세션스토리지에 저장되어있는 status만 업데이트
+      const raw = sessionStorage.getItem(STORAGE_KEYS.CART);
+      const saved = JSON.parse(raw);
+      state.cart.status = saved.status;
       state.cart.setMovie(now_playing_movies[idx]);
       console.log('after:', state);
       const videoKey = now_playing_movies[idx].videoKey;
@@ -413,6 +420,17 @@ function renderTheaterInfo() {
           clearConfirmModal();
           clearShowtimes();
           console.log('Cancel:', state);
+        });
+
+      // clickEvent(Continue)
+      document
+        .querySelector('.quickbooking-btn--continue')
+        .addEventListener('click', async () => {
+          state.cart.setStatus('identifying');
+          sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
+          // 승아님 페이지로 이동해야함 (테스트: map으로 이동)
+          const { html } = await fetchPage('map');
+          document.getElementById('app').innerHTML = html;
         });
     });
   });

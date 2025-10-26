@@ -14,9 +14,8 @@ import {
   renderDate,
   createCalendar,
 } from './quickbooking.js';
-
-// 네비게이션 효과
-import { API_KEYS } from '../config/config.js'; // 키 요청
+import { state } from './state.js';
+import { API_KEYS, STORAGE_KEYS } from '../config/config.js'; // 키 요청
 
 // 네비게이션 hover 효과
 const navi = document.querySelectorAll('.header-navi-main');
@@ -58,7 +57,7 @@ async function tmdb() {
 async function renderPage({ html, index = false }) {
   document.getElementById('app').innerHTML = await html;
 }
-async function fetchPage(page) {
+export async function fetchPage(page) {
   try {
     const isIndex = page === 'index';
 
@@ -85,6 +84,7 @@ async function fetchPage(page) {
 document.querySelectorAll('.header-navi-sub').forEach((item) =>
   item.addEventListener('click', async (e) => {
     const page = e.target.dataset.page.slice(6);
+
     const { html } = await fetchPage(page);
 
     if (!html) return;
@@ -115,6 +115,8 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
       fetchUpcomingData();
     }
     if (page === 'quickbooking') {
+      state.cart.setStatus(selecting);
+      sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
       quickbooking();
       renderDate();
       createCalendar();
@@ -154,6 +156,8 @@ document.querySelectorAll('.header-navi-default').forEach((item) =>
       fetchNowPlayingInKorea();
     }
     if (page === 'quickbooking') {
+      state.cart.setStatus('selecting');
+      sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
       quickbooking();
       renderDate();
       createCalendar();
@@ -252,4 +256,4 @@ function initSlider() {
 }
 initSlider();
 
-// 철원님: 랭킹 작업섹션
+console.log(state);

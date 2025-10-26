@@ -23,7 +23,7 @@ export class Cart {
     this.userId = null;
     this.seats = [];
     this.account = null;
-    this.status = 'idle'; // 'idle' → 'selecting' → 'seating' → 'paying' → 'confirmed'
+    this.status = 'idle'; // 'idle' → 'selecting' → 'identifying' → 'seating' → 'paying' → 'confirmed'
     this.pricePerSeat = 11000;
     this.amount = 0;
   }
@@ -36,6 +36,9 @@ export class Cart {
   }
   setShowtimes(data) {
     this.showtimes = data;
+  }
+  setStatus(data) {
+    this.status = data;
   }
   getDate() {
     return this.movie;
