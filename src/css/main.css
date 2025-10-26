@@ -22,6 +22,12 @@ body {
   margin: 0 auto;
   height: 0.5px;
 }
+.row {
+  width: 1200px;
+  margin: 0 auto;
+  height: 0.5px;
+  background-color: #11111180;
+}
 .header-logo-wrap {
   width: 100%;
   height: 80px;
@@ -55,7 +61,6 @@ body {
   object-fit: cover;
   overflow: hidden;
 }
-/* ✅ */
 .header-navi-wrap {
   width: 100%;
   height: 50px;
