@@ -67,6 +67,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .btn-primary {
   background-color: #c4e88f; /*임시 컬러*/
   color: white;
