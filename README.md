@@ -15,7 +15,7 @@
 
 | 이름   | 1주차 주요 담당                               | GitHub                                                               |
 | ------ | --------------------------------------------- | -------------------------------------------------------------------- |
-| 권승민 | 전체 일정 관리 및 프로젝트 진행 흐름 조율     | [github.com/kwonseungmin](https://github.com/gwonseungmin351-create) |
+| 권승민 | 전체 일정 관리 및 프로젝트 진행 흐름 조율     | [github.com/kwonseungmin](https://github.com/seungmin-0511) |
 | 김승아 | 영화 카드 UI 설계 및 서브 페이지 시안 디자인  | [github.com/kimseungah](https://github.com/seungaaaaa)               |
 | 이지유 | 메인 슬라이더 UI 디자인 및 슬라이드 기능 구현 | [github.com/leejiyoo](https://github.com/lee-ji-u)                   |
 | 지철원 | TMDB 영화 순위 카드 컴포넌트 UI 제작          | [github.com/jicheolwon](https://github.com/JICHEOLWON)               |
@@ -32,9 +32,9 @@
 
 ## 주요 기능
 
-- [ ] JavaScript fetch를 이용한 간단한 페이지 콘텐츠 동적 로드 구현 (SPA 스타일에 가까운 페이지 전환)
-- [ ] 비회원(비로그인) 상태에서 영화 목록 API 조회 및 영화 선택
-- [ ] 영화 상영 날짜, 시간, 장소 선택 기능
+- [x] JavaScript fetch를 이용한 간단한 페이지 콘텐츠 동적 로드 구현 (SPA 스타일에 가까운 페이지 전환)
+- [x] 비회원(비로그인) 상태에서 영화 목록 API 조회 및 영화 선택
+- [x] 영화 상영 날짜, 시간, 장소 선택 기능
 - [ ] 좌석 선택 기능 (가상 좌석 배치 및 선택 구현)
 - [ ] 가상계좌를 통한 결제 요청 및 결제 확인 처리 (서버 없이 임의 번호 발급)
 - [ ] 결제 완료 후 가상계좌 정보 발급 및 안내
