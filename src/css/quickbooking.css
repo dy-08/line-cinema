@@ -1,10 +1,133 @@
+/* z-index: 200 ~ 300 */
+/* z: 200 */
+#quickbooking {
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 200;
+}
+/* confirm Modal */
+/* z: 220 */
+.quickbooking-confirm-modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 220;
+  background-color: #11111150;
+  width: 100%;
+  height: 100%;
+  /* ✅ modal 오픈 시, body => overflow: hidden */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* z: 225 */
+.quickbooking-modal-header {
+  width: 500px;
+  height: 60px;
+  background-color: #666;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 225;
+}
+.quickbooking-modal-date span {
+  color: white;
+}
+.quickbooking-modal-remainText {
+  font-size: var(--font-size-md);
+}
+.quickbooking-modal-remain {
+  font-weight: bold;
+  font-size: var(--font-size-lg);
+}
+.quickbooking-modal-total {
+  font-size: var(--font-size-sm);
+}
+/* z: 230 */
+.quickbooking-header-X {
+  position: absolute;
+  z-index: 230;
+  right: 20px;
+}
+.quickbooking-modal-body {
+  width: 500px;
+  height: 450px;
+  background-color: white;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  gap: 10px;
+}
+.quickbooking-modal-ageMsg {
+  text-align: center;
+}
+.quickbooking-ageMsg-top {
+  font-size: var(--font-size-sm);
+}
+.quickbooking-ageMsg-bottom {
+  font-size: var(--font-size-xs);
+  color: #666;
+}
+.quickbooking-modal-screen {
+  font-size: var(--font-size-sm);
+  color: #bdbdbd;
+  letter-spacing: 1px;
+}
+.quickbooking-modal-app {
+  width: 40%;
+  height: 40%;
+  background-color: #11111110;
+  margin-bottom: 10px;
+}
+.u-br {
+  display: block;
+}
+.quickbooking-modal-limitAge {
+  border-radius: 4px;
+  padding: 2px;
+  color: white;
+}
+.quickbooking-modal-btns {
+  display: flex;
+  gap: 20px;
+}
+
+/* 414141, FF243E */
+.quickbooking-modal-btns button {
+  width: 160px;
+  height: 40px;
+  color: rgb(241, 241, 241);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.quickbooking-btn--cancel {
+  background-color: #414141;
+  font-size: var(--font-size-sm);
+}
+.quickbooking-btn--continue {
+  background-color: #ff243e;
+  font-size: var(--font-size-sm);
+}
+
 .quickbooking-inner {
   width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #11111110; */
   border: 0.5px solid #11111110;
 }
 /* quickbooking-display */
@@ -20,13 +143,11 @@
 .quickbooking-movie-wrap {
   width: 30%;
   height: 872px;
-  /* background-color: lightpink; */
 }
 /* .quickbooking-date-wrap */
 .quickbooking-date-wrap {
   width: 40%;
   height: 872px;
-  /* background-color: lightgray; */
 }
 
 .quickbooking-movie-item {
@@ -52,15 +173,21 @@
   width: 100%;
   height: 100%;
 }
+
+#quickbooking-movie-itemWrap {
+  width: 100%;
+  height: 812px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
 .quickbooking-movie-title {
   padding-left: 10px;
 }
 /* limitAge */
-/* colors: e9b630, dd7430, 229c56, CD1327 추가예정 */
 .quickbooking-movie-limitAge {
   width: 20px;
   height: 20px;
-  padding: 6px 8px 4px 8px;
+  padding: 4px 6px 2px 6px;
   border-radius: 6px;
   border: 0;
   font-size: var(--font-size-md);
@@ -70,19 +197,24 @@
 }
 
 /* quickbooking-movie-date */
+.quickbooking-current-date {
+  padding-top: 2px;
+}
 .quickbooking-calendar-list {
   width: 100%;
   height: 100px;
 }
-/* ✅ */
 .quickbooking-calendar {
   width: 100%;
   height: 100%;
+  position: relative;
+}
+.quickbooking-calendar-itemWrap {
+  width: 100%;
+  height: 100%;
   display: flex;
-  gap: 16px;
   align-items: center;
   text-align: center;
-  position: relative;
   padding-top: 18px;
   padding-left: 18px;
   overflow: hidden;
@@ -109,6 +241,57 @@
 .quickbooking-calendar-day {
   font-size: 13px;
   /* xs: 12px, s: 14px */
+}
+
+.quickbooking-date-list {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.quickbooking-date-itemWrap {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 26%);
+  justify-content: space-around;
+  align-items: center;
+  gap: 12px;
+}
+.quickbooking-date-item {
+  display: grid;
+  place-items: center;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  text-align: center;
+  padding: 6px 20px;
+  border: 0.5px solid #ededed;
+  box-shadow: 0px 1px 1px rgba(49, 49, 49, 0.08);
+  cursor: pointer;
+}
+
+.quickbooking-startTime {
+  font-size: var(--font-size-md);
+  font-weight: bold;
+}
+.quickbooking-date-bottom {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.quickbooking-seats {
+  font-size: 11px;
+  font-weight: bold;
+}
+.quickbooking-screenNumber {
+  font-size: var(--font-size-xs);
+  color: #111;
+}
+.quickbooking-remainingSeats {
+  color: #427652;
+}
+.quickbooking-totalSeats {
+  color: #666;
 }
 
 /* active */
@@ -146,6 +329,7 @@
 .quickbooking-poster-wrap {
   width: 100%;
   height: 512px;
+  overflow: hidden;
 }
 quickbooking-poster-wrap > img {
   display: inline-block;
@@ -153,4 +337,25 @@ quickbooking-poster-wrap > img {
   height: 100%;
   overflow: hidden;
   object-fit: cover;
+}
+
+/* colors: e9b630, dd7430, 229c56, CD1327 추가완료 */
+.age-19 {
+  background-color: #cd1327;
+}
+.age-15 {
+  background-color: #dd7430;
+}
+.age-12 {
+  background-color: #e9b630;
+}
+.age-all {
+  background-color: #229c56;
+  letter-spacing: -1px;
+  padding: 4px 6px 2px 6px;
+  font-size: var(--font-size-sm);
+}
+
+.selected {
+  background-color: #11111150;
 }

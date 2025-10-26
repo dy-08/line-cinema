@@ -1,23 +1,12 @@
-const KEY_CART = 'LC_CART';
-const KEY_BOOKINGS = 'LC_BOOKINGS';
+import { Cart } from './cart.js';
+import { Guest } from './guest.js';
+import { Payment } from './payment.js';
 
-const mem = {
-    cart: null,
-    bookings: null,
+export const state = {
+  cart: new Cart(), // 진행 중 장바구니 (세션 저장 대상)
+  guest: new Guest(), // 비회원 정보 (세션 저장 대상)
+  payment: new Payment(), // 가상계좌(결제의도) (세션 저장 대상)
 };
-
-export function defaultCart() {
-    return {
-        movie: null, // { id, title, posterPath, pricePerSeat }
-        date: null, // '2025-10-21T19:30:00+09:00' 같은 문자열
-        userId: null, // 비회원 식별용 입력값
-        seats: [], // 최대 4석
-        account: null, // 결제 단계에서 채움: { bank, accountNo, amount, expireAt, status }
-        status: 'idle', // 'idle' → 'selecting' → 'seating' → 'paying' → 'confirmed'
-        pricePerSeat: 11000, // 좌석 1장 기본 가격
-        amount: 0, // 선택 좌석 수 × pricePerSeat
-    };
-}
 
 // mem.cart = defaultCart();
 // mem.cart.movie = { id: 1, title: '베놈' };
