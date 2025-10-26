@@ -29,7 +29,7 @@ function renderMovieTrailer(videoKey, videoName) {
   console.log(container);
   container.innerHTML = `<iframe
               width="100%"
-              height="300"
+              height="311"
               src="https://www.youtube.com/embed/${videoKey}?autoplay=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=${videoKey}"
               title="${videoName}"
               frameborder="0"
@@ -272,7 +272,7 @@ function createTheaterTemplate({ time, auditorium, total, remain }) {
   const container = document.querySelector('.quickbooking-date-itemWrap');
 
   return (container.innerHTML += `
-      <div class="quickbooking-date-item">
+      <div class="quickbooking-date-item" data-time="${time}" data-auditorium="${auditorium}" data-total="${total}" data-remain="${remain}">
                 <div class="quickbooking-date-top">
                   <div class="quickbooking-startTime font-numeric">${time}</div>
                 </div>
@@ -297,10 +297,33 @@ function renderTheaterInfo() {
   );
   console.log(sortedShowtimes);
 
+  // API 극장에서 현재 상영하는 리스트를 받아 올 때 스테이트 쇼타임을 받아옴
+  // 그래서 API 극장 받아올 때 처리를 같이 해주어야함
+
+  // 스테이트에 쇼타임이 없다면 뿌려주고 state에 저장해야됨
+  // 쇼타임이 있다면 스테이트에서 있는걸 꺼내와야함
+  // 정보(time, remain, total, auditorium)
+  // 예약이 됐다면 remain 값 재할당 (이후작업)
+  // remain이 0이면 클릭못하게 처리
   for (let showtime of sortedShowtimes) {
     createTheaterTemplate(showtime);
   }
-  console.log('state(303):', state);
+  // 몇시(time) state.date에 매핑
+
+  // 클릭이벤트
+  const showtimeItems = document.querySelectorAll('.quickbooking-date-item');
+  showtimeItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      const prev = document.querySelector('.quickbooking-date-item.selected');
+      if (prev) prev.classList.remove('selected');
+      item.classList.add('selected');
+
+      // showtimes 매핑필요 => 완료
+      const { time, auditorium, remain, total } = item.dataset;
+      state.cart.showtimes = { time, auditorium, remain, total };
+      console.log('324', state);
+    });
+  });
 }
 
 export function createCalendar() {
