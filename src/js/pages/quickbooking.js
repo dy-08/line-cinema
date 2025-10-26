@@ -291,6 +291,80 @@ function createTheaterTemplate({ time, auditorium, total, remain }) {
               </div>
     `);
 }
+
+// ALL, 12, 15, 19
+function getAgeMessage(age = 15) {
+  const normalized = String(age).toUpperCase();
+  switch (normalized) {
+    case 'ALL':
+      return '본 영화는 전체관람가 영화입니다.';
+    case '12':
+      return '12세 미만 고객님(영, 유아 포함)은 반드시 성인 보호자 동반 하에 관람이 가능합니다.<span class="u-br"></span>연령 확인 불가 시 입장이 제한될 수 있습니다.';
+    case '15':
+      return '15세 미만 고객님(영, 유아 포함)은 반드시 성인 보호자 동반 하에 관람이 가능합니다.<span class="u-br"></span>연령 확인 불가 시 입장이 제한될 수 있습니다.';
+    case '19':
+      return '19세 미만 보호자 동반하여도 관람이 불가합니다.<span class="u-br"></span>(반드시 신분증 지참)';
+  }
+}
+function clearConfirmModal() {
+  const container = document.getElementById('quickbooking-modal-app');
+  return (container.innerHTML = '');
+}
+
+function renderConfirmModal() {
+  const container = document.getElementById('quickbooking-modal-app');
+  return (container.innerHTML = `
+    <div class="quickbooking-confirm-modal">
+          <div class="quickbooking-modal-header">
+            <div class="quickbooking-modal-date">
+              <span>${state.cart.showtimes.time}</span> <span>${
+    state.cart.showtimes.auditorium
+  }</span>
+            </div>
+            <div class="quickbooking-header-X"><a href="#">X</a></div>
+          </div>
+          <div class="quickbooking-modal-body">
+            <div class="quickbooking-modal-seat">
+              <span class="quickbooking-modal-remainText">잔여좌석 </span
+              ><span class="quickbooking-modal-remain font-numeric"
+                >${state.cart.showtimes.remain}</span
+              >	&#47; <span class="quickbooking-modal-total font-numeric"
+                >${state.cart.showtimes.total}</span
+              >
+            </div>
+            <div class="quickbooking-modal-screen">SCREEN</div>
+            <div class="quickbooking-modal-app">HTML</div>
+            <div class="quickbooking-modal-ageMsg">
+              <p class="quickbooking-ageMsg-top">
+                <span class="quickbooking-modal-limitAge ${getAgeClass(
+                  state.cart.movie.age
+                )}">${state.cart.movie.age}</span
+                ><span
+                  > 본 영화는 <span>${
+                    state.cart.movie.age
+                  }세 이상 관람가</span> 영화입니다.</span
+                >
+              </p>
+              <p class="quickbooking-ageMsg-bottom">
+                ${getAgeMessage(state.cart.movie.age)}
+              </p>
+            </div>
+            <div class="quickbooking-modal-btns">
+              <button class="quickbooking-btn--cancel">취소</button>
+              <button class="quickbooking-btn--continue">인원/좌석선택</button>
+            </div>
+          </div>
+  `);
+}
+
+function clearShowtimes() {
+  return state.cart.setShowtimes({
+    time: null,
+    auditorium: null,
+    total: null,
+    remain: null,
+  });
+}
 function renderTheaterInfo() {
   const sortedShowtimes = showtimesByMovie[state.cart.movie.id].sort(
     (a, b) => Number(a.time.replace(':', '')) - Number(b.time.replace(':', ''))
@@ -308,7 +382,6 @@ function renderTheaterInfo() {
   for (let showtime of sortedShowtimes) {
     createTheaterTemplate(showtime);
   }
-  // 몇시(time) state.date에 매핑
 
   // 클릭이벤트
   const showtimeItems = document.querySelectorAll('.quickbooking-date-item');
@@ -320,8 +393,27 @@ function renderTheaterInfo() {
 
       // showtimes 매핑필요 => 완료
       const { time, auditorium, remain, total } = item.dataset;
-      state.cart.showtimes = { time, auditorium, remain, total };
-      console.log('324', state);
+      state.cart.setShowtimes({ time, auditorium, remain, total });
+      console.log('showtimes:', state);
+
+      // 모달 들어가야함
+      renderConfirmModal();
+
+      // clickEvent(X, Cancel)
+      document
+        .querySelector('.quickbooking-header-X')
+        .addEventListener('click', () => {
+          clearConfirmModal();
+          clearShowtimes();
+          console.log('X:', state);
+        });
+      document
+        .querySelector('.quickbooking-btn--cancel')
+        .addEventListener('click', () => {
+          clearConfirmModal();
+          clearShowtimes();
+          console.log('Cancel:', state);
+        });
     });
   });
 }

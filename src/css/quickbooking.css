@@ -44,6 +44,7 @@
   font-size: var(--font-size-md);
 }
 .quickbooking-modal-remain {
+  font-weight: bold;
   font-size: var(--font-size-lg);
 }
 .quickbooking-modal-total {
@@ -93,6 +94,11 @@
 .u-br {
   display: block;
 }
+.quickbooking-modal-limitAge {
+  border-radius: 4px;
+  padding: 2px;
+  color: white;
+}
 .quickbooking-modal-btns {
   display: flex;
   gap: 20px;
@@ -107,7 +113,7 @@
   border-radius: 2px;
   cursor: pointer;
 }
-.quickbooking-btn--cancle {
+.quickbooking-btn--cancel {
   background-color: #414141;
   font-size: var(--font-size-sm);
 }

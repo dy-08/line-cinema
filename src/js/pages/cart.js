@@ -34,6 +34,9 @@ export class Cart {
   setDate(data) {
     this.date = data;
   }
+  setShowtimes(data) {
+    this.showtimes = data;
+  }
   getDate() {
     return this.movie;
   }
