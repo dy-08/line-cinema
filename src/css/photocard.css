@@ -1,126 +1,120 @@
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      padding: 40px;
-    }
+.photocard-text {
+    font-size: 20px;
+    font-weight: 600;
+    width: 1000px;
+    margin: 30px auto;
+}
 
-    .photocard-text {
-      font-size: 20px;
-      font-weight: 600;
-      width: 1000px;
-      margin: 30px auto;
-    }
+/* photocard-container */
+.photocard-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 60px;
+    max-width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    /* photocard-container */
+/* 포토카드 기본 스타일 */
+.photocard {
+    width: 260px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #fff;
+}
+
+/* hover 효과 */
+.photocard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+/* 이미지 */
+.photocard-img {
+    position: relative;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photocard-img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* 내용 */
+.photocard-content {
+    padding: 15px;
+}
+
+.photocard-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.photocard-desc {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.photocard-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photocard-price span {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.photocard-price .discount {
+    color: #d32f2f;
+    font-weight: 700;
+}
+
+/* 메인 이미지 */
+.store-mainImg {
+    width: 100%;
+    height: 296px;
+    background-image: url(https://cf.lottecinema.co.kr//Media/WebAdmin/f04df114813f45b18e63e06308211d0f.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+/* 첫 줄 3개, 두 번째 줄 2개로 고정 및 줄 단위 왼쪽 정렬 */
+.photocard:nth-child(1),
+.photocard:nth-child(2),
+.photocard:nth-child(3) {
+    order: 1;
+}
+
+.photocard:nth-child(4),
+.photocard:nth-child(5) {
+    order: 2;
+    /* 두 번째 줄 왼쪽 정렬을 위해 flex-start 마진 조정 */
+    margin-left: 0;
+}
+
+/* flex-wrap 시 두 번째 줄 시작 위치 조정 */
+.photocard-container {
+    justify-content: flex-start;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
     .photocard-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-top: 60px;
-      max-width: 840px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* 포토카드 기본 스타일 */
-    .photocard {
-      width: 260px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      background: #fff;
-    }
-
-    /* hover 효과 */
-    .photocard:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-      cursor: pointer;
-    }
-
-    /* 이미지 */
-    .photocard-img {
-      position: relative;
-      background-color: #f8f8f8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .photocard-img img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    /* 내용 */
-    .photocard-content {
-      padding: 15px;
-    }
-
-    .photocard-title {
-      font-weight: 600;
-      font-size: 15px;
-      margin-bottom: 5px;
-    }
-
-    .photocard-desc {
-      color: #666;
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .photocard-price {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .photocard-price span {
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    .photocard-price .discount {
-      color: #d32f2f;
-      font-weight: 700;
-    }
-
-    /* 메인 이미지 */
-    .store-mainImg {
-      width: 100%;
-      height: 296px;
-      background-image: url(https://cf.lottecinema.co.kr//Media/WebAdmin/f04df114813f45b18e63e06308211d0f.jpg);
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-    }
-
-    /* 첫 줄 3개, 두 번째 줄 2개로 고정 및 줄 단위 왼쪽 정렬 */
-    .photocard:nth-child(1),
-    .photocard:nth-child(2),
-    .photocard:nth-child(3) {
-      order: 1;
-    }
-
-    .photocard:nth-child(4),
-    .photocard:nth-child(5) {
-      order: 2;
-      /* 두 번째 줄 왼쪽 정렬을 위해 flex-start 마진 조정 */
-      margin-left: 0;
-    }
-
-    /* flex-wrap 시 두 번째 줄 시작 위치 조정 */
-    .photocard-container {
-      justify-content: flex-start;
-    }
-
-    /* 반응형 */
-    @media (max-width: 768px) {
-      .photocard-container {
         flex-direction: column;
         align-items: center;
-      }
     }
+}
