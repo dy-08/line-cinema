@@ -1,37 +1,37 @@
-import { eventNow } from './eventnow.js';
-import { premiere } from './premiere.js';
-import { eventHot } from './hotevent.js';
+import { eventNow } from "./eventnow.js";
+import { premiere } from "./premiere.js";
+import { eventHot } from "./hotevent.js";
 import {
   fetchTop5Data1,
   fetchTop5Data2,
   fetchTop5Data3,
   drag,
-} from './top5.js';
-import { fetchNowplayingData } from './nowplaying.js';
-import { fetchUpcomingData } from './upcoming.js';
+} from "./top5.js";
+import { fetchNowplayingData } from "./nowplaying.js";
+import { fetchUpcomingData } from "./upcoming.js";
 import {
   fetchNowPlayingInKorea as quickbooking,
   renderDate,
   createCalendar,
-} from './quickbooking.js';
-import { state } from './state.js';
-import { API_KEYS, STORAGE_KEYS } from '../config/config.js'; // 키 요청
+} from "./quickbooking.js";
+import { state } from "./state.js";
+import { API_KEYS, STORAGE_KEYS } from "../config/config.js"; // 키 요청
 
 // 네비게이션 hover 효과
-const navi = document.querySelectorAll('.header-navi-main');
-let current = '';
+const navi = document.querySelectorAll(".header-navi-main");
+let current = "";
 navi.forEach((item) => {
-  item.addEventListener('mouseover', () => {
+  item.addEventListener("mouseover", () => {
     if (current) {
-      current.classList.remove('selected');
+      current.classList.remove("selected");
       current = item.nextElementSibling;
-      current.classList.add('selected');
+      current.classList.add("selected");
     }
     current = item.nextElementSibling;
-    current.classList.add('selected');
+    current.classList.add("selected");
 
-    current.addEventListener('mouseleave', () => {
-      current.classList.remove('selected');
+    current.addEventListener("mouseleave", () => {
+      current.classList.remove("selected");
     });
   });
 });
@@ -40,7 +40,7 @@ navi.forEach((item) => {
 // console.log(API_KEYS); // 키 응답
 async function tmdb() {
   try {
-    const options = { method: 'GET', headers: { accept: 'application/json' } };
+    const options = { method: "GET", headers: { accept: "application/json" } };
     // v3
     const res = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEYS.TMDB}&language=ko-KR`,
@@ -55,34 +55,34 @@ async function tmdb() {
 // tmdb();
 
 async function renderPage({ html, index = false }) {
-  document.getElementById('app').innerHTML = await html;
+  document.getElementById("app").innerHTML = await html;
 }
 export async function fetchPage(page) {
   try {
-    const isIndex = page === 'index';
+    const isIndex = page === "index";
 
     const res = isIndex
       ? await fetch(`./${page}.html`)
       : await fetch(`./src/html/${page}.html`);
 
-    if (!res.ok) throw new Error('page is not found');
+    if (!res.ok) throw new Error("page is not found");
     const data = await res.text();
     if (isIndex) {
       const parser = new DOMParser();
-      const doc = parser.parseFromString(data, 'text/html');
+      const doc = parser.parseFromString(data, "text/html");
 
-      const target = doc.querySelector('#app');
-      const content = target ? target.innerHTML : '';
+      const target = doc.querySelector("#app");
+      const content = target ? target.innerHTML : "";
 
       return { html: content, index: isIndex };
     }
     return { html: data, index: isIndex };
   } catch (error) {
-    console.error('fetchPageError:', error.message);
+    console.error("fetchPageError:", error.message);
   }
 }
-document.querySelectorAll('.header-navi-sub').forEach((item) =>
-  item.addEventListener('click', async (e) => {
+document.querySelectorAll(".header-navi-sub").forEach((item) =>
+  item.addEventListener("click", async (e) => {
     const page = e.target.dataset.page.slice(6);
 
     const { html } = await fetchPage(page);
@@ -90,31 +90,31 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
     if (!html) return;
     await renderPage({ html });
 
-    if (page === 'index') {
+    if (page === "index") {
       initSlider();
     }
-    if (page === 'eventnow') {
+    if (page === "eventnow") {
       eventNow();
     }
-    if (page === 'premiere') {
+    if (page === "premiere") {
       premiere();
     }
-    if (page === 'hotevent') {
+    if (page === "hotevent") {
       eventHot();
     }
-    if (page === 'top5') {
+    if (page === "top5") {
       fetchTop5Data1();
       fetchTop5Data2();
       fetchTop5Data3();
       drag();
     }
-    if (page === 'nowplaying') {
+    if (page === "nowplaying") {
       fetchNowplayingData();
     }
-    if (page === 'upcoming') {
+    if (page === "upcoming") {
       fetchUpcomingData();
     }
-    if (page === 'quickbooking') {
+    if (page === "quickbooking") {
       state.cart.setStatus(selecting);
       sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
       quickbooking();
@@ -124,39 +124,39 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
   })
 );
 
-document.querySelectorAll('.header-navi-default').forEach((item) =>
-  item.addEventListener('click', async (e) => {
+document.querySelectorAll(".header-navi-default").forEach((item) =>
+  item.addEventListener("click", async (e) => {
     const page = e.target.dataset.page.slice(6);
     const { html, index } = await fetchPage(page);
     if (!html) return;
     await renderPage({ html, index });
 
-    if (page === 'index') {
+    if (page === "index") {
       initSlider();
     }
-    if (page === 'eventnow') {
+    if (page === "eventnow") {
       eventNow();
     }
-    if (page === 'premiere') {
+    if (page === "premiere") {
       premiere();
     }
-    if (page === 'hotevent') {
+    if (page === "hotevent") {
       eventHot();
     }
-    if (page === 'top5') {
+    if (page === "top5") {
       fetchTop5Data1();
       fetchTop5Data2();
       fetchTop5Data3();
       drag();
     }
-    if (page === 'nowplaying') {
+    if (page === "nowplaying") {
       fetchNowplayingData();
     }
-    if (page === 'upcoming') {
+    if (page === "upcoming") {
       fetchNowPlayingInKorea();
     }
-    if (page === 'quickbooking') {
-      state.cart.setStatus('selecting');
+    if (page === "quickbooking") {
+      state.cart.setStatus("selecting");
       sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
       quickbooking();
       renderDate();
@@ -165,26 +165,26 @@ document.querySelectorAll('.header-navi-default').forEach((item) =>
   })
 );
 
-const headerLogo = document.querySelector('.header-logo-wrap');
-const headerNav = document.querySelector('.header-navi-wrap');
+const headerLogo = document.querySelector(".header-logo-wrap");
+const headerNav = document.querySelector(".header-navi-wrap");
 
-const sentinel = document.createElement('div');
-sentinel.style.height = '1px';
+const sentinel = document.createElement("div");
+sentinel.style.height = "1px";
 headerLogo.after(sentinel);
 
-const spacer = document.createElement('div');
-spacer.style.display = 'none';
+const spacer = document.createElement("div");
+spacer.style.display = "none";
 headerNav.after(spacer);
 
 const observer = new IntersectionObserver((entries) => {
   const entry = entries[0];
   const fixing = !entry.isIntersecting;
-  headerNav.classList.toggle('fixed', fixing);
+  headerNav.classList.toggle("fixed", fixing);
   if (fixing) {
-    spacer.style.height = headerNav.offsetHeight + 'px';
-    spacer.style.display = 'block';
+    spacer.style.height = headerNav.offsetHeight + "px";
+    spacer.style.display = "block";
   } else {
-    spacer.style.display = 'none';
+    spacer.style.display = "none";
   }
 });
 observer.observe(sentinel);
@@ -192,9 +192,9 @@ observer.observe(sentinel);
 // 지유님: 슬라이더 작업섹션
 function initSlider() {
   let count = 1;
-  let imgBox = document.querySelector('.main-inBox-imgbox');
+  let imgBox = document.querySelector(".main-inBox-imgbox");
   let imgTotal = document.querySelectorAll(
-    '.main-inBox-imgbox .main-img'
+    ".main-inBox-imgbox .main-img"
   ).length;
   let imgSize = 100 / imgTotal;
 
@@ -219,17 +219,17 @@ function initSlider() {
   function tend() {
     // 양끝 이미지 복제 구간 처리
     if (count >= imgTotal - 1) {
-      imgBox.style.transition = 'none';
+      imgBox.style.transition = "none";
       count = 1;
       show();
       imgBox.offsetWidth; // 리렌더링
-      imgBox.style.transition = 'all 0.5s linear';
+      imgBox.style.transition = "all 0.5s linear";
     } else if (count <= 0) {
-      imgBox.style.transition = 'none';
+      imgBox.style.transition = "none";
       count = imgTotal - 2;
       show();
       imgBox.offsetWidth;
-      imgBox.style.transition = 'all 0.5s linear';
+      imgBox.style.transition = "all 0.5s linear";
     }
   }
 
