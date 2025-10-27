@@ -471,7 +471,6 @@ function renderTheaterInfo() {
     });
   });
 }
-
 export function createCalendar() {
   const startDateObj = getFirstDayOfMonth();
   const endDateObj = getLastDayOfMonth();
