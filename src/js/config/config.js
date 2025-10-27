@@ -5,5 +5,8 @@ export const API_KEYS = Object.freeze({
 });
 export const STORAGE_KEYS = Object.freeze({
   CART: 'LC_CART',
+  GUEST: 'LC_GUEST',
+  PAYMENT: 'LC_PAYMENT',
   SHOWTIMES: 'LC_SHOWTIMES',
+  MOVIELIST: 'LC_MOVIELIST',
 });
