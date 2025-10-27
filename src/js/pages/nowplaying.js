@@ -37,4 +37,3 @@ export async function fetchNowplayingData() {
     info.appendChild(movTitle);
     info.appendChild(describe);
   }
-}
