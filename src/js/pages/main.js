@@ -10,12 +10,12 @@ import {
 import { fetchNowplayingData } from "./nowplaying.js";
 import { fetchUpcomingData } from "./upcoming.js";
 import {
-  fetchNowPlayingInKorea as quickbooking,
+  fetchNowPlayingInKorea,
   renderDate,
   createCalendar,
-} from "./quickbooking.js";
-import { state } from "./state.js";
-import { API_KEYS, STORAGE_KEYS } from "../config/config.js"; // 키 요청
+} from './quickbooking.js';
+import { state, save, load } from './state.js';
+import { API_KEYS, STORAGE_KEYS } from '../config/config.js'; // 키 요청
 
 // 네비게이션 hover 효과
 const navi = document.querySelectorAll(".header-navi-main");
@@ -114,12 +114,11 @@ document.querySelectorAll(".header-navi-sub").forEach((item) =>
     if (page === "upcoming") {
       fetchUpcomingData();
     }
-    if (page === "quickbooking") {
-      state.cart.setStatus(selecting);
-      sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
-      quickbooking();
+    if (page === 'quickbooking') {
+      state.cart.setStatus('selecting');
+      save(STORAGE_KEYS.CART, state.cart);
+      fetchNowPlayingInKorea();
       renderDate();
-      createCalendar();
     }
   })
 );
@@ -155,12 +154,11 @@ document.querySelectorAll(".header-navi-default").forEach((item) =>
     if (page === "upcoming") {
       fetchNowPlayingInKorea();
     }
-    if (page === "quickbooking") {
-      state.cart.setStatus("selecting");
-      sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
-      quickbooking();
+    if (page === 'quickbooking') {
+      state.cart.setStatus('selecting');
+      save(STORAGE_KEYS.CART, state.cart);
+      fetchNowPlayingInKorea();
       renderDate();
-      createCalendar();
     }
   })
 );
