@@ -1,0 +1,47 @@
+#map {
+  width: 1000px;
+  height: 300px;
+}
+body {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.map-sec1 {
+  width: 1400px;
+  height: 500px;
+  background-color: rgb(238, 222, 201);
+}
+.map-sec2 {
+  width: 1400px;
+  height: 700px;
+  /* background-color: rgb(233, 238, 222); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 5px;
+}
+.map-textBox {
+  width: 800px;
+  height: 100px;
+  /* background-color: azure; */
+}
+
+.map-kewordBox {
+  background-color: whitesmoke;
+}
+.map-input {
+  width: 943px;
+  height: 30px;
+  border: none;
+  background-color: whitesmoke;
+  padding: 15px;
+}
+.map-btn {
+  border: none;
+  padding: 15px;
+}
