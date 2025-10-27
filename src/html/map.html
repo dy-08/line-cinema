@@ -4,26 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../../public/css/reset.css" />
     <link rel="stylesheet" href="../../public/css/global.css" />
     <link rel="stylesheet" href="../css/map.css" />
+    
   </head>
   <body>
     <section class="map-sec1"></section>
+
     <section class="map-sec2">
       <div class="map-outbox">
         <div class="map-aside">
           <h2>찾아 오시는 길</h2>
-          <p>LINE CINEMA에 오시는 길을 안내해드립니다.</p>
+          <p>LINE CINEMA에 오시는 길을 안내</p>
+          <p>경기 안산시 단원구 고잔2길 45 코스모프라자 6층</p>
+          <div class="map-kewordBox">
+            <input
+              class="map-input"
+              type="text"
+              id="keyword"
+              placeholder="지역명+키워드(예 : 안산 중앙역 맛집)"
+            />
+            <!-- <button class="map-btn" id="searchBtn"><i class="bi bi-search"></i> </button> -->
+          </div>
+          
           <div id="map"></div>
-          <div class="map-textBox">
-            <p>경기 안산시 단원구 고잔2길 45 코스모프라자 6층</p>
+    <div class="map-textBox">
+      <button type="button" data-keyword="서울 맛집" class="map-btn">서울 맛집</button>
+      <button type="button" data-keyword="안산 맛집" class="map-btn">안산 맛집</button>
+      <button type="button" data-keyword="안산 카페" class="map-btn">안산 카페</button>
+      <button type="button" data-keyword="안산 지하철역" class="map-btn">안산 지하철역</button>
+      <button type="button" data-keyword="광주 맛집" class="map-btn">광주 맛집</button>
+    </div>
           </div>
         </div>
       </div>
-      <h4>🚗 주차</h4>
-      <p>영화 관람 고객 3시간 무료</p>
+      <!-- <h4>🚗 주차</h4>
+      <p>영화 관람 고객 3시간 무료</p> -->
     </section>
+
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b44fd652bbfd036d382bdbe44f110976&libraries=services,clusterer,drawing&autoload=false"></script>
     <script src="../js/pages/map.js" type="module"></script>
   </body>

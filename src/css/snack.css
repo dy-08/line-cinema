@@ -1,0 +1,94 @@
+.snack-text {
+    font-size: 20px;
+    font-weight: 600;
+    width: 1000px;
+    margin: 30px auto;
+}
+
+/* snack-container 중앙 정렬 */
+.snack-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 가로 중앙 정렬 */
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.snack {
+    width: 260px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #fff;
+}
+
+.snack:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer; /* 마우스 포인터 변경 */
+}
+
+.snack-img {
+    position: relative;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.snack-img img {
+    width: 100%; /* 가로는 div에 맞춤 */
+    height: auto; /* 세로 비율 유지 */
+    object-fit: contain; /* 안 잘리도록 */
+}
+
+.snack-content {
+    padding: 15px;
+}
+
+.snack-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.snack-desc {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.snack-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.snack-price span {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.snack-price .discount {
+    color: #d32f2f;
+    font-weight: 700;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .snack-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.store-mainImg {
+    width: 100%;
+    height: 296px;
+    background-image: url(https://cf.lottecinema.co.kr//Media/WebAdmin/f04df114813f45b18e63e06308211d0f.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

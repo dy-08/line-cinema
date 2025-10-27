@@ -1,16 +1,22 @@
+let userVerify = ''
+let codeString = ''
+let warnMsg2 = document.getElementById('loginWarn2')
+let agreeRadio = document.getElementById('agree')
+let disagreeRadio = document.getElementById('disagree')
+let loginInputs = document.querySelectorAll('.login-input')
+
 function loginCheck() {
     let userName = document.getElementById('loginName').value
     let userBirth = document.getElementById('loginBirth').value
-    let userNum = document.getElementById('loginNumber').value   // 인증요청버튼
-    let userVerify = document.getElementById('loginVerify').value  // 확인 버튼
+    let userNum = document.getElementById('loginNumber').value
+    userVerify = document.getElementById('loginVerify').value
     let userPw = document.getElementById('loginPassword').value.toString()
     let userPw2 = document.getElementById('loginPassword2').value.toString()
 
-    let verifyBtn = document.getElementById('verifyBtn')  // 여기부터 해 인증요청이랑 확인버튼
-    let verifyBtn2 = document.getElementById('verifyBtn2')
-
     let warnMsg = document.getElementById('loginWarn')
-    let warnMsg2 = document.getElementById('loginWarn2')
+
+    let verifyBtn = document.getElementById('verifyBtn')
+    let verifyBtn2 = document.getElementById('verifyBtn2')
 
     let regexName = /^[가-힣]{2,4}$/;
     let regexBirth = /^([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])$/;
@@ -35,6 +41,20 @@ function loginCheck() {
     } else {
         warnMsg.innerHTML = ''
     }
+
+    verifyBtn.removeEventListener('click', checkNumber)
+
+    if (regexNum.test(userNum)) {
+        verifyBtn.addEventListener('click', checkNumber)
+        verifyBtn.classList.add('active')
+    } else if (userNum == '') {
+        verifyBtn.classList.remove('active')
+    }
+    if (userVerify) {
+        verifyBtn2.classList.add('active')
+    } else {
+        verifyBtn2.classList.remove('active')
+    }
     if (userPw !== '' && !regexPw.test(userPw)) {
         warnMsg2.innerText = '비밀번호를 정확히 입력해주세요.'
         return
@@ -49,7 +69,39 @@ function loginCheck() {
     }
 }
 
-let loginInputs = document.querySelectorAll('.login-input')
+function checkNumber() {
+    window.open('./verificationCode.html', 'pop', 'top=200,left=10,width=500,height=300')
+}
+
+function codeNumber(arrCode) {
+    let verifyCode = []
+    verifyCode = arrCode
+    codeString = verifyCode.join('')
+    console.log(codeString)
+}
+
+function checkNumber2() {
+    if (codeString !== userVerify) {
+        warnMsg2.innerHTML = '인증번호가 일치하지 않습니다.'
+        verifyBtn2.classList.remove('active')
+    }
+}
+
+function agreeCheck() {
+    let confirmBtn = document.querySelector('.login-confirmBtn')
+    if (agreeRadio.checked) {
+        confirmBtn.classList.add('active')
+    } else {
+        confirmBtn.classList.remove('active')
+    }
+}
+
 loginInputs.forEach((userInfo) => {
     userInfo.addEventListener('blur', loginCheck)
 })
+
+agreeRadio.addEventListener('change', agreeCheck)
+disagreeRadio.addEventListener('change', agreeCheck)
+
+
+

@@ -6,6 +6,7 @@
 
 body {
     width: 100vw;
+    height: 100vh;
     overflow-x: hidden;
 }
 
@@ -27,7 +28,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    background-color: #503396;
+    background-color: #45B37F;
     color: #fff;
 }
 
@@ -101,6 +102,15 @@ body {
     border-radius: 5px;
     border: 1px solid #CCC;
 }
+
+.verifyBtn.active,
+.verifyBtn2.active,
+.login-confirmBtn.active {
+    background-color: #666666;
+    color: #FFF;
+    cursor: pointer;
+}
+
 
 .login-contentBside {
     width: 50%;
@@ -185,11 +195,7 @@ body {
     border: 1px solid #CCC;
 }
 
-.login-confirmBtn:hover {
-    background-color: #666666;
-    color: #FFF;
-    cursor: pointer;
-}
+
 
 input[type="number"] {
     -moz-appearance: textfield;

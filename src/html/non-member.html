@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/non-member.css">
 </head>
 
 <body>
@@ -30,13 +31,13 @@
                     <div>
                         <div>
                             <input id="loginNumber" class="login-input" type="number" placeholder="- 없이 입력" />
-                            <button id="verifyBtn">인증요청</button>
+                            <button class="verifyBtn" id="verifyBtn">인증요청</button>
                         </div>
                         <div id="loginWarn" class="login-warnmsg"></div>
                     </div>
                     <div>
                         <input id="loginVerify" class="login-input" type="number" />
-                        <button id="verifyBtn2">확인</button>
+                        <button class="verifyBtn2" id="verifyBtn2" onclick="checkNumber2()">확인</button>
                     </div>
                     <input id="loginPassword" class="login-input" type="number" placeholder="비밀번호(숫자 4자리)" />
                     <div>
@@ -87,6 +88,11 @@
         </div>
         <button class="login-confirmBtn">확인</button>
     </div>
+
+
+    <script src="../js/pages/non-member.js"></script>
 </body>
+
+
 
 </html>
