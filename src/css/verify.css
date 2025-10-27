@@ -1,0 +1,29 @@
+body {
+  width: 100vw;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ver-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.ver-codeBox {
+  width: 70%;
+  height: 65px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.ver-code {
+  margin-top: 10px;
+  text-align: center;
+  line-height: 65px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
