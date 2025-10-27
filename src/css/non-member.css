@@ -193,3 +193,26 @@ input[type='number']::-webkit-inner-spin-button {
   /* Chrome, Edge, Safari */
   margin: 0;
 }
+
+#state-msg {
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  line-height: 80px;
+  background-color: #fafafa;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s linear;
+  left: 50%;
+  top: 50%;
+  z-index: 300;
+  transform: translate(-50%, -50%);
+  display: none;
+  color: #2b2b2b;
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
+#state-msg.up {
+  display: block;
+}
