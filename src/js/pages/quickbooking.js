@@ -462,10 +462,8 @@ function renderTheaterInfo() {
         .addEventListener('click', async () => {
           state.cart.setStatus('identifying');
           save(STORAGE_KEYS.CART, state.cart);
-          // 승아님 페이지로 이동해야함 (테스트: map으로 이동)
-          console.log('예매마지막스테이트:', state);
 
-          const { html } = await fetchPage('map');
+          const { html } = await fetchPage('non-member');
           document.getElementById('app').innerHTML = html;
         });
     });
