@@ -1,6 +1,7 @@
 import { API_KEYS, STORAGE_KEYS } from '../config/config.js';
 import { state, save, load } from './state.js';
 import { fetchPage } from './main.js';
+import { init } from './non-member.js';
 
 const uiState = {
   isMovieSelected: false,
@@ -463,8 +464,13 @@ function renderTheaterInfo() {
           state.cart.setStatus('identifying');
           save(STORAGE_KEYS.CART, state.cart);
 
+          // 여기서 바로 뿌려주기때문에 함수가 실행되지않음 주의 ⚠️
           const { html } = await fetchPage('non-member');
           document.getElementById('app').innerHTML = html;
+
+          requestAnimationFrame(() => {
+            init(); //
+          });
         });
     });
   });
