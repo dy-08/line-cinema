@@ -119,7 +119,6 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
       save(STORAGE_KEYS.CART, state.cart);
       fetchNowPlayingInKorea();
       renderDate();
-      createCalendar();
     }
   })
 );
@@ -160,7 +159,6 @@ document.querySelectorAll('.header-navi-default').forEach((item) =>
       save(STORAGE_KEYS.CART, state.cart);
       fetchNowPlayingInKorea();
       renderDate();
-      createCalendar();
     }
   })
 );

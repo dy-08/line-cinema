@@ -134,6 +134,8 @@ function renderMoviesList() {
 
   movies.forEach((movie, idx) =>
     movie.addEventListener('click', () => {
+      // 페이지변경시 캘린더생성 -> 클릭하면 캘린더 생성 로직변경 (유저피드백 반영)
+      createCalendar();
       // 🌟 매핑 완료
       uiState.isMovieSelected = true;
       // 세션스토리지에 저장되어있는 status만 업데이트
@@ -255,7 +257,7 @@ function initCalendarPosition() {
   });
   const itemEls = document.querySelectorAll('.quickbooking-calendar-item');
   itemEls.forEach((item) => {
-    item.style.transition = 'transform 0.5s ease';
+    item.style.transition = 'transform 0.6s ease';
     item.style.transform = `translateX(-${currentDateX - defaultPaddingX}px)`;
   });
 }
@@ -375,9 +377,6 @@ function renderTheaterInfo() {
   );
   console.log(sortedShowtimes);
 
-  // API 극장에서 현재 상영하는 리스트를 받아 올 때 스테이트 쇼타임을 받아옴
-  // 그래서 API 극장 받아올 때 처리를 같이 해주어야함
-
   // 스테이트에 쇼타임이 없다면 뿌려주고 state에 저장해야됨
   // 쇼타임이 있다면 스테이트에서 있는걸 꺼내와야함
   // 정보(time, remain, total, auditorium)
@@ -409,14 +408,52 @@ function renderTheaterInfo() {
         .addEventListener('click', () => {
           clearConfirmModal();
           clearShowtimes();
-          console.log('X:', state);
+          // 캘린더 초기화 (함수로 변경예정)
+          const calendar = document.querySelector(
+            '.quickbooking-calendar-itemWrap'
+          );
+          calendar.innerHTML = '';
+          const active = document.querySelector(
+            '.quickbooking-current--active'
+          );
+          active.innerHTML = '';
+
+          // 상영관 초기화 (함수로 변경예정)
+          const screenInfo = document.querySelector(
+            '.quickbooking-date-movieInfo'
+          );
+          const theaterInfo = document.querySelector(
+            '.quickbooking-date-itemWrap'
+          );
+
+          screenInfo.innerHTML = '';
+          theaterInfo.innerHTML = '';
         });
       document
         .querySelector('.quickbooking-btn--cancel')
         .addEventListener('click', () => {
           clearConfirmModal();
           clearShowtimes();
-          console.log('Cancel:', state);
+          // 캘린더 초기화 (함수로 변경예정)
+          const calendar = document.querySelector(
+            '.quickbooking-calendar-itemWrap'
+          );
+          calendar.innerHTML = '';
+          const active = document.querySelector(
+            '.quickbooking-current--active'
+          );
+          active.innerHTML = '';
+
+          // 상영관 초기화 (함수로 변경예정)
+          const screenInfo = document.querySelector(
+            '.quickbooking-date-movieInfo'
+          );
+          const theaterInfo = document.querySelector(
+            '.quickbooking-date-itemWrap'
+          );
+
+          screenInfo.innerHTML = '';
+          theaterInfo.innerHTML = '';
         });
 
       // clickEvent(Continue)
