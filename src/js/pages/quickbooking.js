@@ -1,9 +1,7 @@
 import { API_KEYS, STORAGE_KEYS } from '../config/config.js';
-import { state } from './state.js';
+import { state, save, load } from './state.js';
 import { fetchPage } from './main.js';
 
-const now_playing_movies = [];
-const showtimesByMovie = {};
 const uiState = {
     isMovieSelected: false,
     isDateSelected: false,
@@ -41,46 +39,49 @@ function renderMovieTrailer(videoKey, videoName) {
 }
 
 function renderMoviePoster(posterPath, posterName) {
-    const container = document.querySelector('.quickbooking-poster-wrap');
-    // now_playing_movies.poster_path: "/u2aVXft5GLBQnjzWVNda7sdDpdu.jpg"
-    // https://image.tmdb.org/t/p/w500/i9VFlFOm0Ez6LXfjzWuhBxrcxJa.jpg
-    container.innerHTML = `<img src="https://image.tmdb.org/t/p/w500/${posterPath}" alt="${posterName}" />`;
+  const container = document.querySelector('.quickbooking-poster-wrap');
+  // state.movieList.poster_path: "/u2aVXft5GLBQnjzWVNda7sdDpdu.jpg"
+  // https://image.tmdb.org/t/p/w500/i9VFlFOm0Ez6LXfjzWuhBxrcxJa.jpg
+  container.innerHTML = `<img src="https://image.tmdb.org/t/p/w500/${posterPath}" alt="${posterName}" />`;
 }
 export async function fetchNowPlayingInKorea() {
-    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEYS.TMDB}&language=ko-KR&region=KR&page=1`;
-    const options = {
-        method: 'GET',
-        headers: { accept: 'application/json' },
-    };
+  const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEYS.TMDB}&language=ko-KR&region=KR&page=1`;
+  const options = {
+    method: 'GET',
+    headers: { accept: 'application/json' },
+  };
 
-    try {
-        const res = await fetch(url, options);
-        const data = await res.json();
+  try {
+    const res = await fetch(url, options);
+    const data = await res.json();
+    const movies = [];
 
-        for (const item of data.results) {
-            const movie = defaultState();
-            movie.id = item.id;
-            movie.adult = item.adult;
-            movie.title = item.title;
-            movie.overview = item.overview;
-            movie.poster_path = item.poster_path;
-            const { videoKey, videoName } = await fetchMovieVideo(item.id);
-            movie.videoKey = videoKey;
-            movie.videoName = videoName;
-            movie.age = await fetchReleaseDates(item.id);
-            now_playing_movies.push(movie);
-            showtimesByMovie[item.id] = createShowtimes();
-        }
-        console.log(now_playing_movies);
-
-        console.log('showtimesByMovie:', showtimesByMovie);
-
-        renderMoviesList();
-    } catch (err) {
-        console.error('현재상영중(극장) 에러 발생:', err);
-    } finally {
-        sessionStorage.setItem(STORAGE_KEYS.SHOWTIMES, JSON.stringify(showtimesByMovie));
+    for (const item of data.results) {
+      const movie = defaultState();
+      movie.id = item.id;
+      movie.adult = item.adult;
+      movie.title = item.title;
+      movie.overview = item.overview;
+      movie.poster_path = item.poster_path;
+      const { videoKey, videoName } = await fetchMovieVideo(item.id);
+      movie.videoKey = videoKey;
+      movie.videoName = videoName;
+      movie.age = await fetchReleaseDates(item.id);
+      state.showtimeMap[item.id] = createShowtimes();
+      movies.push(movie);
     }
+    state.movieList = movies;
+    console.log('movies:', movies);
+
+    console.log('showtimeMap:', state.showtimeMap);
+
+    renderMoviesList();
+  } catch (err) {
+    console.error('현재상영중(극장) 에러 발생:', err);
+  } finally {
+    save(STORAGE_KEYS.SHOWTIMES, state.showtimeMap);
+    save(STORAGE_KEYS.MOVIELIST, state.movieList);
+  }
 }
 // https://image.tmdb.org/t/p/w500/i9VFlFOm0Ez6LXfjzWuhBxrcxJa.jpg"
 
@@ -110,54 +111,63 @@ async function fetchMovieVideo(movieId) {
 function renderMoviesList() {
     const container = document.getElementById('quickbooking-movie-itemWrap');
 
-    container.innerHTML = now_playing_movies
-        .map(
-            (item) => `
+  container.innerHTML = state.movieList
+    .map(
+      (item) => `
     <div class="quickbooking-movie-item">
         <a href="#">
             <span class="quickbooking-movie-limitAge font-numeric ${getAgeClass(item.age)}">${item.age || 15}</span>
             <span class="quickbooking-movie-title">${item.title}</span>
         </a>
     </div>`
-        )
-        .join('');
+    )
+    .join('');
 
-    const movies = document.querySelectorAll('.quickbooking-movie-item');
-    console.log(movies);
-    console.log('before:', state);
+  const movies = document.querySelectorAll('.quickbooking-movie-item');
+  console.log(movies);
+  console.log('before:', state);
 
-    movies.forEach((movie, idx) =>
-        movie.addEventListener('click', () => {
-            // 🌟 매핑 완료
-            uiState.isMovieSelected = true;
-            // 세션스토리지에 저장되어있는 status만 업데이트
-            const raw = sessionStorage.getItem(STORAGE_KEYS.CART);
-            const saved = JSON.parse(raw);
-            state.cart.status = saved.status;
-            state.cart.setMovie(now_playing_movies[idx]);
-            console.log('after:', state);
-            const videoKey = now_playing_movies[idx].videoKey;
-            const videoName = now_playing_movies[idx].videoName;
-            renderMovieTrailer(videoKey, videoName);
-            const posterPath = now_playing_movies[idx].poster_path;
-            renderMoviePoster(posterPath, videoName);
-            const prev = document.querySelector('.quickbooking-movie-item a.selected');
+  movies.forEach((movie, idx) =>
+    movie.addEventListener('click', () => {
+      // 페이지변경시 캘린더생성 -> 클릭하면 캘린더 생성 로직변경 (유저피드백 반영)
+      createCalendar();
+      // 🌟 매핑 완료
+      uiState.isMovieSelected = true;
+      // 세션스토리지에 저장되어있는 status만 업데이트
+      const saved = load(STORAGE_KEYS.CART, -1);
+      state.cart.status = saved.status;
+      state.cart.setMovie(state.movieList[idx]);
+      console.log('after:', state);
+      const videoKey = state.movieList[idx].videoKey;
+      const videoName = state.movieList[idx].videoName;
+      renderMovieTrailer(videoKey, videoName);
+      const posterPath = state.movieList[idx].poster_path;
+      renderMoviePoster(posterPath, videoName);
+      const prev = document.querySelector(
+        '.quickbooking-movie-item a.selected'
+      );
 
-            // 재클릭 시 초기화
-            if (prev) {
-                prev.classList.remove('selected');
-                const calendarPrev = document.querySelector('.quickbooking-calendar-item.selected');
-                if (calendarPrev) calendarPrev.classList.remove('selected');
+      // 재클릭 시 초기화
+      if (prev) {
+        prev.classList.remove('selected');
+        const calendarPrev = document.querySelector(
+          '.quickbooking-calendar-item.selected'
+        );
+        if (calendarPrev) calendarPrev.classList.remove('selected');
 
-                const screenInfo = document.querySelector('.quickbooking-date-movieInfo');
-                const theaterInfo = document.querySelector('.quickbooking-date-itemWrap');
+        const screenInfo = document.querySelector(
+          '.quickbooking-date-movieInfo'
+        );
+        const theaterInfo = document.querySelector(
+          '.quickbooking-date-itemWrap'
+        );
 
-                screenInfo.innerHTML = '';
-                theaterInfo.innerHTML = '';
-            }
-            movie.querySelector('a').classList.add('selected');
-        })
-    );
+        screenInfo.innerHTML = '';
+        theaterInfo.innerHTML = '';
+      }
+      movie.querySelector('a').classList.add('selected');
+    })
+  );
 }
 
 async function fetchReleaseDates(movieId) {
@@ -178,11 +188,11 @@ async function fetchReleaseDates(movieId) {
 }
 
 function getAgeClass(age) {
-    if (!age || '') return 'age-15';
-    if (age >= 19) return 'age-19';
-    if (age >= 15) return 'age-15';
-    if (age >= 12) return 'age-12';
-    return 'age-all';
+  if (!age) return 'age-15';
+  if (age >= 19) return 'age-19';
+  if (age >= 15) return 'age-15';
+  if (age >= 12) return 'age-12';
+  return 'age-all';
 }
 
 // Calendar
@@ -229,19 +239,19 @@ function renderCalendar(date, day) {
   `);
 }
 function initCalendarPosition() {
-    const dateEls = document.querySelectorAll('.quickbooking-calendar-date');
-    let currentDateX = 0;
-    let defaultPaddingX = 28;
-    dateEls.forEach((item) => {
-        if (item.className.includes('current')) {
-            currentDateX = item.offsetLeft;
-        }
-    });
-    const itemEls = document.querySelectorAll('.quickbooking-calendar-item');
-    itemEls.forEach((item) => {
-        item.style.transition = 'transform 0.5s ease';
-        item.style.transform = `translateX(-${currentDateX - defaultPaddingX}px)`;
-    });
+  const dateEls = document.querySelectorAll('.quickbooking-calendar-date');
+  let currentDateX = 0;
+  let defaultPaddingX = 28;
+  dateEls.forEach((item) => {
+    if (item.className.includes('current')) {
+      currentDateX = item.offsetLeft;
+    }
+  });
+  const itemEls = document.querySelectorAll('.quickbooking-calendar-item');
+  itemEls.forEach((item) => {
+    item.style.transition = 'transform 0.6s ease';
+    item.style.transform = `translateX(-${currentDateX - defaultPaddingX}px)`;
+  });
 }
 function renderScreenInfo() {
     const container = document.querySelector('.quickbooking-date-movieInfo');
@@ -348,59 +358,101 @@ function clearShowtimes() {
     });
 }
 function renderTheaterInfo() {
-    const sortedShowtimes = showtimesByMovie[state.cart.movie.id].sort(
-        (a, b) => Number(a.time.replace(':', '')) - Number(b.time.replace(':', ''))
-    );
-    console.log(sortedShowtimes);
+  const sortedShowtimes = state.showtimeMap[state.cart.movie.id].sort(
+    (a, b) => Number(a.time.replace(':', '')) - Number(b.time.replace(':', ''))
+  );
+  console.log(sortedShowtimes);
 
-    // API 극장에서 현재 상영하는 리스트를 받아 올 때 스테이트 쇼타임을 받아옴
-    // 그래서 API 극장 받아올 때 처리를 같이 해주어야함
+  // 스테이트에 쇼타임이 없다면 뿌려주고 state에 저장해야됨
+  // 쇼타임이 있다면 스테이트에서 있는걸 꺼내와야함
+  // 정보(time, remain, total, auditorium)
+  // 예약이 됐다면 remain 값 재할당 (이후작업)
+  // remain이 0이면 클릭못하게 처리
+  for (let showtime of sortedShowtimes) {
+    createTheaterTemplate(showtime);
+  }
 
-    // 스테이트에 쇼타임이 없다면 뿌려주고 state에 저장해야됨
-    // 쇼타임이 있다면 스테이트에서 있는걸 꺼내와야함
-    // 정보(time, remain, total, auditorium)
-    // 예약이 됐다면 remain 값 재할당 (이후작업)
-    // remain이 0이면 클릭못하게 처리
-    for (let showtime of sortedShowtimes) {
-        createTheaterTemplate(showtime);
-    }
+  // 클릭이벤트
+  const showtimeItems = document.querySelectorAll('.quickbooking-date-item');
+  showtimeItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      const prev = document.querySelector('.quickbooking-date-item.selected');
+      if (prev) prev.classList.remove('selected');
+      item.classList.add('selected');
 
-    // 클릭이벤트
-    const showtimeItems = document.querySelectorAll('.quickbooking-date-item');
-    showtimeItems.forEach((item) => {
-        item.addEventListener('click', () => {
-            const prev = document.querySelector('.quickbooking-date-item.selected');
-            if (prev) prev.classList.remove('selected');
-            item.classList.add('selected');
+      // showtimes 매핑필요 => 완료
+      const { time, auditorium, remain, total } = item.dataset;
+      state.cart.setShowtimes({ time, auditorium, remain, total });
+      console.log('showtimes:', state);
 
-            // showtimes 매핑필요 => 완료
-            const { time, auditorium, remain, total } = item.dataset;
-            state.cart.setShowtimes({ time, auditorium, remain, total });
-            console.log('showtimes:', state);
+      // 모달 들어가야함
+      renderConfirmModal();
 
-            // 모달 들어가야함
-            renderConfirmModal();
+      // clickEvent(X, Cancel)
+      document
+        .querySelector('.quickbooking-header-X')
+        .addEventListener('click', () => {
+          clearConfirmModal();
+          clearShowtimes();
+          // 캘린더 초기화 (함수로 변경예정)
+          const calendar = document.querySelector(
+            '.quickbooking-calendar-itemWrap'
+          );
+          calendar.innerHTML = '';
+          const active = document.querySelector(
+            '.quickbooking-current--active'
+          );
+          active.innerHTML = '';
 
-            // clickEvent(X, Cancel)
-            document.querySelector('.quickbooking-header-X').addEventListener('click', () => {
-                clearConfirmModal();
-                clearShowtimes();
-                console.log('X:', state);
-            });
-            document.querySelector('.quickbooking-btn--cancel').addEventListener('click', () => {
-                clearConfirmModal();
-                clearShowtimes();
-                console.log('Cancel:', state);
-            });
+          // 상영관 초기화 (함수로 변경예정)
+          const screenInfo = document.querySelector(
+            '.quickbooking-date-movieInfo'
+          );
+          const theaterInfo = document.querySelector(
+            '.quickbooking-date-itemWrap'
+          );
 
-            // clickEvent(Continue)
-            document.querySelector('.quickbooking-btn--continue').addEventListener('click', async () => {
-                state.cart.setStatus('identifying');
-                sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
-                // 승아님 페이지로 이동해야함 (테스트: map으로 이동)
-                const { html } = await fetchPage('non-member');
-                document.getElementById('app').innerHTML = html;
-            });
+          screenInfo.innerHTML = '';
+          theaterInfo.innerHTML = '';
+        });
+      document
+        .querySelector('.quickbooking-btn--cancel')
+        .addEventListener('click', () => {
+          clearConfirmModal();
+          clearShowtimes();
+          // 캘린더 초기화 (함수로 변경예정)
+          const calendar = document.querySelector(
+            '.quickbooking-calendar-itemWrap'
+          );
+          calendar.innerHTML = '';
+          const active = document.querySelector(
+            '.quickbooking-current--active'
+          );
+          active.innerHTML = '';
+
+          // 상영관 초기화 (함수로 변경예정)
+          const screenInfo = document.querySelector(
+            '.quickbooking-date-movieInfo'
+          );
+          const theaterInfo = document.querySelector(
+            '.quickbooking-date-itemWrap'
+          );
+
+          screenInfo.innerHTML = '';
+          theaterInfo.innerHTML = '';
+        });
+
+      // clickEvent(Continue)
+      document
+        .querySelector('.quickbooking-btn--continue')
+        .addEventListener('click', async () => {
+          state.cart.setStatus('identifying');
+          save(STORAGE_KEYS.CART, state.cart);
+          // 승아님 페이지로 이동해야함 (테스트: map으로 이동)
+          console.log('예매마지막스테이트:', state);
+
+          const { html } = await fetchPage('map');
+          document.getElementById('app').innerHTML = html;
         });
     });
 }
