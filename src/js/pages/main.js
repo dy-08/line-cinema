@@ -1,4 +1,3 @@
-import { API_KEYS } from '../config/config.js'; // 키 요청
 import { eventNow } from './eventnow.js';
 import { premiere } from './premiere.js';
 import { eventHot } from './hotevent.js';
@@ -10,8 +9,15 @@ import {
 } from './top5.js';
 import { fetchNowplayingData } from './nowplaying.js';
 import { fetchUpcomingData } from './upcoming.js';
+import {
+  fetchNowPlayingInKorea as quickbooking,
+  renderDate,
+  createCalendar,
+} from './quickbooking.js';
+import { state } from './state.js';
+import { API_KEYS, STORAGE_KEYS } from '../config/config.js'; // 키 요청
 
-// 네비게이션 효과
+// 네비게이션 hover 효과
 const navi = document.querySelectorAll('.header-navi-main');
 let current = '';
 navi.forEach((item) => {
@@ -46,15 +52,12 @@ async function tmdb() {
     console.error(e);
   }
 }
-tmdb();
+// tmdb();
 
 async function renderPage({ html, index = false }) {
-  if (index) {
-    console.log('index!');
-  }
   document.getElementById('app').innerHTML = await html;
 }
-async function fetchPage(page) {
+export async function fetchPage(page) {
   try {
     const isIndex = page === 'index';
 
@@ -81,6 +84,7 @@ async function fetchPage(page) {
 document.querySelectorAll('.header-navi-sub').forEach((item) =>
   item.addEventListener('click', async (e) => {
     const page = e.target.dataset.page.slice(6);
+
     const { html } = await fetchPage(page);
 
     if (!html) return;
@@ -109,6 +113,13 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
     }
     if (page === 'upcoming') {
       fetchUpcomingData();
+    }
+    if (page === 'quickbooking') {
+      state.cart.setStatus(selecting);
+      sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
+      quickbooking();
+      renderDate();
+      createCalendar();
     }
   })
 );
@@ -142,7 +153,14 @@ document.querySelectorAll('.header-navi-default').forEach((item) =>
       fetchNowplayingData();
     }
     if (page === 'upcoming') {
-      fetchUpcomingData();
+      fetchNowPlayingInKorea();
+    }
+    if (page === 'quickbooking') {
+      state.cart.setStatus('selecting');
+      sessionStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
+      quickbooking();
+      renderDate();
+      createCalendar();
     }
   })
 );
@@ -238,4 +256,4 @@ function initSlider() {
 }
 initSlider();
 
-// 철원님: 랭킹 작업섹션
+console.log(state);
