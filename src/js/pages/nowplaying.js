@@ -30,6 +30,15 @@ export async function fetchNowplayingData() {
         describe.className = 'nowplaying-describe';
         describe.textContent = `개봉일: ${movies[i].release_date}`;
 
+<<<<<<< HEAD
+    inBox1.appendChild(cardBox);
+    cardBox.appendChild(movImg);
+    cardBox.appendChild(info);
+    movImg.appendChild(img);
+    info.appendChild(movTitle);
+    info.appendChild(describe);
+  }
+=======
         inBox1.appendChild(cardBox);
         cardBox.appendChild(movImg);
         cardBox.appendChild(info);
@@ -38,3 +47,4 @@ export async function fetchNowplayingData() {
         info.appendChild(describe);
     }
 }
+>>>>>>> develop
