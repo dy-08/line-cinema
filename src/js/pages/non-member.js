@@ -1,5 +1,6 @@
 import { STORAGE_KEYS } from '../config/config.js';
 import { state, save, load } from './state.js';
+import { fetchPage } from './main.js';
 
 export function init() {
     console.log(state);
@@ -122,9 +123,11 @@ export function init() {
         verifyBtn?.classList.remove('active');
         verifyBtn2?.classList.remove('active');
 
-        setTimeout(() => {
+        setTimeout(async () => {
             msg.innerHTML = '';
             msg.classList.remove('up');
+            const { html } = await fetchPage('seat');
+            document.getElementById('app').innerHTML = html;
         }, 2000);
     }
 
