@@ -39,6 +39,8 @@ export async function fetchUpcomingData() {
     movies2.push(...datas4);
     movies2.push(...datas5);
 
+    console.log(movies2);
+
     let inBox2 = document.querySelector('.upcoming-inBox2');
 
     let date = new Date();
