@@ -1,74 +1,72 @@
 @font-face {
-  font-family: 'Pretendard';
-  font-style: normal;
-  /* 100은 가장 얇은 굵기, 900은 가장 두꺼운 굵기 */
-  /* font-weight: 400으로 설정하면 보통의 일반적인 굵기(Regular) */
-  font-weight: 100 900;
-  /* (FOUT, Flash of Unstyled Text)을 방지 */
-  font-display: swap;
-  src: url('../fonts/pretendard/PretendardVariable.woff2') format('woff2');
+    font-family: 'Pretendard';
+    font-style: normal;
+    /* 100은 가장 얇은 굵기, 900은 가장 두꺼운 굵기 */
+    /* font-weight: 400으로 설정하면 보통의 일반적인 굵기(Regular) */
+    font-weight: 100 900;
+    /* (FOUT, Flash of Unstyled Text)을 방지 */
+    font-display: swap;
+    src: url('../fonts/pretendard/PretendardVariable.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'AppleSDGothicNeo';
-  font-weight: normal;
-  src: url('../fonts/AppleSDGothicNeo/AppleSDGothicNeo-Regular.woff2')
-    format('truetype');
+    font-family: 'AppleSDGothicNeo';
+    font-weight: normal;
+    src: url('../fonts/AppleSDGothicNeo/AppleSDGothicNeo-Regular.woff2') format('truetype');
 }
 
 @font-face {
-  font-family: 'AppleSDGothicNeo';
-  font-weight: bold;
-  src: url('../fonts/AppleSDGothicNeo/AppleSDGothicNeo-Bold.woff2')
-    format('truetype');
+    font-family: 'AppleSDGothicNeo';
+    font-weight: bold;
+    src: url('../fonts/AppleSDGothicNeo/AppleSDGothicNeo-Bold.woff2') format('truetype');
 }
 
 /* 브렌치별 수정 */
 :root {
-  --font-size-xl: 21px;
-  --font-size-lg: 18px;
-  --font-size-md: 15px;
-  --font-size-sm: 14px;
-  --font-size-xs: 12px;
-  --btn-font-size: 14px;
+    --font-size-xl: 21px;
+    --font-size-lg: 18px;
+    --font-size-md: 15px;
+    --font-size-sm: 14px;
+    --font-size-xs: 12px;
+    --btn-font-size: 14px;
 }
 .text-xl {
-  font-size: var(--font-size-xl);
+    font-size: var(--font-size-xl);
 }
 .text-lg {
-  font-size: var(--font-size-lg);
+    font-size: var(--font-size-lg);
 }
 .text-md {
-  font-size: var(--font-size-md);
+    font-size: var(--font-size-md);
 }
 .text-sm {
-  font-size: var(--font-size-sm);
+    font-size: var(--font-size-sm);
 }
 .text-xs {
-  font-size: var(--font-size-xs);
+    font-size: var(--font-size-xs);
 }
 .button-text {
-  font-size: var(--btn-font-size);
+    font-size: var(--btn-font-size);
 }
 .font-numeric {
-  font-family: 'AppleSDGothicNeo', sans-serif;
-  font-variant-numeric: tabular-nums; /* 숫자 간격 균일화 */
+    font-family: 'AppleSDGothicNeo', sans-serif;
+    font-variant-numeric: tabular-nums; /* 숫자 간격 균일화 */
 }
 
 body {
-  font-family: 'Pretendard', sans-serif;
+    font-family: 'Pretendard', sans-serif;
 }
 
 .btn {
-  font-size: var(--btn-font-size);
-  font-family: 'Pretendard', sans-serif;
-  padding: 4px 8px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    font-size: var(--btn-font-size);
+    font-family: 'Pretendard', sans-serif;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .btn-primary {
-  background-color: #c4e88f; /*임시 컬러*/
-  color: white;
+    background-color: #c4e88f; /*임시 컬러*/
+    color: white;
 }
