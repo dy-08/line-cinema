@@ -156,7 +156,7 @@
     font-size: var(--font-size-sm);
 }
 .seat-price-total {
-    color: #59bec9;
+    color: #45b37f;
     font-size: var(--font-size-xl);
     margin-right: 4px;
 }
@@ -210,7 +210,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #00a86b;
+    background: #45b37f;
     color: white;
 }
 .seat-selected {

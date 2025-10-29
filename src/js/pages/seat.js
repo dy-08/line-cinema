@@ -39,10 +39,13 @@ function applySoldSeats(map, soldCount, totalSeats) {
         seat.classList.add('sold');
     });
 }
-
-function toggleSeatSelection(seat) {
+function toggleSeatSelection(map, seat) {
     const selected = state.cart.seats.select;
+    const selectedNumber = state.cart.seats.selectNumber;
     const seatId = seat.dataset.seat;
+    const seatNumber = seat;
+    console.log('map:', map);
+    console.log('seat:', seat);
 
     const idx = selected.indexOf(seatId);
 
@@ -57,6 +60,16 @@ function toggleSeatSelection(seat) {
         selected.push(seatId);
         seat.classList.add('selected');
         console.log(state.cart);
+
+        // 진행중
+        // 에러확인해봐야할듯
+        const btns = map.querySelectorAll('button');
+        btns.forEach((btn, index) => {
+            if (btn.dataset.seat === seat.dataset.seat) {
+                console.log('index:', index);
+                selectedNumber.push(index);
+            }
+        });
     }
 }
 
@@ -78,20 +91,19 @@ function renderSelectedSeats() {
     return container.appendChild(frag);
 }
 
-// 진행중
-function calcTotalPrice() {
+function updateTotalPrice() {
     const container = document.querySelector('.seat-price-total');
-
-    const totalPrice = state.pricePerSeat * state.seats.select.length;
-    return (container.innerHTML = totalPrice);
+    const totalPrice = state.cart.pricePerSeat * state.cart.seats.select.length;
+    container.innerHTML = totalPrice;
 }
 
 function bindSeatClick(map) {
     const seats = map.querySelectorAll('button:not(.sold)');
     seats.forEach((seat) => {
         seat.addEventListener('click', () => {
-            toggleSeatSelection(seat);
+            toggleSeatSelection(map, seat);
             renderSelectedSeats();
+            updateTotalPrice();
         });
     });
 }
