@@ -61,6 +61,7 @@ function toggleSeatSelection(map, seat) {
   if (existsAt !== -1) {
     selected.splice(existsAt, 1);
     seat.classList.remove('selected');
+    state.cart.amount--;
 
     const pos = selectedNumber.indexOf(seatIdx);
     if (pos !== -1) selectedNumber.splice(pos, 1);
@@ -78,6 +79,7 @@ function toggleSeatSelection(map, seat) {
       console.log(state.cart);
       console.log(state);
     }
+    state.cart.amount++;
   }
 }
 
@@ -101,7 +103,7 @@ function renderSelectedSeats() {
 
 function updateTotalPrice() {
   const container = document.querySelector('.seat-price-total');
-  const totalPrice = state.cart.pricePerSeat * state.cart.seats.select.length;
+  const totalPrice = state.cart.pricePerSeat * state.cart.amount;
   container.innerHTML = totalPrice;
 }
 

@@ -1,212 +1,196 @@
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#account {
+  width: 100vw;
+  height: 100vh;
 }
-
-body {
-    width: 100vw;
-    overflow-x: hidden;
-} */
-
-.pay-container {
-  width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  position: relative;
-}
-
-.pay-modal {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.pay-leftCon {
-  width: 870px;
-}
-
-.pay-title1 {
-  font-size: 25px;
-}
-
-.pay-title2 {
-  font-size: 18px;
-  padding: 20px 0;
-}
-
-.pay-title3 {
-  font-size: 22px;
-  padding: 20px 0;
-}
-
-.pay-infoBox {
-  width: 100%;
-  height: 300px;
-  margin-top: 30px;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
-}
-
-.pay-movInfo {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  gap: 50px;
+.account-inner {
+  margin-top: 180px;
+  height: 556px;
+  justify-content: center;
   align-items: center;
+  display: flex;
+  gap: 14px;
 }
-
-.pay-movImg {
-  width: 110px;
-  height: 150px;
-  padding-left: 10px;
+/* left */
+.account-leftbox {
+  width: 870px;
+  height: 556px;
+  /* background-color: #11111110; */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 6px;
 }
-
-.pay-movImg img {
+.account-text-lg {
+  font-size: 24px;
+  font-weight: 500;
+}
+.account-text-md {
+  font-size: 16px;
+  font-weight: 500;
+}
+.account-info {
+  padding: 14px 0;
+  border-top: 0.5px solid #727272;
+  border-bottom: 0.5px solid #727272;
+}
+.account-info-detail {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin: 14px 0 28px 0;
+}
+.account-info-title {
+  font-size: var(--font-size-md);
+  margin-bottom: 2px;
+}
+.account-info-date,
+.account-info-audi {
+  font-size: var(--font-size-sm);
+  color: #7a7a7a;
+}
+.account-info-amount {
+  margin-top: 2px;
+  font-size: var(--font-size-md);
+}
+.account-posterwrap {
+  width: 120px;
+  height: 160px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.account-poster {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  overflow: hidden;
 }
-
-.pay-movDes {
-  font-size: 14px;
-}
-
-.pay-movTitle {
-  padding: 10px 0;
-  font-size: 18px;
-}
-
-.pay-btnGrid {
-  width: 100%;
-  height: 120px;
-  margin: 20px auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.account-btns-wrap {
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
+  margin-top: 10px;
+  justify-content: space-between;
 }
-
-.pay-bankBtn {
+.account-btns {
+  width: 24%;
+  height: 40px;
   border: 1px solid #ccc;
   background-color: white;
-  border-radius: 5px;
-  font-size: 15px;
+  border-radius: 6px;
+  font-size: var(--font-size-sm);
   cursor: pointer;
+  transition: all 0.3s;
+}
+.account-btns:hover {
+  background-color: #45b38042;
 }
 
-.pay-bankBtn:hover {
-  border: 1px solid #45b37f;
-  color: #45b37f;
-}
-
-.pay-bankBtn.active {
-  border: 1px solid #45b37f;
-  color: #45b37f;
-}
-
-.pay-rightCon {
+/* Right */
+.account-rightbox {
   width: 310px;
   height: 556px;
   background-color: #333;
-  color: white;
-  margin-left: 20px;
-  margin-top: 50px;
   border-radius: 6px;
   overflow: hidden;
-  position: relative;
 }
-
-.pay-right-title {
-  margin: 0 15px;
-  padding: 20px 0;
-  font-size: 21px;
-  border-bottom: 1px solid #53565b;
-}
-
-.pay-bankInfo {
-  margin: 20px 0;
-  font-size: 18px;
-}
-
-.pay-bankCon {
+.account-right-inner {
+  width: 100%;
+  height: 516px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  justify-content: space-between;
+  color: white;
 }
-
-.pay-logoBox {
-  width: 250px;
-  height: 170px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.pay-logoImg {
+.account-right-btns {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 40px;
+  display: flex;
 }
-
-.pay-number {
-  font-size: 18px;
-  padding-top: 20px;
+.account-right-btns button {
+  width: 50%;
+  height: 40px;
+  border: 0;
+  color: white;
+  font-size: var(--font-size-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
 }
-
-.pay-holder {
-  font-size: 16px;
+.account-right-btns button:nth-of-type(1):hover {
+  background-color: #494c50;
 }
-
-.pay-paymentBox {
+.account-right-btns button:nth-of-type(2):hover {
+  background-color: #48a379;
+}
+.account-btn-cancel {
+  background-color: #53565b;
+  border-bottom-left-radius: 6px;
+}
+.account-btn-pay {
+  background-color: #45b37f;
+  border-bottom-right-radius: 6px;
+}
+.account-pay-top,
+.account-pay-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
-  font-size: 14px;
-  margin-top: 50px;
-  width: 270px;
-  border-top: 1px solid #53565b;
 }
 
-.pay-eval {
-  font-weight: bold;
-  font-size: 21px;
-  color: #45b37f;
+.account-pay-top {
+  background-color: #d4d4d420;
+  padding: 14px;
+}
+.account-pay-top:first-of-type {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  margin-top: 14px;
+  color: #b8b8b8;
+  font-size: var(--font-size-sm);
+}
+.account-pay-top:last-of-type {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-top: 0.5px solid #313131;
+  font-size: var(--font-size-md);
+}
+.account-pay-bottom:first-of-type {
+  font-size: var(--font-size-md);
+}
+.account-pay-bottom:first-of-type span {
+  font-size: var(--font-size-xl);
+}
+.account-pay-bottom:last-of-type {
+  font-size: var(--font-size-sm);
+  color: #b8b8b8;
 }
 
-.pay-won {
-  font-size: 14px;
-  color: white;
-  margin-left: 4px;
+.bank-logo {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-right: 4px;
+  background-image: url(../../public/img/account/kb.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
-
-.pay-right-btnBox {
+.virtual-account-info {
   width: 100%;
-  height: 60px;
-  display: flex;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  padding: 14px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: var(--font-size-md);
+  background-color: #d4d4d420;
+  color: #d6d6d6;
+  transition: all 0.5s;
+  transform: translateY(20px);
+  opacity: 0;
 }
-
-.pay-right-btn {
-  width: 50%;
-  height: 100%;
-  border: none;
-  color: white;
-  background-color: #53565b;
-  font-size: 18px;
-}
-
-.pay-right-btn:hover {
-  background-color: #11111180;
-}
-
-.pay-right-btn2 {
-  background-color: #45b37f;
+.virtual-account-info.op {
+  opacity: 1;
+  transform: translateY(0);
 }
