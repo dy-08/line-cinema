@@ -127,6 +127,7 @@ function renderScreeningInfo() {
         <button>다음</button>
       </div>
       `);
+    // 주석추가
 }
 
 export function initSeatPage() {
