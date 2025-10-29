@@ -1,7 +1,9 @@
 import { API_KEYS } from '../config/config.js';
 
 export async function fetchUpcomingData() {
-    const movies2 = [];
+
+    const movies2 = []
+
     const res = await fetch(
         `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEYS.TMDB}&language=ko-KR&page=1`
     );
@@ -32,6 +34,7 @@ export async function fetchUpcomingData() {
     );
     const data5 = await res5.json();
     const datas5 = data5.results;
+
 
     movies2.push(...datas);
     movies2.push(...datas2);
@@ -78,3 +81,4 @@ export async function fetchUpcomingData() {
         }
     }
 }
+
