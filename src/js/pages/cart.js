@@ -21,8 +21,12 @@ export class Cart {
       remain: null,
     };
     this.seats = {
+      select: [],
+      selectNumber: [],
       available: [],
+      availableNumber: [],
       sold: [],
+      soldNumber: [],
     };
     this.account = null;
     this.status = 'idle'; // 'idle' → 'selecting' → 'identifying' → 'seating' → 'paying' → 'confirmed'
