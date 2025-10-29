@@ -1,6 +1,7 @@
 import { STORAGE_KEYS } from '../config/config.js';
 import { state, save, load } from './state.js';
 import { fetchPage } from './main.js';
+import { initSeatPage } from './seat.js';
 
 export function init() {
     console.log(state);
@@ -128,6 +129,7 @@ export function init() {
             msg.classList.remove('up');
             const { html } = await fetchPage('seat');
             document.getElementById('app').innerHTML = html;
+            initSeatPage();
         }, 2000);
     }
 
