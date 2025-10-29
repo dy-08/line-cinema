@@ -16,7 +16,7 @@
 }
 
 .ticket {
-  width: 260px;
+  width: 310px;
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
@@ -98,4 +98,5 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+      margin-top: 129px;
 }

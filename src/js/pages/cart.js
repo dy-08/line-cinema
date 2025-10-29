@@ -20,8 +20,10 @@ export class Cart {
       total: null,
       remain: null,
     };
-    this.userId = null;
-    this.seats = [];
+    this.seats = {
+      available: [],
+      sold: [],
+    };
     this.account = null;
     this.status = 'idle'; // 'idle' → 'selecting' → 'identifying' → 'seating' → 'paying' → 'confirmed'
     this.pricePerSeat = 11000;
