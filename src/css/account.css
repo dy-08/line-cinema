@@ -1,0 +1,212 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    overflow-x: hidden;
+} */
+
+.pay-container {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+.pay-modal {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pay-leftCon {
+  width: 870px;
+}
+
+.pay-title1 {
+  font-size: 25px;
+}
+
+.pay-title2 {
+  font-size: 18px;
+  padding: 20px 0;
+}
+
+.pay-title3 {
+  font-size: 22px;
+  padding: 20px 0;
+}
+
+.pay-infoBox {
+  width: 100%;
+  height: 300px;
+  margin-top: 30px;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.pay-movInfo {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.pay-movImg {
+  width: 110px;
+  height: 150px;
+  padding-left: 10px;
+}
+
+.pay-movImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pay-movDes {
+  font-size: 14px;
+}
+
+.pay-movTitle {
+  padding: 10px 0;
+  font-size: 18px;
+}
+
+.pay-btnGrid {
+  width: 100%;
+  height: 120px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.pay-bankBtn {
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.pay-bankBtn:hover {
+  border: 1px solid #45b37f;
+  color: #45b37f;
+}
+
+.pay-bankBtn.active {
+  border: 1px solid #45b37f;
+  color: #45b37f;
+}
+
+.pay-rightCon {
+  width: 310px;
+  height: 556px;
+  background-color: #333;
+  color: white;
+  margin-left: 20px;
+  margin-top: 50px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pay-right-title {
+  margin: 0 15px;
+  padding: 20px 0;
+  font-size: 21px;
+  border-bottom: 1px solid #53565b;
+}
+
+.pay-bankInfo {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.pay-bankCon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.pay-logoBox {
+  width: 250px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.pay-logoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pay-number {
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+.pay-holder {
+  font-size: 16px;
+}
+
+.pay-paymentBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  font-size: 14px;
+  margin-top: 50px;
+  width: 270px;
+  border-top: 1px solid #53565b;
+}
+
+.pay-eval {
+  font-weight: bold;
+  font-size: 21px;
+  color: #45b37f;
+}
+
+.pay-won {
+  font-size: 14px;
+  color: white;
+  margin-left: 4px;
+}
+
+.pay-right-btnBox {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.pay-right-btn {
+  width: 50%;
+  height: 100%;
+  border: none;
+  color: white;
+  background-color: #53565b;
+  font-size: 18px;
+}
+
+.pay-right-btn:hover {
+  background-color: #11111180;
+}
+
+.pay-right-btn2 {
+  background-color: #45b37f;
+}

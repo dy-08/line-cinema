@@ -145,11 +145,9 @@ export function init() {
     setTimeout(async () => {
       msg.innerHTML = '';
       msg.classList.remove('up');
-      // 페이지 이동
       const { html } = await fetchPage('seat');
       document.getElementById('app').innerHTML = html;
-      // 페이지 이동 후 initalize해줘야함
-      requestAnimationFrame(initSeatPage);
+      initSeatPage();
     }, 2000);
   }
 

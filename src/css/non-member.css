@@ -99,6 +99,14 @@
   cursor: pointer;
 }
 
+.verifyBtn.active,
+.verifyBtn2.active,
+.login-confirmBtn.active {
+  background-color: #666666;
+  color: #fff;
+  cursor: pointer;
+}
+
 .login-contentBside {
   width: 50%;
   height: 100%;
@@ -186,7 +194,6 @@ input[type='number'] {
   -moz-appearance: textfield;
   /* Firefox */
 }
-
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;

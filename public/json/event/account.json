@@ -1,0 +1,52 @@
+{
+  "accounts": [
+    {
+      "bank": "IBK기업은행",
+      "image": "./img/ibk.png",
+      "number": "123-456-789012",
+      "holder": "㈜라인시네마"
+    },
+    {
+      "bank": "NH농협은행",
+      "image": "./img/nong.png",
+      "number": "345-678-901234",
+      "holder": "㈜라인시네마"
+    },
+    {
+      "bank": "우리은행",
+      "image": "./img/woori.jpg",
+      "number": "567-890-123456",
+      "holder": "㈜라인시네마"
+    },
+    {
+      "bank": "KB국민은행",
+      "image": "./img/kb.webp",
+      "number": "789-012-345678",
+      "holder": "㈜라인시네마"
+    },
+    {
+      "bank": "신한은행",
+      "image": "./img/sinhan.jpg",
+      "number": "901-234-567890",
+      "holder": "㈜라인시네마"
+    },
+    {
+      "bank": "KEB하나은행",
+      "image": "./img/keb.jpg",
+      "number": "135-791-357913",
+      "holder": "㈜라인시네마"
+    },
+    {
+      "bank": "씨티은행",
+      "image": "./img/citi.jpg",
+      "number": "246-802-468012",
+      "holder": "㈜라인시네마"
+    },
+    {
+      "bank": "SC제일은행",
+      "image": "./img/sc.jpg",
+      "number": "357-902-456780",
+      "holder": "㈜라인시네마"
+    }
+  ]
+}
