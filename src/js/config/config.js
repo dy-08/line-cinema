@@ -9,4 +9,5 @@ export const STORAGE_KEYS = Object.freeze({
   PAYMENT: 'LC_PAYMENT',
   SHOWTIMES: 'LC_SHOWTIMES',
   MOVIELIST: 'LC_MOVIELIST',
+  BOOKING: 'LC_BOOKING',
 });
