@@ -79,12 +79,12 @@ function renderSelectedSeats() {
 }
 
 // 진행중
-function calcTotalPrice() {
-    const container = document.querySelector('.seat-price-total');
+// function calcTotalPrice() {
+//     const container = document.querySelector('.seat-price-total');
 
-    const totalPrice = state.pricePerSeat * state.seats.select.length;
-    return (container.innerHTML = totalPrice);
-}
+//     const totalPrice = state.pricePerSeat * state.seats.select.length;
+//     return (container.innerHTML = totalPrice);
+// }
 
 function bindSeatClick(map) {
     const seats = map.querySelectorAll('button:not(.sold)');
