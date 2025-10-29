@@ -1,6 +1,7 @@
 import { save, state } from './state.js';
 import { STORAGE_KEYS } from '../config/config.js';
 import { fetchPage } from './main.js';
+import { initAccountPage } from './account.js';
 const MAX_COUNT = 8;
 
 function createSeats(row, col) {
@@ -161,6 +162,7 @@ async function bindNextButton() {
   save(STORAGE_KEYS.SHOWTIMES, state.showtimeMap);
   const app = document.getElementById('app');
   app.innerHTML = html;
+  requestAnimationFrame(initAccountPage);
 }
 
 export function initSeatPage() {

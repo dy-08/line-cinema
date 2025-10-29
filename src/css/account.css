@@ -44,7 +44,8 @@
   margin-bottom: 2px;
 }
 .account-info-date,
-.account-info-audi {
+.account-info-audi,
+.account-info-seat {
   font-size: var(--font-size-sm);
   color: #7a7a7a;
 }
