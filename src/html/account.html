@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/account.css">
+    <link rel="stylesheet" href="./account.css">
 </head>
 
 <body>
@@ -15,12 +15,12 @@
             <div class="pay-infoBox">
                 <div class="pay-title2">예매정보</div>
                 <div class="pay-movInfo">
-                    <div class="pay-movImg"><img src="" alt="" /></div>
+                    <div class="pay-movImg"></div>
                     <div class="pay-movDes">
-                        <div class="pay-movTitle">영화제목</div>
-                        <p>2025.10.10(화)</p>
-                        <p>15:00 ~</p>
-                        <p>라인시네마 1관</p>
+                        <div class="pay-movTitle"></div>
+                        <p><span id="bookingDate"></span><span id="movDay"></span></p>
+                        <p id="movTime"></p>
+                        <p>라인시네마 <span id="auditorium"></span></p>
                     </div>
                 </div>
             </div>
@@ -40,14 +40,14 @@
             <div class="pay-right-title">무통장 입금</div>
             <div class="pay-bankInfo">
                 <!-- <div class="pay-bankCon">
-                    <div class="pay-logoBox"><img class="pay-logoImg" src="https://www.ibk.co.kr/img/navigation/h1_logo_sub.gif" />
+                    <div class="pay-logoBox"><img class="pay-logoImg" src="f" />
                     </div>
                     <div class="pay-number">계좌번호: <strong> 123 - 456 - 789012</strong></div>
                     <div class="pay-holder">예금주: ㈜라인시네마</div>
                 </div>
                 <div class="pay-paymentBox">
                     <div class="pay-right-title4">결제금액</div>
-                    <div class="pay-eval">16,000원</div>
+                    <div class="pay-eval">16,000<span class='pay-won'>원</span></div>
                 </div> 
                 <div class="pay-right-btnBox">
                     <button class="pay-right-btn">이전</button>
@@ -55,8 +55,13 @@
                 </div>-->
             </div>
         </div>
+        <div class="pay-modal">
+            <div class="pay-modal-display">결제 성ㅇ공</div>
+            <button id="pay-goHome">확인</button>
+        </div>
+    </div>
 
-        <script src="../js/pages/account.js"></script>
+    <script src="./account.js" type="module"></script>
 </body>
 
 </html>
