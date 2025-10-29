@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-}
-
-=======
->>>>>>> develop
 .login-container {
   width: 45%;
   height: 650px;
@@ -25,16 +10,6 @@ body {
 }
 
 .login-header {
-<<<<<<< HEAD
-    width: 100%;
-    height: 10%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    background-color: #45B37F;
-    color: #fff;
-=======
   width: 100%;
   height: 10%;
   display: flex;
@@ -43,7 +18,6 @@ body {
   padding: 0 20px;
   background-color: #45b37f;
   color: #fff;
->>>>>>> develop
 }
 
 .login-xBtn {
@@ -128,11 +102,10 @@ body {
 .verifyBtn.active,
 .verifyBtn2.active,
 .login-confirmBtn.active {
-    background-color: #666666;
-    color: #FFF;
-    cursor: pointer;
+  background-color: #666666;
+  color: #fff;
+  cursor: pointer;
 }
-
 
 .login-contentBside {
   width: 50%;
@@ -217,15 +190,10 @@ body {
   border: 1px solid #ccc;
 }
 
-<<<<<<< HEAD
-
-=======
 input[type='number'] {
   -moz-appearance: textfield;
   /* Firefox */
 }
->>>>>>> develop
-
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;

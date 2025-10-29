@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-let code = document.querySelectorAll('.ver-code')
-let arrCode = []
-code.forEach((item) => {
-    let num = 0
-    num = Math.floor(Math.random() * 10)
-    item.textContent = num
-    arrCode.push(num)
-})
-
-if (window.opener && !window.opener.closed) {
-    window.opener.codeNumber(arrCode)
-}
-
-
-=======
 function generateCode() {
   const codeEls = document.querySelectorAll('.ver-code');
   const arrCode = [];
@@ -38,4 +22,3 @@ function generateCode() {
 
 // 팝업 HTML에서 자동 실행되도록 window에 붙임
 window.addEventListener('DOMContentLoaded', generateCode);
->>>>>>> develop
