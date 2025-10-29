@@ -563,8 +563,8 @@ function createShowtimes() {
   const selected = shuffledTimes.slice(0, numOfShows);
 
   return selected.map((time, idx) => {
-    const total = 40;
-    const remain = total - Math.floor(Math.random() * 15); // 24~40 남음
+    const total = 98;
+    const remain = total - Math.floor(Math.random() * 15); // 84~98 남음
     const auditorium = `${(idx % 3) + 1}관`; // 1~3관
     return { time, auditorium, total, remain };
   });
