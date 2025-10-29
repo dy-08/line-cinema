@@ -26,4 +26,6 @@ body {
   line-height: 65px;
   border: 1px solid #ccc;
   border-radius: 10px;
+  font-size: 1.8rem;
+  font-weight: bold;
 }

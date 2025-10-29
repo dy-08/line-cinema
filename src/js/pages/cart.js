@@ -30,7 +30,7 @@ export class Cart {
     };
     this.account = null;
     this.status = 'idle'; // 'idle' → 'selecting' → 'identifying' → 'seating' → 'paying' → 'confirmed'
-    this.pricePerSeat = 11000;
+    this.pricePerSeat = 14000;
     this.amount = 0;
   }
 

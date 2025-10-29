@@ -131,7 +131,7 @@ export function init() {
     console.log('state:', state);
 
     const msg = document.getElementById('state-msg');
-    msg.innerHTML = '비회원 정보가 저장되었습니다.';
+    msg.innerHTML = '게스트 정보가 저장되었습니다.';
     msg.classList.add('up');
 
     loginInputs.forEach((el) => (el.value = ''));

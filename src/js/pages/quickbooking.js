@@ -137,6 +137,7 @@ function renderMoviesList() {
     movie.addEventListener('click', () => {
       // 페이지변경시 캘린더생성 -> 클릭하면 캘린더 생성 로직변경 (유저피드백 반영)
       createCalendar();
+
       // 🌟 매핑 완료
       uiState.isMovieSelected = true;
       // 세션스토리지에 저장되어있는 status만 업데이트
@@ -340,7 +341,7 @@ function renderConfirmModal() {
               >
             </div>
             <div class="quickbooking-modal-screen">SCREEN</div>
-            <div class="quickbooking-modal-app">HTML</div>
+            <div class="quickbooking-modal-app"></div>
             <div class="quickbooking-modal-ageMsg">
               <p class="quickbooking-ageMsg-top">
                 <span class="quickbooking-modal-limitAge ${getAgeClass(

@@ -7,14 +7,31 @@ async function handlePayment() {
   if (!state.payment) return;
   state.cart.setStatus('confirmed');
   save(STORAGE_KEYS.CART, state.cart);
-  localStorage.setItem(STORAGE_KEYS.CART, JSON.stringify(state.cart));
-  localStorage.setItem(STORAGE_KEYS.GUEST, JSON.stringify(state.guest));
-  localStorage.setItem(STORAGE_KEYS.PAYMENT, JSON.stringify(state.payment));
-  localStorage.setItem(
-    STORAGE_KEYS.SHOWTIMES,
-    JSON.stringify(state.showtimeMap)
-  );
-  localStorage.setItem(STORAGE_KEYS.MOVIELIST, JSON.stringify(state.movieList));
+
+  const booking = {
+    name: state.guest.name,
+    birth: state.guest.birth,
+    pw: state.guest.password,
+
+    title: state.cart.movie.title,
+    poster: state.cart.movie.poster_path,
+
+    date: state.cart.date.bookingDate,
+    day: state.cart.date.day,
+    time: state.cart.showtimes.time,
+    auditorium: state.cart.showtimes.auditorium,
+
+    seats: [...state.cart.seats.select],
+    amount: state.cart.amount,
+    pricePerSeat: state.cart.pricePerSeat,
+    totalPrice: state.cart.pricePerSeat * state.cart.amount,
+
+    bank: state.payment.bank,
+    accountNumber: state.payment.number,
+  };
+  console.log('마지막데이터:', booking);
+
+  localStorage.setItem(STORAGE_KEYS.BOOKING, JSON.stringify(booking));
 
   const { html } = await fetchPage('index');
   const app = document.getElementById('app');
