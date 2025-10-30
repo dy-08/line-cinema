@@ -21,11 +21,11 @@ body {
 }
 
 .ver-code {
-    margin-top: 10px;
-    text-align: center;
-    line-height: 65px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 1.8rem;
-    font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 65px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
