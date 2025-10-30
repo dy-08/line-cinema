@@ -1,120 +1,192 @@
-import { state } from './state.js';
+import { save, state, load } from './state.js';
+import { STORAGE_KEYS } from '../config/config.js';
+import { fetchPage, initSlider } from './main.js';
+import { fetchNowPlayingInKorea, renderDate } from './quickbooking.js';
 
-function getCart() {
-    const movImg = document.querySelector('.pay-movImg')
-    const posterPath = document.createElement('img')
-    posterPath.src = state.cart.movie.poster_path
-    posterPath.alt = 'img'
-    movImg.appendChild(posterPath)
+async function handlePayment() {
+  if (!state.payment) return;
+  state.cart.setStatus('confirmed');
+  save(STORAGE_KEYS.CART, state.cart);
 
-    const movTitle = document.querySelector('.pay-movTitle')
-    movTitle.textContent = state.cart.movie.title
+  const booking = {
+    name: state.guest.name,
+    birth: state.guest.birth,
+    pw: state.guest.password,
 
-    const bookingDate = document.getElementById('bookingDate')
-    bookingDate.textContent = state.cart.date.bookingDate
+    title: state.cart.movie.title,
+    poster: state.cart.movie.poster_path,
+    age: state.cart.movie.age,
 
-    const movDay = document.getElementById('movDay')
-    movDay.textContent = state.cart.date.day
-    console.log(movDay)
+    date: state.cart.date.bookingDate,
+    day: state.cart.date.day,
+    time: state.cart.showtimes.time,
+    auditorium: state.cart.showtimes.auditorium,
 
-    const movTime = document.getElementById('movTime')
-    movTime.textContent = state.cart.showtimes.time
+    seats: [...state.cart.seats.select],
+    amount: state.cart.amount,
+    pricePerSeat: state.cart.pricePerSeat,
+    totalPrice: state.cart.pricePerSeat * state.cart.amount,
 
-    const auditorium = document.getElementById('auditorium')
-    auditorium.textContent = state.cart.showtimes.auditorium
-}
-getCart()
+    bank: state.payment.bank,
+    accountNumber: state.payment.number,
+  };
+  console.log('마지막데이터:', booking);
 
-let bankInfo = document.querySelector('.pay-bankInfo')
-async function fetchAccounts() {
-    const res = await fetch('./account.json')
-    const data = await res.json()
-    const accountsData = data.accounts
-    let bankBtns = document.querySelectorAll('.pay-bankBtn')
+  localStorage.setItem(STORAGE_KEYS.BOOKING, JSON.stringify(booking));
 
-    accountsData.forEach((dItem) => {
-        let dataName = dItem.bank
-
-        bankBtns.forEach((bItem) => {
-            bItem.addEventListener('click', () => {
-                bankBtns.forEach((btns) => { btns.classList.remove('active') })
-                bItem.classList.add('active')
-                let bankName = bItem.textContent.trim()
-                if (bankName == dataName) {
-                    bankInfo.innerHTML = ''
-                    let bankCon = document.createElement('div')
-                    bankCon.className = 'pay-bankCon'
-
-                    let logoDiv = document.createElement('div')
-                    logoDiv.className = 'pay-logoBox'
-                    let logoImg = document.createElement('img')
-                    logoImg.className = 'pay-logoImg'
-                    logoImg.src = dItem.image
-                    logoImg.alt = dItem.bank
-
-                    let number = document.createElement('div')
-                    number.className = 'pay-number'
-                    number.innerHTML = `계좌번호: <strong>${dItem.number}</strong>`
-
-                    let holder = document.createElement('div')
-                    holder.className = 'pay-holder'
-                    holder.innerHTML = `예금주: ${dItem.holder}`
-
-                    let paymentBox = document.createElement('div')
-                    paymentBox.className = 'pay-paymentBox'
-
-                    let title = document.createElement('div')
-                    title.className = 'pay-right-title4'
-                    title.innerHTML = `최종결제금액`
-
-                    let pay = document.createElement('div')
-                    pay.className = 'pay-eval'
-                    pay.textContent = (state.cart.pricePerSeat * state.cart.seats.selectNumber.length).toLocaleString()
-                    let pay2 = document.createElement('sapn')
-                    pay2.className = 'pay-won'
-                    pay2.innerHTML = `원`
-
-                    let btnBox = document.createElement('div')
-                    btnBox.className = 'pay-right-btnBox'
-
-                    let btn = document.createElement('button')
-                    btn.className = 'pay-right-btn'
-                    btn.id = ''
-                    btn.innerHTML = '이전'
-
-                    let btn2 = document.createElement('button')
-                    btn2.className = 'pay-right-btn'
-                    btn2.classList.add('pay-right-btn2')
-                    btn2.innerHTML = `결제`
-
-                    btn2.addEventListener('click', btnClick)
-
-                    bankInfo.appendChild(bankCon)
-                    bankCon.appendChild(logoDiv)
-                    logoDiv.appendChild(logoImg)
-                    bankCon.appendChild(number)
-                    bankCon.appendChild(holder)
-                    bankCon.appendChild(paymentBox)
-                    paymentBox.appendChild(title)
-                    paymentBox.appendChild(pay)
-                    pay.appendChild(pay2)
-                    bankCon.appendChild(btnBox)
-                    btnBox.appendChild(btn)
-                    btnBox.appendChild(btn2)
-                }
-            })
-        })
-    })
+  const { html } = await fetchPage('index');
+  const app = document.getElementById('app');
+  app.innerHTML = html;
+  requestAnimationFrame(initSlider);
 }
 
-fetchAccounts()
+async function handleCancelPayment() {
+  state.cart.setStatus('selecting');
 
-function btnClick() {
-    let modal = document.querySelector('.pay-modal')
-    modal.style.display = 'block'
+  save(STORAGE_KEYS.CART, state.cart);
+
+  const { html } = await fetchPage('quickbooking');
+  const app = document.getElementById('app');
+  app.innerHTML = html;
+  setTimeout(() => {
+    fetchNowPlayingInKorea();
+    renderDate();
+  }, 1000);
 }
 
-let goHome = document.getElementById('pay-goHome')
-goHome.addEventListener('click', () => {
-    location.href = 'index.html'
-})
+function bindAccountPageEvents() {
+  const payBtn = document.querySelector('.account-btn-pay');
+  const cancelBtn = document.querySelector('.account-btn-cancel');
+
+  payBtn.addEventListener('click', handlePayment);
+  cancelBtn.addEventListener('click', handleCancelPayment);
+}
+
+function renderVirtualAccountDetails(selected) {
+  const container = document.querySelector('.virtual-account-info');
+  console.log(selected);
+  state.payment = selected;
+  container.classList.add('op');
+  return (container.innerHTML = `
+  <p><span class="bank-logo"><img src="${selected.image}" alt="${selected.bank}"></span>${selected.bank}</p>
+              <p>${selected.number}</p>
+              <p>${selected.holder}</p>`);
+}
+
+function bindAccountButtons(data) {
+  const buttons = document.querySelectorAll('.account-btns');
+  console.log(buttons);
+  buttons.forEach((item) => {
+    item.addEventListener('click', () => {
+      const bank = item.textContent.trim();
+      const selected = data.accounts.find((acc) => acc.bank === bank);
+      if (!selected) return;
+
+      renderVirtualAccountDetails(selected);
+    });
+  });
+}
+
+function createButtons(data) {
+  const container = document.querySelector('.account-btns-wrap');
+  const frag = document.createDocumentFragment();
+  container.innerHTML = '';
+
+  data.accounts.map((item) => {
+    const button = document.createElement('button');
+    button.textContent = item.bank;
+    button.className = 'account-btns';
+    frag.appendChild(button);
+  });
+  return container.appendChild(frag);
+}
+
+async function getVirtualAccountInfo() {
+  try {
+    const url = './public/json/account.json';
+    const res = await fetch(url);
+    const data = await res.json();
+    createButtons(data);
+    bindAccountButtons(data);
+  } catch (error) {
+    console.error('은행정보(가상계좌) 에러: ', error);
+  }
+}
+function renderPayInfo() {
+  const container = document.querySelector('.account-right-inner');
+  const totalPrice = (state.cart.pricePerSeat * state.cart.amount).toLocaleString();
+  return (container.innerHTML = `
+    <div>
+              <div>
+                <p class="account-text-md">결제금액</p>
+              </div>
+              <div class="account-top-wrap">
+                <div class="account-pay-top">
+                  <p>성인<span> ${state.cart.amount}</span></p>
+                  <p><span>${totalPrice}</span></p>
+                </div>
+                <div class="account-pay-top">
+                  <p>금액</p>
+                  <p><span>${totalPrice}</span> 원</p>
+                </div>
+              </div>
+            </div>
+            <div class="virtual-account-info">
+            </div>
+            <div>
+              <div class="account-pay-bottom">
+                <p>최종결제금액</p>
+                <p><span>${totalPrice}</span> 원</p>
+              </div>
+              <div class="account-pay-bottom">
+                <p>결제수단</p>
+                <p>가상계좌</p>
+              </div>
+            </div>`);
+}
+
+function renderAccountInfo() {
+  const container = document.querySelector('.account-info');
+  const seats = [...state.cart.seats.select];
+  const seat = seats.join(', ');
+  return (container.innerHTML = `
+    <div class="account-text-md">예매정보</div>
+            <div class="account-info-detail">
+              <div class="account-posterwrap">
+                <img class="account-poster" src="https://image.tmdb.org/t/p/w500${state.cart.movie.poster_path}" alt="${state.cart.movie.title}" />
+              </div>
+              <div>
+                <p class="account-info-title">${state.cart.movie.title}</p>
+                <p class="account-info-date">
+                  <span class="font-numeric">${state.cart.date.bookingDate}</span><span> (${state.cart.date.day})</span
+                  ><span> ${state.cart.showtimes.time}</span>
+                </p>
+                <p class="account-info-audi">
+                  <span>라인시네마</span>
+                  <span class="font-numeric">${state.cart.showtimes.auditorium}</span>
+                </p>
+                <p class="account-info-seat">
+                  <span>좌석</span>
+                  <span class="font-numeric">${seat}</span>
+                </p>
+                <p class="account-info-amount">
+                  성인<span class="font-numeric"> ${state.cart.amount}</span>
+                </p>
+              </div>
+            </div>
+    `);
+}
+
+function loadStorage() {
+  load(STORAGE_KEYS.CART, -1);
+  load(STORAGE_KEYS.GUEST, -1);
+  load(STORAGE_KEYS.MOVIELIST, -1);
+  load(STORAGE_KEYS.PAYMENT, -1);
+}
+export function initAccountPage() {
+  loadStorage();
+  renderAccountInfo();
+  renderPayInfo();
+  getVirtualAccountInfo();
+  bindAccountPageEvents();
+}

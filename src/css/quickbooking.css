@@ -125,6 +125,7 @@
 .quickbooking-inner {
   width: 1200px;
   margin: 0 auto;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -358,4 +359,17 @@ quickbooking-poster-wrap > img {
 
 .selected {
   background-color: #11111150;
+}
+
+.quickbooking-modal-app {
+  overflow: hidden;
+  background-image: url('../../public/img/ui/audi.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.quickbooking-text {
+  opacity: 0.85;
+  letter-spacing: 0.5px;
 }

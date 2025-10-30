@@ -1,67 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./account.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>account</title>
 </head>
 
 <body>
-    <div class="pay-container">
-        <div class="pay-leftCon">
-            <div class="pay-title1">결제하기</div>
-            <div class="pay-infoBox">
-                <div class="pay-title2">예매정보</div>
-                <div class="pay-movInfo">
-                    <div class="pay-movImg"></div>
-                    <div class="pay-movDes">
-                        <div class="pay-movTitle"></div>
-                        <p><span id="bookingDate"></span><span id="movDay"></span></p>
-                        <p id="movTime"></p>
-                        <p>라인시네마 <span id="auditorium"></span></p>
-                    </div>
+  <section id="account">
+    <div class="account-inner">
+      <div class="account-leftbox">
+        <div>
+          <p class="account-text-lg">결제하기</p>
+        </div>
+        <div class="account-info">
+          <!-- <div class="account-text-md">예매정보</div>
+            <div class="account-info-detail">
+              <div class="account-posterwrap">
+                <img class="account-poster" src="" alt="" />
+              </div>
+              <div>
+                <p class="account-info-title">반지의제왕:반지원정대</p>
+                <p class="account-info-date">
+                  <span class="font-numeric">2025.11.05</span><span> (수)</span
+                  ><span> 16:10</span>
+                </p>
+                <p class="account-info-audi">
+                  <span>라인시네마</span>
+                  <span class="font-numeric">1관</span>
+                </p>
+                <p class="account-info-audi">
+                  <span>좌석</span>
+                  <span class="font-numeric">A1</span>
+                </p>
+                <p class="account-info-amount">
+                  성인<span class="font-numeric"> 2</span>
+                </p>
+              </div>
+            </div> -->
+        </div>
+        <div class="account-pm">
+          <div>
+            <p class="account-text-md">결제수단</p>
+          </div>
+          <div class="account-btns-wrap">
+            <!-- <button class="account-btns">IBK기업은행</button>
+              <button class="account-btns">NH농협은행</button>
+              <button class="account-btns">우리은행</button>
+              <button class="account-btns">KB국민은행</button>
+              <button class="account-btns">신한은행</button> -->
+          </div>
+        </div>
+      </div>
+      <div class="account-rightbox">
+        <div class="account-right-inner">
+          <!-- <div>
+              <div>
+                <p class="account-text-md">결제금액</p>
+              </div>
+              <div class="account-top-wrap">
+                <div class="account-pay-top">
+                  <p>성인<span> 2</span></p>
+                  <p><span>38,000</span></p>
                 </div>
-            </div>
-            <div class="pay-title3">입금은행</div>
-            <div class="pay-btnGrid">
-                <button class="pay-bankBtn">IBK기업은행</button>
-                <button class="pay-bankBtn">NH농협은행</button>
-                <button class="pay-bankBtn">우리은행</button>
-                <button class="pay-bankBtn">KB국민은행</button>
-                <button class="pay-bankBtn">신한은행</button>
-                <button class="pay-bankBtn">KEB하나은행</button>
-                <button class="pay-bankBtn">씨티은행</button>
-                <button class="pay-bankBtn">SC제일은행</button>
-            </div>
-        </div>
-        <div class="pay-rightCon">
-            <div class="pay-right-title">무통장 입금</div>
-            <div class="pay-bankInfo">
-                <!-- <div class="pay-bankCon">
-                    <div class="pay-logoBox"><img class="pay-logoImg" src="f" />
-                    </div>
-                    <div class="pay-number">계좌번호: <strong> 123 - 456 - 789012</strong></div>
-                    <div class="pay-holder">예금주: ㈜라인시네마</div>
+                <div class="account-pay-top">
+                  <p>금액</p>
+                  <p><span>38,000</span> 원</p>
                 </div>
-                <div class="pay-paymentBox">
-                    <div class="pay-right-title4">결제금액</div>
-                    <div class="pay-eval">16,000<span class='pay-won'>원</span></div>
-                </div> 
-                <div class="pay-right-btnBox">
-                    <button class="pay-right-btn">이전</button>
-                    <button class="pay-right-btn pay-right-btn2">결제</button>
-                </div>-->
+              </div>
             </div>
+            <div class="virtual-account-info">
+              <p><span class="bank-logo"></span>KB국민은행</p>
+              <p>789-012-345678</p>
+              <p>㈜라인시네마</p>
+            </div>
+            <div>
+              <div class="account-pay-bottom">
+                <p>최종결제금액</p>
+                <p><span>38,000</span> 원</p>
+              </div>
+              <div class="account-pay-bottom">
+                <p>결제수단</p>
+                <p>가상계좌</p>
+              </div>
+            </div> -->
         </div>
-        <div class="pay-modal">
-            <div class="pay-modal-display">결제 성ㅇ공</div>
-            <button id="pay-goHome">확인</button>
+        <div class="account-right-btns">
+          <button class="account-btn-cancel">취소</button>
+          <button class="account-btn-pay">결제</button>
         </div>
+      </div>
     </div>
-
-    <script src="./account.js" type="module"></script>
+  </section>
 </body>
 
 </html>
