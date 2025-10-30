@@ -30,14 +30,17 @@ async function handlePayment() {
         bank: state.payment.bank,
         accountNumber: state.payment.number,
     };
-    console.log('마지막데이터:', booking);
-
     localStorage.setItem(STORAGE_KEYS.BOOKING, JSON.stringify(booking));
 
-    const { html } = await fetchPage('index');
+    let { html } = await fetchPage('payment-loading');
     const app = document.getElementById('app');
     app.innerHTML = html;
-    requestAnimationFrame(initSlider);
+    setTimeout(async () => {
+        let { html } = await fetchPage('index');
+        const app = document.getElementById('app');
+        app.innerHTML = html;
+        requestAnimationFrame(initSlider);
+    }, 5000);
 }
 
 async function handleCancelPayment() {

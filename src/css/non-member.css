@@ -1,225 +1,218 @@
 .login-container {
-  width: 45%;
-  height: 650px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid #ccc;
+    width: 45%;
+    height: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #ccc;
 }
 
 .login-header {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  background-color: #45b37f;
-  color: #fff;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #45b37f;
+    color: #fff;
 }
 
 .login-xBtn {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .login-content {
-  width: 97%;
-  height: 60%;
-  display: flex;
-  gap: 10px;
+    width: 97%;
+    height: 60%;
+    display: flex;
+    gap: 10px;
 }
 
 .login-contentAside {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  background-color: #f3f4f6;
-  border-radius: 10px;
-  padding: 10px 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    background-color: #f3f4f6;
+    border-radius: 10px;
+    padding: 10px 0;
 }
 
 .login-texts {
-  width: 27%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
+    width: 27%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 }
 
 .login-texts div {
-  height: 40px;
-  padding-left: 10px;
-  padding-top: 8px;
+    height: 40px;
+    padding-left: 10px;
+    padding-top: 8px;
 }
 
 .login-inputs {
-  width: 75%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 }
 
 .login-input {
-  width: 70%;
-  height: 40px;
-  padding-left: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
+    width: 70%;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
 }
 
 .login-warnmsg {
-  width: 70%;
-  font-size: 12px;
-  padding-top: 1px;
-  padding-left: 10px;
-  color: #e81002;
+    width: 70%;
+    font-size: 12px;
+    padding-top: 1px;
+    padding-left: 10px;
+    color: #e81002;
 }
 
 .login-input:hover {
-  border: 1px solid #555;
+    border: 1px solid #555;
 }
 
 .login-inputs button {
-  height: 38px;
-  padding: 0 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+    height: 38px;
+    padding: 0 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .verifyBtn.active,
 .verifyBtn2.active,
 .login-confirmBtn.active {
-  background-color: #666666;
-  color: #fff;
-  cursor: pointer;
-}
-
-.verifyBtn.active,
-.verifyBtn2.active,
-.login-confirmBtn.active {
-  background-color: #666666;
-  color: #fff;
-  cursor: pointer;
+    background-color: #666666;
+    color: #fff;
+    cursor: pointer;
 }
 
 .login-contentBside {
-  width: 50%;
-  height: 100%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+    width: 50%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }
 
 .login-bside-title {
-  width: 100%;
-  height: 15%;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-  border-bottom: 1px solid #ccc;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-bottom: 1px solid #ccc;
 }
 
 .login-bside-contents {
-  width: 100%;
-  height: 85%;
-  margin-top: 10px;
+    width: 100%;
+    height: 85%;
+    margin-top: 10px;
 }
 
 .login-bside-texts {
-  color: rgb(80, 79, 79);
-  font-size: 15px;
-  padding-left: 10px;
-  padding-top: 10px;
+    color: rgb(80, 79, 79);
+    font-size: 15px;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .login-bside-black {
-  color: #333;
-  font-size: 17px;
+    color: #333;
+    font-size: 17px;
 }
 
 .login-bside-radio {
-  width: 95%;
-  height: 50px;
-  background-color: #f3f4f6;
-  margin: 20px auto;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding-left: 10px;
+    width: 95%;
+    height: 50px;
+    background-color: #f3f4f6;
+    margin: 20px auto;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 10px;
 }
 
 .login-radio-div > * {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #agree,
 #disagree:checked {
-  accent-color: #0187bc;
+    accent-color: #0187bc;
 }
 
 .login-bside-p {
-  padding-left: 10px;
-  padding-top: 20px;
-  font-size: 14px;
-  color: #0187bc;
+    padding-left: 10px;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #0187bc;
 }
 
 .login-footer {
-  width: 97%;
-  height: 20%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding-left: 10px;
+    width: 97%;
+    height: 20%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-left: 10px;
 }
 
 .login-footer-text {
-  list-style-position: inside;
-  line-height: 1.2;
-  padding-top: 10px;
-  font-size: 15px;
+    list-style-position: inside;
+    line-height: 1.2;
+    padding-top: 10px;
+    font-size: 15px;
 }
 
 .login-confirmBtn {
-  padding: 5px 20px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 input[type='number'] {
-  -moz-appearance: textfield;
-  /* Firefox */
+    -moz-appearance: textfield;
+    /* Firefox */
 }
+
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  /* Chrome, Edge, Safari */
-  margin: 0;
+    -webkit-appearance: none;
+    /* Chrome, Edge, Safari */
+    margin: 0;
 }
 
 #state-msg {
-  position: absolute;
-  width: 200px;
-  height: 80px;
-  line-height: 80px;
-  background-color: #fafafa;
-  border-radius: 4px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
-  transition: all 0.5s linear;
-  left: 50%;
-  top: 50%;
-  z-index: 300;
-  transform: translate(-50%, -50%);
-  display: none;
-  color: #2b2b2b;
-  font-size: var(--font-size-sm);
-  text-align: center;
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    line-height: 80px;
+    background-color: #fafafa;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s linear;
+    left: 50%;
+    top: 50%;
+    z-index: 300;
+    transform: translate(-50%, -50%);
+    display: none;
+    color: #2b2b2b;
+    font-size: var(--font-size-sm);
+    text-align: center;
 }
 
 #state-msg.up {
-  display: block;
+    display: block;
 }
