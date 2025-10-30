@@ -72,8 +72,10 @@ export async function initMapPage() {
         map.setBounds(bounds);
     }
 
+    // 교통정보
     map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 
+    // UI 이벤트(해당 페이지 DOM이 이미 존재할 때만)
     const searchBtn = document.getElementById('searchBtn');
     const keywordInput = document.getElementById('keyword');
     if (searchBtn && keywordInput) {
@@ -93,10 +95,12 @@ export async function initMapPage() {
         });
     });
 
+    // 날씨 + 시계 (이 페이지에서만 DOM이 있을 때만)
     initWeatherWidgets();
     initClock();
 }
 
+/** 카카오 SDK 로드 보장 */
 function ensureKakaoLoaded() {
     return new Promise((resolve, reject) => {
         const w = window;
@@ -104,9 +108,11 @@ function ensureKakaoLoaded() {
             w.kakao.maps.load(() => resolve(w.kakao));
             return;
         }
+        // 스크립트를 index.html에 넣었다면 autoload=false 이므로:
         if (w.kakao && w.kakao.maps) {
             w.kakao.maps.load(() => resolve(w.kakao));
         } else {
+            // 혹시 스크립트가 아직 주입되지 않았다면 동적 주입 (예비안)
             const src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_APP_KEY&libraries=services&autoload=false';
             const el = document.createElement('script');
             el.src = src;
