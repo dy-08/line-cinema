@@ -1,10 +1,10 @@
-input[type="number"] {
+input[type='number'] {
     -moz-appearance: textfield;
     /* Firefox */
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
     /* Chrome, Edge, Safari */
     margin: 0;
@@ -27,7 +27,6 @@ input[type="number"]::-webkit-inner-spin-button {
     margin-top: 50px;
     padding: 10px 0;
 }
-
 
 .inq-leftContent {
     width: 50%;
@@ -137,12 +136,11 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .inq-price-total {
-    color: #45B37F;
+    color: #45b37f;
     font-size: 21px;
     font-weight: 500;
     margin-right: 4px;
 }
-
 
 .inq-rightContent {
     width: 50%;
@@ -173,7 +171,6 @@ input[type="number"]::-webkit-inner-spin-button {
     gap: 20px;
 }
 
-
 .inq-user-inputBox {
     width: 100%;
     display: flex;
@@ -189,7 +186,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .inq-user-inputBox input:focus {
-    border: 1px solid #45B37F;
+    border: 1px solid #45b37f;
     outline: none;
 }
 
@@ -197,7 +194,7 @@ input[type="number"]::-webkit-inner-spin-button {
     margin-top: 50px;
     border: none;
     border-radius: 10px;
-    background-color: #45B37F;
+    background-color: #45b37f;
     color: white;
     padding: 10px 0;
 }
