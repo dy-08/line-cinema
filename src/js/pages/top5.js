@@ -123,6 +123,7 @@ export async function fetchTop5Data3() {
 }
 
 function dragAble(a) {
+  let title = a.parentElement.previousElementSibling;
   let down = false,
     transX = 0,
     pointX = 0;
@@ -132,6 +133,7 @@ function dragAble(a) {
     pointX = e.clientX;
     e.preventDefault();
     a.style.cursor = 'grabbing';
+    title.classList.add('active')
   });
 
   window.addEventListener('mousemove', (e) => {
@@ -140,7 +142,7 @@ function dragAble(a) {
     pointX = e.clientX;
     transX += deltaX;
     const parentWidth = a.parentElement.offsetWidth;
-    const aWidth = a.scrollWidth;
+    const aWidth = a.scrollWidth + 10;
     const minX = parentWidth - aWidth;
     transX = Math.max(minX, Math.min(0, transX));
     a.style.transform = `translateX( ${transX}px)`;
@@ -149,6 +151,7 @@ function dragAble(a) {
   window.addEventListener('mouseup', (e) => {
     down = false;
     a.style.cursor = '';
+    title.classList.remove('active');
   });
 }
 

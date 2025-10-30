@@ -1,4 +1,3 @@
-import { API_KEYS } from '../config/config.js'; // 키 요청
 import { eventNow } from './eventnow.js';
 import { premiere } from './premiere.js';
 import { eventHot } from './hotevent.js';
@@ -10,8 +9,11 @@ import {
 } from './top5.js';
 import { fetchNowplayingData } from './nowplaying.js';
 import { fetchUpcomingData } from './upcoming.js';
+import { fetchNowPlayingInKorea, renderDate } from './quickbooking.js';
+import { state, save, load } from './state.js';
+import { API_KEYS, STORAGE_KEYS } from '../config/config.js'; // 키 요청
 
-// 네비게이션 효과
+// 네비게이션 hover 효과
 const navi = document.querySelectorAll('.header-navi-main');
 let current = '';
 navi.forEach((item) => {
@@ -46,15 +48,12 @@ async function tmdb() {
     console.error(e);
   }
 }
-tmdb();
+// tmdb();
 
 async function renderPage({ html, index = false }) {
-  if (index) {
-    console.log('index!');
-  }
   document.getElementById('app').innerHTML = await html;
 }
-async function fetchPage(page) {
+export async function fetchPage(page) {
   try {
     const isIndex = page === 'index';
 
@@ -81,6 +80,7 @@ async function fetchPage(page) {
 document.querySelectorAll('.header-navi-sub').forEach((item) =>
   item.addEventListener('click', async (e) => {
     const page = e.target.dataset.page.slice(6);
+
     const { html } = await fetchPage(page);
 
     if (!html) return;
@@ -109,6 +109,12 @@ document.querySelectorAll('.header-navi-sub').forEach((item) =>
     }
     if (page === 'upcoming') {
       fetchUpcomingData();
+    }
+    if (page === 'quickbooking') {
+      state.cart.setStatus('selecting');
+      save(STORAGE_KEYS.CART, state.cart);
+      fetchNowPlayingInKorea();
+      renderDate();
     }
   })
 );
@@ -142,7 +148,13 @@ document.querySelectorAll('.header-navi-default').forEach((item) =>
       fetchNowplayingData();
     }
     if (page === 'upcoming') {
-      fetchUpcomingData();
+      fetchNowPlayingInKorea();
+    }
+    if (page === 'quickbooking') {
+      state.cart.setStatus('selecting');
+      save(STORAGE_KEYS.CART, state.cart);
+      fetchNowPlayingInKorea();
+      renderDate();
     }
   })
 );
@@ -172,7 +184,7 @@ const observer = new IntersectionObserver((entries) => {
 observer.observe(sentinel);
 
 // 지유님: 슬라이더 작업섹션
-function initSlider() {
+export function initSlider() {
   let count = 1;
   let imgBox = document.querySelector('.main-inBox-imgbox');
   let imgTotal = document.querySelectorAll(
@@ -237,67 +249,5 @@ function initSlider() {
   window.tend = tend;
 }
 initSlider();
-  window.onload = function(){
-    let count = 1;
-    let imgBox = document.querySelector(".main-inBox-imgbox");
-    let imgTotal = document.querySelectorAll(".main-inBox-imgbox .main-img").length;
-    let imgSize = 100 / imgTotal;
 
-    let autoSlide; // 자동 슬라이드 타이머
-
-    function show(){
-      imgBox.style.transform = `translateX(${-imgSize * count}%)`;
-    }
-
-    function leftf(){
-      count--;
-      show();
-      resetAutoSlide(); 
-    }
-
-    function rightf(){
-      count++;
-      show();
-      resetAutoSlide(); 
-    }
-
-    function tend(){
-      // 양끝 이미지 복제 구간 처리
-      if(count >= imgTotal - 1){
-        imgBox.style.transition = "none";
-        count = 1;
-        show();
-        imgBox.offsetWidth; // 리렌더링
-        imgBox.style.transition = "all 0.5s linear";
-      } else if(count <= 0){
-        imgBox.style.transition = "none";
-        count = imgTotal - 2;
-        show();
-        imgBox.offsetWidth;
-        imgBox.style.transition = "all 0.5s linear";
-      }
-    }
-
-    // 자동 슬라이드 
-    function startAutoSlide(){
-      autoSlide = setInterval(() => {
-        count++;
-        show();
-      }, 5000); // 초 간격
-    }
-
-    // 클릭 시 자동 슬라이드 잠시 멈췄다가 다시 시작
-    function resetAutoSlide(){
-      clearInterval(autoSlide);
-      startAutoSlide();
-    }
-
-    show();
-    startAutoSlide();
-
-    window.leftf = leftf;
-    window.rightf = rightf;
-    window.tend = tend;
-  }
-
-// 철원님: 랭킹 작업섹션
+console.log(state);

@@ -4,97 +4,148 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>quickbooking</title>
-    <link rel="stylesheet" href="../../public/css/reset.css" />
-    <link rel="stylesheet" href="../../public/css/global.css" />
-    <link rel="stylesheet" href="../css/quickbooking.css" />
   </head>
   <body>
-    <section id="quickbooking">
+    <section id="quickbooking" class="u-pad">
+      <p class="quickbooking-text">영화를 선택하면, 이야기가 시작됩니다.</p>
       <div class="quickbooking-inner">
         <div class="quickbooking-trailer">
           <div class="quickbooking-trailer-movie"><p>트레일러</p></div>
           <div class="quickbooking-trailer-wrap">
-            <iframe
+            <!-- &mute=1 -->
+            <!-- <iframe
               width="100%"
               height="300"
-              src="https://www.youtube.com/embed/s3eAvecBz9c?autoplay=1&mute=1&loop=1&playlist=s3eAvecBz9c&controls=0"
-              title="퍼스트 라이드 예고편"
-              allow="autoplay; encrypted-media"
+              src="https://www.youtube.com/embed/PWt0FWDC--U?autoplay=1&rel=0&modestbranding=1&controls=0"
+              title="[트론: 아레스] 30초 비주얼 예고편"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
-            ></iframe>
+            ></iframe> -->
           </div>
           <div class="quickbooking-poster-wrap">
-            <img
+            <!-- <img
               src="https://cdn.cgv.co.kr//cgvpomsfilm/Movie/Thumbnail/Poster/030000/30000114/30000114_320.jpg"
               alt="퍼스트 라이드 포스터"
-            />
+            /> -->
           </div>
         </div>
         <div class="quickbooking-movie-wrap">
           <div class="quickbooking-movie-list"><p>영화 선택</p></div>
-          <div class="quickbooking-movie-item">
-            <a href="#"
-              ><span class="quickbooking-movie-limitAge font-numeric">12</span>
-              <span class="quickbooking-movie-title">퍼스트 라이드</span></a
-            >
+          <div id="quickbooking-movie-itemWrap">
+            <!-- <div class="quickbooking-movie-item">
+              <a href="#"
+                ><span class="quickbooking-movie-limitAge font-numeric"
+                  >12</span
+                >
+                <span class="quickbooking-movie-title">퍼스트 라이드</span></a
+              >
+            </div> -->
           </div>
         </div>
         <div class="quickbooking-date-wrap">
           <div class="quickbooking-current-date font-numeric">
-            <p>2025-10-21(오늘)</p>
+            <!-- <p>2025-10-21(오늘)</p> -->
           </div>
           <div class="quickbooking-calendar-list">
             <div class="quickbooking-calendar">
-              <div class="quickbooking-current--active">10월</div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric current">
-                  21
+              <div class="quickbooking-current--active"><!--10월--></div>
+              <!-- wrap -->
+              <div class="quickbooking-calendar-itemWrap">
+                <!-- item -->
+                <!-- <div class="quickbooking-calendar-item">
+                  <div class="quickbooking-calendar-date font-numeric current">
+                    21
+                  </div>
+                  <div class="quickbooking-calendar-day">수</div>
                 </div>
-                <div class="quickbooking-calendar-day">수</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">22</div>
-                <div class="quickbooking-calendar-day">목</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">23</div>
-                <div class="quickbooking-calendar-day">금</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">24</div>
-                <div class="quickbooking-calendar-day sat">토</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">25</div>
-                <div class="quickbooking-calendar-day sun">일</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">26</div>
-                <div class="quickbooking-calendar-day">월</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">27</div>
-                <div class="quickbooking-calendar-day">화</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">28</div>
-                <div class="quickbooking-calendar-day">수</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">29</div>
-                <div class="quickbooking-calendar-day">목</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">30</div>
-                <div class="quickbooking-calendar-day">금</div>
-              </div>
-              <div class="quickbooking-calendar-item">
-                <div class="quickbooking-calendar-date font-numeric">31</div>
-                <div class="quickbooking-calendar-day sat">토</div>
+                <div class="quickbooking-calendar-item">
+                  <div class="quickbooking-calendar-date font-numeric">22</div>
+                  <div class="quickbooking-calendar-day">목</div>
+                </div>
+                <div class="quickbooking-calendar-item">
+                  <div class="quickbooking-calendar-date font-numeric">23</div>
+                  <div class="quickbooking-calendar-day">금</div>
+                </div>
+                <div class="quickbooking-calendar-item">
+                  <div class="quickbooking-calendar-date font-numeric">24</div>
+                  <div class="quickbooking-calendar-day sat">토</div>
+                </div>
+                <div class="quickbooking-calendar-item">
+                  <div class="quickbooking-calendar-date font-numeric">25</div>
+                  <div class="quickbooking-calendar-day sun">일</div>
+                </div> -->
               </div>
             </div>
           </div>
-          <div class="quickbooking-date-list">시간선택</div>
+          <div class="quickbooking-date-list">
+            <div class="quickbooking-date-movieInfo">
+              <!-- <span class="quickbooking-movie-limitAge font-numeric age-15"
+                >15</span
+              >
+              <span><strong>빅 볼드 뷰티폴</strong></span> -->
+            </div>
+            <div class="quickbooking-date-itemWrap">
+              <!-- <div class="quickbooking-date-item">
+                <div class="quickbooking-date-top">
+                  <div class="quickbooking-startTime font-numeric">09:50</div>
+                </div>
+                <div class="quickbooking-date-bottom">
+                  <div class="quickbooking-seats">
+                    <span class="quickbooking-remainingSeats font-numeric"
+                      >40</span
+                    >&#47;<span class="quickbooking-totalSeats font-numeric"
+                      >40</span
+                    >
+                  </div>
+                  <span class="quickbooking-screenNumber font-numeric"
+                    >1관</span
+                  >
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- confirm Modal -->
+      <div id="quickbooking-modal-app">
+        <!-- <div class="quickbooking-confirm-modal">
+          <div class="quickbooking-modal-header">
+            <div class="quickbooking-modal-date">
+              <span>showtimes.time</span> <span>showtimes.auditorium</span>
+            </div>
+            <div class="quickbooking-header-X"><a href="#">X</a></div>
+          </div>
+          <div class="quickbooking-modal-body">
+            <div class="quickbooking-modal-seat">
+              <span class="quickbooking-modal-remainText">잔여좌석</span
+              ><span class="quickbooking-modal-remain font-numeric"
+                >showtimes.remain</span
+              ><span class="quickbooking-modal-total font-numeric"
+                >showtimes.total</span
+              >
+            </div>
+            <div class="quickbooking-modal-screen">SCREEN</div>
+            <div class="quickbooking-modal-app">HTML</div>
+            <div class="quickbooking-modal-ageMsg">
+              <p class="quickbooking-ageMsg-top">
+                <span class="quickbooking-modal-limitAge">15</span
+                ><span
+                  >본 영화는 <span>15세 이상 관람가</span> 영화입니다.</span
+                >
+              </p>
+              <p class="quickbooking-ageMsg-bottom">
+                15세 미만 고객님(영, 유아 포함)은 반드시 성인 보호자 동반 하에
+                관람이 가능합니다.<span class="u-br"></span>연령 확인 불가 시
+                입장이 제한될 수 있습니다.
+              </p>
+            </div>
+            <div class="quickbooking-modal-btns">
+              <button class="quickbooking-btn--cancel">취소</button>
+              <button class="quickbooking-btn--continue">인원/좌석선택</button>
+            </div>
+          </div> -->
         </div>
       </div>
     </section>
