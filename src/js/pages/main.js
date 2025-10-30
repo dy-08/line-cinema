@@ -8,6 +8,7 @@ import { fetchNowPlayingInKorea, renderDate } from './quickbooking.js';
 import { state, save, load } from './state.js';
 import { API_KEYS, STORAGE_KEYS } from '../config/config.js'; // 키 요청
 import { inquiryGuest } from '../pages/bookingcheck.js';
+import { initMapPage } from './map.js';
 
 // 네비게이션 hover 효과
 const navi = document.querySelectorAll('.header-navi-main');
@@ -152,6 +153,9 @@ document.querySelectorAll('.header-navi-default').forEach((item) =>
             save(STORAGE_KEYS.CART, state.cart);
             fetchNowPlayingInKorea();
             renderDate();
+        }
+        if (page === 'map') {
+            requestAnimationFrame(initMapPage);
         }
     })
 );
