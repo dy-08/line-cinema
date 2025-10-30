@@ -13,49 +13,92 @@
     <link rel="stylesheet" href="../css/map.css" />
   </head>
   <body>
-    <section class="map-sec1"></section>
-
-    <section class="map-sec2">
-      <div class="map-outbox">
+    <div class="map-wrap">
+      <div class="map-contents">
+        <h1>LINE CINEMA 오시는 길 안내</h1>
         <div class="map-aside">
-          <h2>찾아 오시는 길</h2>
-          <p>LINE CINEMA에 오시는 길을 안내</p>
-          <p>경기 안산시 단원구 고잔2길 45 코스모프라자 6층</p>
-          <div class="map-kewordBox">
+          <div class="map-search-wrap">
             <input
               class="map-input"
               type="text"
               id="keyword"
               placeholder="지역명+키워드(예 : 안산 중앙역 맛집)"
             />
-            <!-- <button class="map-btn" id="searchBtn"><i class="bi bi-search"></i> </button> -->
-          </div>
-
-          <div id="map"></div>
-          <div class="map-textBox">
-            <button type="button" data-keyword="서울 맛집" class="map-btn">
-              서울 맛집
+            <button type="button" id="searchBtn" aria-label="검색">
+              <i class="bi bi-search"></i>
             </button>
+          </div>
+          <div class="map-kewordBox">
+            <button
+              type="button"
+              data-keyword="안산 중앙동 맛집"
+              class="map-btn"
+            >
+              안산 중앙동 맛집
+            </button>
+
             <button type="button" data-keyword="안산 맛집" class="map-btn">
               안산 맛집
             </button>
+
             <button type="button" data-keyword="안산 카페" class="map-btn">
               안산 카페
             </button>
+
             <button type="button" data-keyword="안산 지하철역" class="map-btn">
               안산 지하철역
             </button>
-            <button type="button" data-keyword="광주 맛집" class="map-btn">
-              광주 맛집
+
+            <button
+              type="button"
+              data-keyword="안산 데이트 장소"
+              class="map-btn"
+            >
+              안산 데이트 장소
             </button>
           </div>
         </div>
+        <div id="map"></div>
       </div>
-      <!-- <h4>🚗 주차</h4>
-      <p>영화 관람 고객 3시간 무료</p> -->
-    </section>
+      <!-- 날씨 api -->
+      <div class="map-weather">
+        <div class="map-api-wrap">
+          <br />
+          <h3>안산</h3>
+          <div id="map-time-wrap">
+            <span id="map-day">date</span>
+            <br />
+            <span id="map-time">zz</span>
+          </div>
 
-    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b44fd652bbfd036d382bdbe44f110976&libraries=services,clusterer,drawing&autoload=false"></script>
+          <br />
+          <div class="map-weather-icon">
+            <span class="weather-title"
+              >Current Weather
+              <div class="weather-values" id="map-weather-des"></div>
+              <img class="weather-icon" id="map-weather-icon" src="" alt="" />
+            </span>
+          </div>
+
+          <div class="map-weather-container">
+            <div class="map-weather-desBox">
+              <span class="weather-title">
+                Temperature
+                <br />
+                <div class="weather-values" id="map-weather-temp"></div>
+              </span>
+              <span class="weather-title">
+                Wind speed
+                <br />
+                <div class="weather-values" id="map-weather-wind"></div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b44fd652bbfd036d382bdbe44f110976&libraries=services,clusterer,drawing&autoload=false"></script>
+    </div>
     <script src="../js/pages/map.js" type="module"></script>
   </body>
 </html>
