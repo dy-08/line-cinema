@@ -1,104 +1,83 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>map</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="../../public/css/reset.css" />
-    <link rel="stylesheet" href="../../public/css/global.css" />
-    <link rel="stylesheet" href="../css/map.css" />
-  </head>
-  <body>
-    <div class="map-wrap">
-      <div class="map-contents">
-        <h1>LINE CINEMA 오시는 길 안내</h1>
-        <div class="map-aside">
-          <div class="map-search-wrap">
-            <input
-              class="map-input"
-              type="text"
-              id="keyword"
-              placeholder="지역명+키워드(예 : 안산 중앙역 맛집)"
-            />
-            <button type="button" id="searchBtn" aria-label="검색">
-              <i class="bi bi-search"></i>
-            </button>
-          </div>
-          <div class="map-kewordBox">
-            <button
-              type="button"
-              data-keyword="안산 중앙동 맛집"
-              class="map-btn"
-            >
-              안산 중앙동 맛집
-            </button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>map</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="../../public/css/reset.css" />
+        <link rel="stylesheet" href="../../public/css/global.css" />
+        <link rel="stylesheet" href="../css/map.css" />
+    </head>
+    <body>
+        <div class="map-wrap">
+            <div class="map-contents">
+                <h1>LINE CINEMA 오시는 길 안내</h1>
+                <div class="map-aside">
+                    <div class="map-search-wrap">
+                        <input
+                            class="map-input"
+                            type="text"
+                            id="keyword"
+                            placeholder="지역명+키워드(예 : 안산 중앙역 맛집)"
+                        />
+                        <button type="button" id="searchBtn" aria-label="검색">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <div class="map-kewordBox">
+                        <button type="button" data-keyword="안산 중앙동 맛집" class="map-btn">안산 중앙동 맛집</button>
 
-            <button type="button" data-keyword="안산 맛집" class="map-btn">
-              안산 맛집
-            </button>
+                        <button type="button" data-keyword="안산 맛집" class="map-btn">안산 맛집</button>
 
-            <button type="button" data-keyword="안산 카페" class="map-btn">
-              안산 카페
-            </button>
+                        <button type="button" data-keyword="안산 카페" class="map-btn">안산 카페</button>
 
-            <button type="button" data-keyword="안산 지하철역" class="map-btn">
-              안산 지하철역
-            </button>
+                        <button type="button" data-keyword="안산 지하철역" class="map-btn">안산 지하철역</button>
 
-            <button
-              type="button"
-              data-keyword="안산 데이트 장소"
-              class="map-btn"
-            >
-              안산 데이트 장소
-            </button>
-          </div>
-        </div>
-        <div id="map"></div>
-      </div>
-      <!-- 날씨 api -->
-      <div class="map-weather">
-        <div class="map-api-wrap">
-          <br />
-          <h3>안산</h3>
-          <div id="map-time-wrap">
-            <span id="map-day">date</span>
-            <br />
-            <span id="map-time">zz</span>
-          </div>
-
-          <br />
-          <div class="map-weather-icon">
-            <span class="weather-title"
-              >Current Weather
-              <div class="weather-values" id="map-weather-des"></div>
-              <img class="weather-icon" id="map-weather-icon" src="" alt="" />
-            </span>
-          </div>
-
-          <div class="map-weather-container">
-            <div class="map-weather-desBox">
-              <span class="weather-title">
-                Temperature
-                <br />
-                <div class="weather-values" id="map-weather-temp"></div>
-              </span>
-              <span class="weather-title">
-                Wind speed
-                <br />
-                <div class="weather-values" id="map-weather-wind"></div>
-              </span>
+                        <button type="button" data-keyword="안산 데이트 장소" class="map-btn">안산 데이트 장소</button>
+                    </div>
+                </div>
+                <div id="map"></div>
             </div>
-          </div>
-        </div>
-      </div>
+            <!-- 날씨 api -->
+            <div class="map-weather">
+                <div class="map-api-wrap">
+                    <br />
+                    <h3>안산</h3>
+                    <div id="map-time-wrap">
+                        <span id="map-day">date</span>
+                        <br />
+                        <span id="map-time">zz</span>
+                    </div>
 
-      <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b44fd652bbfd036d382bdbe44f110976&libraries=services,clusterer,drawing&autoload=false"></script>
-    </div>
-    <script src="../js/pages/map.js" type="module"></script>
-  </body>
+                    <br />
+                    <div class="map-weather-icon">
+                        <span class="weather-title"
+                            >Current Weather
+                            <div class="weather-values" id="map-weather-des"></div>
+                            <img class="weather-icon" id="map-weather-icon" src="" alt="" />
+                        </span>
+                    </div>
+
+                    <div class="map-weather-container">
+                        <div class="map-weather-desBox">
+                            <span class="weather-title">
+                                Temperature
+                                <br />
+                                <div class="weather-values" id="map-weather-temp"></div>
+                            </span>
+                            <span class="weather-title">
+                                Wind speed
+                                <br />
+                                <div class="weather-values" id="map-weather-wind"></div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b44fd652bbfd036d382bdbe44f110976&libraries=services,clusterer,drawing&autoload=false"></script>
+        </div>
+        <script src="../js/pages/map.js" type="module"></script>
+    </body>
 </html>
