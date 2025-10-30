@@ -1,137 +1,114 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-
-<body>
-  <div class="u-pad">
-    <div class="login-container">
-      <div id="state-msg" class="state-msg"></div>
-      <div class="login-header">
-        <div>비회원 로그인</div>
-      </div>
-      <div class="login-content">
-        <div class="login-contentAside">
-          <div class="login-texts">
-            <div>이름</div>
-            <div>생년월일</div>
-            <div>휴대폰번호</div>
-            <div>인증번호</div>
-            <div>비밀번호</div>
-            <div>비밀번호 확인</div>
-          </div>
-          <div class="login-inputs">
-            <input id="loginName" class="login-input" type="text" placeholder="이름" />
-            <input id="loginBirth" class="login-input" type="number" placeholder="생년월일 앞6자리" />
-            <div>
-              <div>
-                <div>
-                  <input
-                    id="loginNumber"
-                    class="login-input"
-                    type="number"
-                    placeholder="- 없이 입력"
-                  />
-                  <button class="verifyBtn" id="verifyBtn">인증요청</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    </head>
+    <body>
+        <div class="u-pad">
+            <div class="login-container">
+                <div id="state-msg" class="state-msg"></div>
+                <div class="login-header">
+                    <div>비회원 로그인</div>
                 </div>
-                <div id="loginWarn" class="login-warnmsg"></div>
-              </div>
-              <div>
-                <input id="loginVerify" class="login-input" type="number" />
-                <button class="verifyBtn2" id="verifyBtn2">확인</button>
-              </div>
-              <input
-                id="loginPassword"
-                class="login-input"
-                type="number"
-                placeholder="비밀번호(숫자 4자리)"
-              />
-              <div>
-                <input
-                  id="loginPassword2"
-                  class="login-input"
-                  type="number"
-                  placeholder="비밀번호(숫자 4자리) 확인"
-                />
-                <div id="loginWarn2" class="login-warnmsg"></div>
-              </div>
+                <div class="login-content">
+                    <div class="login-contentAside">
+                        <div class="login-texts">
+                            <div>이름</div>
+                            <div>생년월일</div>
+                            <div>휴대폰번호</div>
+                            <div>인증번호</div>
+                            <div>비밀번호</div>
+                            <div>비밀번호 확인</div>
+                        </div>
+                        <div class="login-inputs">
+                            <input id="loginName" class="login-input" type="text" placeholder="이름" />
+                            <input id="loginBirth" class="login-input" type="number" placeholder="생년월일 앞6자리" />
+                            <div>
+                                <div>
+                                    <input
+                                        id="loginNumber"
+                                        class="login-input"
+                                        type="number"
+                                        placeholder="- 없이 입력"
+                                    />
+                                    <button class="verifyBtn" id="verifyBtn">인증요청</button>
+                                </div>
+                                <div id="loginWarn" class="login-warnmsg"></div>
+                            </div>
+                            <div>
+                                <input id="loginVerify" class="login-input" type="number" />
+                                <button class="verifyBtn2" id="verifyBtn2">확인</button>
+                            </div>
+                            <input
+                                id="loginPassword"
+                                class="login-input"
+                                type="number"
+                                placeholder="비밀번호(숫자 4자리)"
+                            />
+                            <div>
+                                <input
+                                    id="loginPassword2"
+                                    class="login-input"
+                                    type="number"
+                                    placeholder="비밀번호(숫자 4자리) 확인"
+                                />
+                                <div id="loginWarn2" class="login-warnmsg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-contentBside">
+                        <div class="login-bside-title">비회원예매 개인정보 처리방침</div>
+                        <div class="login-bside-contents">
+                            <div class="login-bside-texts">
+                                <span class="login-bside-black">수집목적&nbsp;&nbsp;</span>비회원예매 서비스 제공 /
+                                이용자식별 / 구매 및 결제
+                            </div>
+                            <div class="login-bside-texts">
+                                <span class="login-bside-black">수집항목&nbsp;&nbsp;</span>이름, 생년월일, 휴대폰번호,
+                                비밀번호
+                            </div>
+                            <div class="login-bside-texts">
+                                보유기간&nbsp;&nbsp;<span class="login-bside-black"
+                                    ><strong>관람 또는 취소 후 7일 이내</strong></span
+                                >
+                            </div>
+                            <div class="login-bside-radio">
+                                <div class="login-radio-div">
+                                    <input type="radio" name="agree" value="agree" id="agree" /><label for="agree"
+                                        >동의</label
+                                    >
+                                </div>
+                                <div class="login-radio-div">
+                                    <input type="radio" name="agree" value="disagree" id="disagree" />
+                                    <label for="disagree">비동의</label>
+                                </div>
+                            </div>
+                            <p class="login-bside-p">
+                                •&nbsp;&nbsp;정보수집에 동의를 거부할 수 있으며, 동의하지 않을 경우<br />&nbsp;&nbsp;&nbsp;비회원
+                                예매서비스를 이용하실 수 없습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-footer">
+                    <p>[비회원 예매안내]</p>
+                    <ul>
+                        <li class="login-footer-text">
+                            온라인 예매시(메가박스 홈페이지 및 APP) 1회 결제 시 최대 8매까지 예매 가능합니다. 일 예매
+                            제한 수량을 초과하는 경우,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 예매가 제한됩니다.
+                        </li>
+                        <li class="login-footer-text">
+                            만약 단체 관람 등으로 다량의 좌석 구매가 필요하시다면 고객센터 또는 1:1문의를 통해 관람을
+                            원하시는 지점으로 문의<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 부탁드립니다.
+                        </li>
+                    </ul>
+                </div>
+                <button class="login-confirmBtn">확인</button>
             </div>
-          </div>
-          <div class="login-contentBside">
-            <div class="login-bside-title">비회원예매 개인정보 처리방침</div>
-            <div class="login-bside-contents">
-              <div class="login-bside-texts">
-                <span class="login-bside-black">수집목적&nbsp;&nbsp;</span
-                >비회원예매 서비스 제공 / 이용자식별 / 구매 및 결제
-              </div>
-              <div class="login-bside-texts">
-                <span class="login-bside-black">수집항목&nbsp;&nbsp;</span>이름,
-                생년월일, 휴대폰번호, 비밀번호
-              </div>
-              <div class="login-bside-texts">
-                보유기간&nbsp;&nbsp;<span class="login-bside-black"
-                  ><strong>관람 또는 취소 후 7일 이내</strong></span
-                >
-              </div>
-              <div class="login-bside-radio">
-                <div class="login-radio-div">
-                  <input
-                    type="radio"
-                    name="agree"
-                    value="agree"
-                    id="agree"
-                  /><label for="agree">동의</label>
-                </div>
-                <div class="login-radio-div">
-                  <input
-                    type="radio"
-                    name="agree"
-                    value="disagree"
-                    id="disagree"
-                  />
-                  <label for="disagree">비동의</label>
-                </div>
-              </div>
-              <p class="login-bside-p">
-                •&nbsp;&nbsp;정보수집에 동의를 거부할 수 있으며, 동의하지 않을
-                경우<br />&nbsp;&nbsp;&nbsp;비회원 예매서비스를 이용하실 수
-                없습니다.
-              </p>
-            </div>
-          </div>
         </div>
-        <div class="login-footer">
-          <p>[비회원 예매안내]</p>
-          <ul>
-            <li class="login-footer-text">
-              온라인 예매시(메가박스 홈페이지 및 APP) 1회 결제 시 최대 8매까지
-              예매 가능합니다. 일 예매 제한 수량을 초과하는 경우,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              예매가 제한됩니다.
-            </li>
-            <li class="login-footer-text">
-              만약 단체 관람 등으로 다량의 좌석 구매가 필요하시다면 고객센터
-              또는 1:1문의를 통해 관람을 원하시는 지점으로 문의<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              부탁드립니다.
-            </li>
-          </ul>
-        </div>
-        <button class="login-confirmBtn">확인</button>
-      </div>
-    </div>
-    <script src="../js/pages/non-member.js" type="module"></script>
-  </body>
+        <script src="../js/pages/non-member.js" type="module"></script>
+    </body>
 </html>
