@@ -1,47 +1,219 @@
-#map {
-  width: 1000px;
-  height: 300px;
+.map-wrap {
+  width: 75%;
+  padding: 180px 0;
+  margin: 0 auto;
 }
-body {
-  width: 100vw;
+
+.map-contents {
+  width: 80%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  /* global.css 적용되어있음 푸쉬시 삭제 */
 }
-.map-sec1 {
-  width: 1400px;
-  height: 500px;
-  background-color: rgb(238, 222, 201);
+.map-contents > h1 {
+  color: rgb(29, 114, 29);
 }
-.map-sec2 {
-  width: 1400px;
-  height: 700px;
-  /* background-color: rgb(233, 238, 222); */
+.map-aside {
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  gap: 5px;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 15px;
+  margin-left: -10px;
 }
-.map-textBox {
-  width: 800px;
-  height: 100px;
-  /* background-color: azure; */
+.map-search-wrap {
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: flex-start; */
+  gap: 12px;
+}
+.map-search-wrap > input {
+  width: 90%;
+  height: 30px;
+}
+.map-search-wrap > button {
+  width: 10%;
+  height: 30px;
 }
 
 .map-kewordBox {
-  background-color: whitesmoke;
-}
-.map-input {
-  width: 943px;
-  height: 30px;
-  border: none;
-  background-color: whitesmoke;
-  padding: 15px;
+  display: flex;
+  gap: 14px;
 }
 .map-btn {
-  border: none;
-  padding: 15px;
+  padding: 5px 10px;
+  border: 0;
+  border: 0.5px solid #e0dfdf;
+  border-radius: 4px;
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0px 2px 5px #11111110;
+  cursor: pointer;
+}
+.map-btn:hover {
+  background-color: rgb(228, 226, 226);
+}
+
+/* 날씨 api */
+.map-weather {
+  margin: 0 auto;
+  display: flex;
+  background-color: #11111110;
+}
+.weather-values {
+  font-size: var(--font-size-xl);
+}
+.weather-title {
+  font-size: var(--font-size-md);
+}
+.weather-icon {
+  width: 150px;
+}
+.map-weather {
+  width: 230px;
+  height: 500px;
+  background-color: rgb(230, 230, 230);
+  right: 260px;
+  top: 270px;
+  border-radius: 12px;
+  position: absolute;
+  z-index: 900;
+  text-align: center;
+}
+.map-api-wrap {
+  width: 100%;
+  height: 500px;
+  background-color: transparent;
+  border-radius: 15px;
+  color: black;
+  box-shadow: inset 0.5px 0.5px 5px #87adaf;
+  padding: 15px 30px;
+  margin: auto;
+}
+.map-weather-icon {
+  width: 150px;
+  height: 150px;
+  margin: auto;
+}
+.map-weather-container {
+  width: 100%;
+  height: 33%;
+}
+.map-weather-desBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 45px;
+}
+.map-weather-desBox > span {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+#map-weather-des {
+  width: 100%;
+  text-align: center;
+}
+
+#map {
+  /* width: 100%; */
+  height: 500px;
+}
+
+/* 컴퍼넌트 */
+.wrap {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  width: 288px;
+  height: 132px;
+  margin-left: -144px;
+  text-align: left;
+  overflow: hidden;
+  font-size: 12px;
+  font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
+  line-height: 1.5;
+}
+.wrap * {
+  padding: 0;
+  margin: 0;
+}
+.wrap .info {
+  width: 286px;
+  height: 120px;
+  border-radius: 5px;
+  border-bottom: 2px solid #ccc;
+  border-right: 1px solid #ccc;
+  overflow: hidden;
+  background: #fff;
+}
+.wrap .info:nth-child(1) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
+.info .title {
+  padding: 5px 0 0 10px;
+  height: 30px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: bold;
+}
+.info .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #888;
+  width: 17px;
+  height: 17px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png");
+}
+.info .close:hover {
+  cursor: pointer;
+}
+.info .body {
+  position: relative;
+  overflow: hidden;
+}
+.info .desc {
+  position: relative;
+  margin: 13px 0 0 90px;
+  height: 75px;
+}
+.desc .ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.desc .jibun {
+  font-size: 11px;
+  color: #888;
+  margin-top: -2px;
+}
+.info .img {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  width: 73px;
+  height: 71px;
+  border: 1px solid #ddd;
+  color: #888;
+  overflow: hidden;
+}
+.info:after {
+  content: "";
+  position: absolute;
+  margin-left: -12px;
+  left: 50%;
+  bottom: 0;
+  width: 22px;
+  height: 12px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
+}
+.info .link {
+  color: #5085bb;
 }
