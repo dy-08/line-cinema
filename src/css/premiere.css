@@ -1,61 +1,173 @@
 #premiere {
-  max-width: 1200px;
-  height: auto;
-  margin: 0 auto;
+    max-width: 1200px;
+    height: auto;
+    margin: 0 auto;
 }
 .premiere-title {
-  font-size: var(--font-size-xl);
-  font-weight: 400;
-  padding-left: 4px;
+    font-size: var(--font-size-xl);
+    font-weight: 400;
+    padding-left: 4px;
 }
 #premiere-inner {
-  height: auto;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  flex-wrap: wrap;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
 .premiere-card-wrap {
-  width: 30%;
-  height: 210px;
-  margin-bottom: 20px;
+    width: 30%;
+    height: 210px;
+    margin-bottom: 20px;
 }
 .premiere-card-top {
-  width: 100%;
-  height: 184px;
-  background-position: center calc(50% - 4px);
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 6px;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
+    width: 100%;
+    height: 184px;
+    background-position: center calc(50% - 4px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
 }
 .premiere-card-eventAlert {
-  position: absolute;
-  width: 50px;
-  height: 20px;
-  right: 0;
-  top: 24px;
-  background-color: #11111160;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  z-index: 100;
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    right: 0;
+    top: 24px;
+    background-color: #11111160;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    z-index: 100;
 }
 .premiere-card-eventAlert > p {
-  line-height: 24px;
-  text-align: center;
-  font-weight: bold;
-  font-size: var(--font-size-xs);
-  color: white;
-  letter-spacing: -1px;
+    line-height: 24px;
+    text-align: center;
+    font-weight: bold;
+    font-size: var(--font-size-xs);
+    color: white;
+    letter-spacing: -1px;
 }
 .premiere-card-bottom {
-  width: 100%;
-  height: 26px;
+    width: 100%;
+    height: 26px;
 }
 .premiere-card-bottom > p {
-  font-size: var(--font-size-sm);
-  line-height: 26px;
-  padding-left: 4px;
+    font-size: var(--font-size-sm);
+    line-height: 26px;
+    padding-left: 4px;
+}
+
+/* PC: 1200px ~ */
+/* Tablet: 480px ~ 1200px */
+@media (min-width: 481px) and (max-width: 1200px) {
+    #premiere-inner {
+        width: calc(100vw - 80px);
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    .premiere-card-wrap {
+        width: 24%; /**/
+        height: 210px;
+        margin-bottom: 20px;
+    }
+    .premiere-card-top {
+        width: 100%;
+        height: 184px;
+        background-position: center calc(50% - 4px);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 6px;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+    }
+    .premiere-card-eventAlert {
+        position: absolute;
+        width: 50px;
+        height: 20px;
+        right: 0;
+        top: 24px;
+        background-color: #11111160;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        z-index: 100;
+    }
+    .premiere-card-eventAlert > p {
+        line-height: 24px;
+        text-align: center;
+        font-weight: bold;
+        font-size: var(--font-size-xs);
+        color: white;
+        letter-spacing: -1px;
+    }
+    .premiere-card-bottom {
+        width: 100%;
+        height: 26px;
+    }
+    .premiere-card-bottom > p {
+        font-size: var(--font-size-sm);
+        line-height: 26px;
+        padding-left: 4px;
+    }
+}
+/* Mobile: ~ 480px */
+@media (max-width: 480px) {
+    #premiere-inner {
+        width: calc(100vw - 80px); /**/
+        height: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    .premiere-card-wrap {
+        width: 48%;
+        height: 210px;
+        margin-bottom: 20px;
+    }
+    .premiere-card-top {
+        width: 100%;
+        height: 184px;
+        background-position: center calc(50% - 4px);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 6px;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+    }
+    .premiere-card-eventAlert {
+        position: absolute;
+        width: 50px;
+        height: 20px;
+        right: 0;
+        top: 24px;
+        background-color: #11111160;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        z-index: 100;
+    }
+    .premiere-card-eventAlert > p {
+        line-height: 24px;
+        text-align: center;
+        font-weight: bold;
+        font-size: var(--font-size-xs);
+        color: white;
+        letter-spacing: -1px;
+    }
+    .premiere-card-bottom {
+        width: 100%;
+        height: 26px;
+    }
+    .premiere-card-bottom > p {
+        font-size: var(--font-size-sm);
+        line-height: 26px;
+        padding-left: 4px;
+    }
 }
