@@ -192,6 +192,10 @@ header {
 .u-pad {
     width: 100%;
     padding: 180px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Responsive */
