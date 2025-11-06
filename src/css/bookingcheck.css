@@ -202,3 +202,221 @@ input[type='number']::-webkit-inner-spin-button {
 .inq-inquiryBtn:hover {
     cursor: pointer;
 }
+
+@media (min-width: 481px) and (max-width: 1200px) {
+    .inq-container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 150px 0;
+        background-color: #11111110;
+    }
+    .inq-contentBox {
+        width: 100%; /**/
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0; /**/
+        margin-top: 0; /**/
+        padding: 0; /**/
+    }
+
+    /* Left */
+    .inq-leftContent {
+        width: 100%; /**/
+        margin-left: 0; /**/
+    }
+    .inq-videoCard {
+        width: 100%; /**/
+        height: 400px; /**/
+        overflow: hidden; /**/
+    }
+    .inq-videoCard video {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        object-position: center; /**/
+    }
+
+    /* Right */
+    /* #45b37f */
+    .inq-rightContent {
+        width: 50%; /**/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        margin-right: 0; /**/
+    }
+    .inq-rightBox-title {
+        font-size: 1.8rem;
+        text-align: center;
+        color: #45b37f;
+        font-weight: 500;
+        margin: 0;
+    }
+    .inq-userInfo {
+        width: calc(100vw - 100px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background-color: #11111110;
+        border-top: 0.5px solid #555;
+        border-bottom: 0.5px solid #555;
+        padding: 20px 0;
+    }
+    .inq-userInfo input {
+        width: 360px;
+        height: 38px;
+    }
+    /* --- */
+    .inq-container h2 {
+        text-align: center;
+    }
+
+    .inq-left-card {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .inq-movInfo {
+        width: 310px;
+        height: 550px;
+        background-color: #edededa9;
+        display: flex;
+        flex-direction: column;
+        border-radius: 6px;
+        display: none;
+    }
+
+    .inq-info-title {
+        width: 90%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid #ccc;
+        margin: 0 auto;
+    }
+
+    .inq-info-age {
+        display: inline-block;
+        width: 23px;
+        height: 23px;
+        text-align: center;
+        border-radius: 4px;
+        background-color: #e9b630;
+    }
+
+    .inq-infoBox {
+        width: 80%;
+        height: 390px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 0 20px;
+        border-bottom: 1px solid #ccc;
+        margin: 0 auto 20px;
+    }
+
+    .inq-info-poster {
+        width: 50%;
+        height: 200px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .inq-info-poster img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .inq-info-text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 16px;
+    }
+
+    .inq-info-auditorium,
+    .inq-info-seat,
+    .inq-info-amount {
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+    .inq-info-date,
+    .inq-info-day,
+    .inq-info-time {
+        font-size: 14px;
+    }
+
+    .inq-price {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .inq-price-total {
+        color: #45b37f;
+        font-size: 21px;
+        font-weight: 500;
+        margin-right: 4px;
+    }
+
+    .inq-logoBox {
+        width: 60%;
+        height: 85px;
+    }
+
+    .inq-logoBox img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .inq-user-inputBox {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .inq-user-inputBox input {
+        height: 30px;
+        padding: 7px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .inq-user-inputBox input:focus {
+        border: 1px solid #45b37f;
+        outline: none;
+    }
+
+    .inq-inquiryBtn {
+        margin-top: 50px;
+        border: none;
+        border-radius: 10px;
+        background-color: #45b37f;
+        color: white;
+        padding: 10px 0;
+    }
+
+    .inq-inquiryBtn:hover {
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 480px) {
+}

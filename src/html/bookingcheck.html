@@ -15,7 +15,6 @@
                         <div class="inq-videoCard">
                             <video src="../../public/mov/inquiry.mp4" loop muted autoplay></video>
                         </div>
-
                         <div class="inq-movInfo">
                             <div class="inq-info-title">
                                 <span class="inq-info-age"></span>
@@ -49,21 +48,29 @@
 
                 <div class="inq-rightContent">
                     <div class="inq-logoBox">
-                        <img src="../../public/img/ui/logo-g.png" alt="logo" />
+                        <p class="inq-rightBox-title">비회원 예매 확인</p>
                     </div>
-
                     <div class="inq-userInfo">
                         <div class="inq-user-inputBox">
-                            <input id="inquiryName" type="text" placeholder="이름을 입력하세요" />
-                            <input id="inquiryBirth" type="number" placeholder="생년월일을 입력하세요" />
-                            <input
-                                id="inquiryPassword"
-                                type="number"
-                                placeholder="비밀번호 (숫자 4자리)를 입력하세요"
-                            />
-                            <button class="inq-inquiryBtn" id="inquiryBtn">예매내역 조회</button>
+                            <div>
+                                <label for="inquiryName">이름</label>
+                                <input id="inquiryName" type="text" placeholder="이름" />
+                            </div>
+                            <div>
+                                <label for="inquiryBirth">생년월일</label>
+                                <input id="inquiryBirth" type="number" placeholder="생년월일 앞 6자리" />
+                            </div>
+                            <div>
+                                <label for="inquiryPassword">비밀번호</label>
+                                <input id="inquiryPassword" type="number" placeholder="숫자 4자리" />
+                            </div>
+                            <button class="inq-inquiryBtn" id="inquiryBtn">비회원 예매확인</button>
                         </div>
                     </div>
+                    <p class="">
+                        * 비회원 정보 오 입력 시 예매 내역 확인/취소 및 티켓 발권이 어려울 수 있으니 다시 한번 확인해
+                        주시기 바랍니다.
+                    </p>
                 </div>
             </div>
         </div>
