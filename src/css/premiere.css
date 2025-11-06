@@ -16,9 +16,16 @@
     flex-wrap: wrap;
 }
 .premiere-card-wrap {
+<<<<<<< HEAD
     width: 30%;
     height: 210px;
     margin-bottom: 20px;
+=======
+  width: 30%;
+  height: 210px;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+>>>>>>> develop
 }
 .premiere-card-top {
     width: 100%;
@@ -170,4 +177,8 @@
         line-height: 26px;
         padding-left: 4px;
     }
+}
+.premiere-card-wrap:hover {
+  border-radius: 4px;
+  box-shadow: 1px 1px 10px #11111110;
 }

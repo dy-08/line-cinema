@@ -172,3 +172,9 @@
         font-size: var(--font-size-xs); /**/
     }
 }
+eventnow-card-wrap {
+  transition: all 0.3s;
+}
+eventnow-card-wrap:hover {
+  background-color: #11111110;
+}
