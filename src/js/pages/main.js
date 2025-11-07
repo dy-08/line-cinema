@@ -47,6 +47,11 @@ async function tmdb() {
 }
 // tmdb();
 
+const ok = document.querySelector('.main-popupBtn-ok');
+ok.addEventListener('click', () => {
+    document.querySelector('.main-popup').style.display = 'none';
+});
+
 async function renderPage({ html, index = false }) {
     document.getElementById('app').innerHTML = await html;
 }

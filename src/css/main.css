@@ -101,6 +101,67 @@ header {
     text-align: center;
     cursor: pointer;
 }
+/* 팝업 */
+.main-popup {
+    user-select: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 600px;
+    background-color: white;
+    z-index: 9999;
+    border-radius: 10px;
+    font-size: var(--font-size-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-popup-msg {
+    width: 100%;
+    height: 50%;
+    padding: 2rem;
+    /* background-color: #11111120; */
+}
+.main-st-msg {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.main-popup-msg mark {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+}
+.team {
+    text-align: right;
+    color: #45b37f;
+    font-weight: bold;
+}
+.main-popup-gif {
+    user-select: none;
+    width: 88%;
+    padding: 2rem;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: bottom;
+    background-color: #11111120;
+}
+.main-popup-gif img {
+    width: 80%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+.main-popupBtn-ok {
+    width: 100%;
+    height: 10%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 0;
+    border-top: 0.5px solid #11111120;
+    cursor: pointer;
+    background-color: white;
+}
 
 /* 지유님 슬라이더 작업섹션 */
 .main {
