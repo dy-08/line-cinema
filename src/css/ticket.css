@@ -67,15 +67,13 @@
     justify-content: space-between;
     align-items: center;
 }
-
-.ticket-price span {
-    font-size: 15px;
-    font-weight: 500;
-}
-
 .ticket-price .discount {
     color: #d32f2f;
     font-weight: 700;
+}
+.discount,
+.ticket-sell-price {
+    font-size: 1rem;
 }
 .store-mainImg {
     width: 100%;
@@ -103,7 +101,7 @@
         margin-top: 60px;
     }
     .ticket {
-        width: 30%; /**/
+        width: 50%; /**/
         border: 1px solid #ddd;
         border-radius: 10px;
         overflow: hidden;
@@ -127,42 +125,46 @@
         overflow: hidden; /* div 안에서 잘림 방지 */
     }
     .ticket-img img {
-        width: 100%;
+        width: 88%;
         height: 100%;
         object-fit: cover;
     }
-    /*  */
-
     .ticket-content {
-        padding: 15px;
+        padding: 1rem; /**/
     }
 
     .ticket-title {
         font-weight: 600;
-        font-size: 15px;
-        margin-bottom: 5px;
+        font-size: 1rem; /**/
+        margin-bottom: 0;
     }
 
     .ticket-desc {
         color: #666;
-        font-size: 13px;
+        font-size: var(--font-size-sm);
         margin-bottom: 10px;
     }
 
     .ticket-price {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: flex-start; /**/
+        flex-direction: column-reverse; /**/
+        align-items: flex-start; /**/
     }
 
-    .ticket-price span {
-        font-size: 15px;
-        font-weight: 500;
-    }
+    /*  */
 
     .ticket-price .discount {
         color: #d32f2f;
         font-weight: 700;
+    }
+    .ticket-origin-price {
+        font-size: var(--font-size-md);
+    }
+    .discount,
+    .ticket-sell-price {
+        font-size: 1.2rem;
+        font-weight: 600;
     }
     .store-mainImg {
         width: 100%;
