@@ -53,3 +53,16 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+@media(max-width: 480px) {
+    .upcoming-container {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .upcoming-inBox {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}

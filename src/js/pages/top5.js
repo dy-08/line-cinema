@@ -128,33 +128,44 @@ function dragAble(a) {
     transX = 0,
     pointX = 0;
 
-  a.addEventListener('mousedown', (e) => {
+  a.addEventListener('mousedown', handleDown);
+  window.addEventListener('mousemove', handleMove);
+  window.addEventListener('mouseup', handleUp);
+
+  a.addEventListener('touchstart', handleDown);
+  window.addEventListener('touchmove', handleMove);
+  window.addEventListener('touchend', handleUp);
+
+
+
+  function handleDown(e) {
     down = true;
-    pointX = e.clientX;
+    let point = e.touches ? e.touches[0] : e;
+    pointX = point.clientX;
     e.preventDefault();
     a.style.cursor = 'grabbing';
     title.classList.add('active')
-  });
+  }
 
-  window.addEventListener('mousemove', (e) => {
+  function handleMove(e) {
     if (!down) return;
-    let deltaX = e.clientX - pointX;
-    pointX = e.clientX;
+    let point = e.touches ? e.touches[0] : e;
+    let deltaX = point.clientX - pointX;
+    pointX = point.clientX;
     transX += deltaX;
     const parentWidth = a.parentElement.offsetWidth;
     const aWidth = a.scrollWidth + 10;
     const minX = parentWidth - aWidth;
     transX = Math.max(minX, Math.min(0, transX));
     a.style.transform = `translateX( ${transX}px)`;
-  });
+  }
 
-  window.addEventListener('mouseup', (e) => {
+  function handleUp(e) {
     down = false;
     a.style.cursor = '';
     title.classList.remove('active');
-  });
+  }
 }
-
 export function drag() {
   document.querySelectorAll('.top5-dragTop').forEach((item) => dragAble(item));
 }
