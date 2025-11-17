@@ -82,3 +82,19 @@ body {
     font-size: 20px;
     font-weight: bold;
 }
+
+@media(max-width: 480px) {
+    .top5-container {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .top5-title.active {
+        font-size: 25px;
+    }
+
+    .top5-cardBox {
+        width: 55%;
+    }
+}
