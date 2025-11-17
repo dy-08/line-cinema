@@ -1,0 +1,76 @@
+#payment-loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: #e2e2e210;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: var(--font-size-lg);
+}
+.payment-logo-wrap {
+    width: 140px;
+    position: relative;
+    transition: all ease-in-out;
+}
+.payment-logo-wrap img {
+    width: 100%;
+    position: absolute;
+    top: -98px;
+    opacity: 1;
+    transform: scale(0.9);
+    z-index: 400;
+    animation: moment 1s ease-in-out forwards;
+}
+.payment-texts {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.63);
+    line-height: 1.38;
+    gap: 6px;
+}
+
+.animation {
+    width: 100px;
+    height: 100px;
+    border: 10px solid #ededed;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    margin-top: 18px;
+    border: 7px solid #f3f3f3; /* 회색 배경 */
+    border-top: 7px solid #45b37f; /* 파란색 회전 효과 */
+    border-radius: 50%;
+    animation: op 1s ease-in, load 3s linear 1.1s infinite; /* 위에서 정의한 애니메이션 적용 */
+}
+
+@keyframes load {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moment {
+    from {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes op {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

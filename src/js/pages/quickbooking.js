@@ -219,12 +219,14 @@ export function renderDate() {
   container.innerHTML = `<p>${dateText}</p>`;
 }
 
+// 발표날 하필 10월 30일 이슈대응: getMonth => getMonth + 1
 function getFirstDayOfMonth(date = new Date()) {
-  return new Date(date.getFullYear(), date.getMonth(), 1);
+  return new Date(date.getFullYear(), date.getMonth() + 1, 1);
 }
+// 발표날 하필 10월 30일 이슈대응: getMonth + 1 => getMonth + 2
 function getLastDayOfMonth(date = new Date()) {
   // "다음 달의 0번째 날" → 현재 달의 마지막 날
-  return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  return new Date(date.getFullYear(), date.getMonth() + 2, 0);
 }
 function getStartDayOfMonth(date = getFirstDayOfMonth()) {
   const weekday = date.toLocaleDateString('ko-KR', {
@@ -236,7 +238,10 @@ function getStartDayOfMonth(date = getFirstDayOfMonth()) {
 function renderCalendar(date, day) {
   const container = document.querySelector('.quickbooking-calendar-itemWrap');
   const now = new Date();
-  const isToday = date === now.getDate();
+  // 발표날 하필 10월 30일 이슈대응: now.getDate() => now.getDate() + 1
+  const isToday = date === now.getDate() + 1;
+  console.log('now.getDate:', now.getDate);
+
   const weekendClass = day === '토' ? 'sat' : day === '일' ? 'sun' : '';
 
   return (container.innerHTML += `

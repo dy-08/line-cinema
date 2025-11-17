@@ -22,7 +22,7 @@ function renderEventHotList(events) {
     .map(
       (event) => `
     <div class="hotevent-item-wrap">
-        <a href="${event.url}" class="hotevent-item-link">
+        <a href="#" class="hotevent-item-link">
           <div class="hotevent-item-img">
             <img
               src="${event.imagePath}"

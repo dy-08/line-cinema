@@ -22,7 +22,7 @@ function renderEventNowList(events) {
     .map(
       (event) => `
     <div class="eventnow-card-wrap">
-      <a href="${event.url}">
+      <a href="#">
         <div class="eventnow-card-top">
           <img src="${event.imagePath}" alt="${event.title}" />
         </div>

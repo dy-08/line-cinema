@@ -1,195 +1,171 @@
-var overlay;
+// mapPage.js
+export async function initMapPage() {
+    // 라우터가 이미 해당 페이지의 HTML을 렌더링한 뒤에 호출된다는 전제
+    const kakao = await ensureKakaoLoaded(); // SDK 로드 보장
+    const mapEl = document.getElementById('map');
+    if (!mapEl) return; // 해당 페이지가 아닐 때 가드
 
-window.addEventListener("DOMContentLoaded", () => {
-  kakao.maps.load(function () {
     const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
-    var mapContainer = document.getElementById("map"), // 지도의 중심좌표
-      mapOption = {
-        center: new kakao.maps.LatLng(37.3179, 126.8361), // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
-      };
-
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-    // 지도에 마커를 표시합니다
-    var marker = new kakao.maps.Marker({
-      map: map,
-      position: new kakao.maps.LatLng(37.3179, 126.8361),
+    const map = new kakao.maps.Map(mapEl, {
+        center: new kakao.maps.LatLng(37.3179, 126.8361),
+        level: 3,
     });
 
-    // 커스텀 오버레이에 표시할 컨텐츠 입니다
-    // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
-    // 별도의 이벤트 메소드를 제공하지 않습니다
-    var content =
-      '<div class="wrap">' +
-      '    <div class="info">' +
-      '        <div class="title">' +
-      "            LINE CINEMA" +
-      '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-      "        </div>" +
-      '        <div class="body">' +
-      '            <div class="img">' +
-      '                <img src="/public/img/ui/logo-b.png" width="73" height="70">' +
-      "           </div>" +
-      '            <div class="desc">' +
-      '                <div class="ellipsis">경기도 안산시 단원구 고잔2길 45 <br/>코스모프라자 6층</div>' +
-      '                <div class="jibun ellipsis">(우) 15360 (지번) 고잔동 535-2</div>' +
-      "            </div>" +
-      "        </div>" +
-      "    </div>" +
-      "</div>";
+    // 메인 마커
+    const mainPos = new kakao.maps.LatLng(37.3179, 126.8361);
+    const mainMarker = new kakao.maps.Marker({ map, position: mainPos });
 
-    // 마커 위에 커스텀오버레이를 표시합니다
-    // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
-    var overlay = new kakao.maps.CustomOverlay({
-      content: content,
-      map: map,
-      position: marker.getPosition(),
+    // 커스텀 오버레이
+    const content =
+        '<div class="wrap">' +
+        '  <div class="info">' +
+        '    <div class="title">LINE CINEMA' +
+        '      <div class="close" onclick="window.closeOverlay()" title="닫기"></div>' +
+        '    </div>' +
+        '    <div class="body">' +
+        '      <div class="img"><img src="/public/img/ui/logo-b.png" width="73" height="70"></div>' +
+        '      <div class="desc">' +
+        '        <div class="ellipsis">경기도 안산시 단원구 고잔2길 45 <br/>코스모프라자 6층</div>' +
+        '        <div class="jibun ellipsis">(우) 15360 (지번) 고잔동 535-2</div>' +
+        '      </div>' +
+        '    </div>' +
+        '  </div>' +
+        '</div>';
+
+    const overlay = new kakao.maps.CustomOverlay({
+        content,
+        position: mainMarker.getPosition(),
     });
 
-    // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-    kakao.maps.event.addListener(marker, "click", function () {
-      overlay.setMap(map);
-    });
+    kakao.maps.event.addListener(mainMarker, 'click', () => overlay.setMap(map));
+    window.closeOverlay = () => overlay.setMap(null); // 전역에 붙여서 onclick에서 접근 가능
 
-    // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
-    window.closeOverlay = function () {
-      overlay.setMap(null);
-    };
-
-    // 장소 검색 객체
+    // 장소검색
     const ps = new kakao.maps.services.Places();
+    const markers = [];
 
-    // 검색 결과 마커들을 저장할 배열
-    let markers = [];
-
-    // 검색 콜백 함수
-    function placesSearchCB(data, status, pagination) {
-      if (status === kakao.maps.services.Status.OK) {
-        // 이전 마커들 제거
-        removeMarkers();
-
-        const bounds = new kakao.maps.LatLngBounds();
-
-        for (let i = 0; i < data.length; i++) {
-          const marker = displayMarker(data[i]);
-          markers.push(marker); // 새로 만든 마커 배열에 저장
-          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-        }
-
-        // 지도 범위 재설정
-        map.setBounds(bounds);
-      }
+    function clearMarkers() {
+        while (markers.length) markers.pop().setMap(null);
     }
 
-    // 마커 표시 함수
     function displayMarker(place) {
-      const marker = new kakao.maps.Marker({
-        map: map,
-        position: new kakao.maps.LatLng(place.y, place.x),
-      });
-
-      kakao.maps.event.addListener(marker, "click", function () {
-        infowindow.setContent(
-          `<div style="padding:5px;font-size:12px;">${place.place_name}</div>`
-        );
-        infowindow.open(map, marker);
-      });
-
-      return marker;
+        const m = new kakao.maps.Marker({
+            map,
+            position: new kakao.maps.LatLng(place.y, place.x),
+        });
+        kakao.maps.event.addListener(m, 'click', () => {
+            infowindow.setContent(`<div style="padding:5px;font-size:12px;">${place.place_name}</div>`);
+            infowindow.open(map, m);
+        });
+        markers.push(m);
     }
 
-    // 마커 제거 함수
-    function removeMarkers() {
-      for (let i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-      }
-      markers = [];
+    function placesSearchCB(data, status) {
+        if (status !== kakao.maps.services.Status.OK) return;
+        clearMarkers();
+        const bounds = new kakao.maps.LatLngBounds();
+        data.forEach((p) => {
+            displayMarker(p);
+            bounds.extend(new kakao.maps.LatLng(p.y, p.x));
+        });
+        map.setBounds(bounds);
     }
 
-    // 교통정보 오버레이 추가
+    // 교통정보
     map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 
-    // 검색 버튼 클릭 시
-    document.getElementById("searchBtn").addEventListener("click", function () {
-      const keyword = document.getElementById("keyword").value.trim();
-      if (keyword) {
-        ps.keywordSearch(keyword, placesSearchCB);
-      } else {
-        alert("검색어를 입력해주세요");
-      }
+    // UI 이벤트(해당 페이지 DOM이 이미 존재할 때만)
+    const searchBtn = document.getElementById('searchBtn');
+    const keywordInput = document.getElementById('keyword');
+    if (searchBtn && keywordInput) {
+        searchBtn.addEventListener('click', () => {
+            const kw = keywordInput.value.trim();
+            if (kw) ps.keywordSearch(kw, placesSearchCB);
+            else alert('검색어를 입력해주세요');
+        });
+    }
+
+    document.querySelectorAll('.map-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const kw = btn.getAttribute('data-keyword');
+            if (!kw) return;
+            if (keywordInput) keywordInput.value = kw;
+            ps.keywordSearch(kw, placesSearchCB);
+        });
     });
 
-    // 추천 버튼들 클릭 시
-    const btns = document.querySelectorAll(".map-btn");
-    btns.forEach((btn) => {
-      btn.addEventListener("click", function () {
-        const kw = btn.getAttribute("data-keyword");
-        document.getElementById("keyword").value = kw;
-        ps.keywordSearch(kw, placesSearchCB);
-      });
-    });
-    // 사라짐
-    // document.querySelector(".close").addEventListener("click", () => {
-    //   document.querySelector(".wrap").style.display = "none";
-    // });
-  }); // kakao.maps.load 끝
-});
-
-// 날씨 api 시작
-const apikey = "89d6c114ec7bbbfd4be0ebc38e323833";
-const des = document.getElementById("map-weather-des");
-const temp = document.getElementById("map-weather-temp");
-const wind = document.getElementById("map-weather-wind");
-const icon = document.getElementById("map-weather-icon");
-
-navigator.geolocation.getCurrentPosition(
-  () => {
-    const lat = 37.3179; // 위도
-    const lon = 126.8361; // 경도
-    getWeather(lat, lon);
-  },
-  (error) => {
-    const fallbackLat = 37.5665;
-    const fallbackLon = 126.978;
-    console.warn("위치 정보를 가져올 수 없어 서울로 설정합니다.");
-    getWeather(fallbackLat, fallbackLon);
-  }
-);
-
-let getWeather = async (lat, lon) => {
-  let res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=metric&lang=kr`
-  );
-  let data = await res.json();
-
-  des.textContent = data.weather[0].description; // 설명
-  // temp.textContent = data.main.temp + " °C"; // 온도
-  temp.textContent = Math.floor(data.main.temp) + " °C"; // 온도(소수점 제거)
-  wind.innerHTML = `${data.wind.speed} m/s`;
-  let iconNum = data.weather[0].icon;
-  let iconSrc = `http://openweathermap.org/img/wn/${iconNum}@2x.png`;
-  icon.setAttribute("src", iconSrc);
-};
-
-//
-function updateTime() {
-  let day = document.getElementById("map-day");
-  let time = document.getElementById("map-time");
-
-  let date = new Date();
-  let a = date.getDate();
-  let b = date.getMonth() + 1;
-  let c = date.getFullYear();
-  let d = date.getHours();
-  let e = date.getMinutes();
-  let f = date.getSeconds();
-
-  if (f < 10) f = `0${f}`;
-
-  day.textContent = `${c}년 ${b}월 ${a}일`;
-  time.textContent = `${d}:${e}:${f}`;
+    // 날씨 + 시계 (이 페이지에서만 DOM이 있을 때만)
+    initWeatherWidgets();
+    initClock();
 }
-updateTime();
-setInterval(updateTime, 1000);
+
+/** 카카오 SDK 로드 보장 */
+function ensureKakaoLoaded() {
+    return new Promise((resolve, reject) => {
+        const w = window;
+        if (w.kakao && w.kakao.maps) {
+            w.kakao.maps.load(() => resolve(w.kakao));
+            return;
+        }
+        // 스크립트를 index.html에 넣었다면 autoload=false 이므로:
+        if (w.kakao && w.kakao.maps) {
+            w.kakao.maps.load(() => resolve(w.kakao));
+        } else {
+            // 혹시 스크립트가 아직 주입되지 않았다면 동적 주입 (예비안)
+            const src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_APP_KEY&libraries=services&autoload=false';
+            const el = document.createElement('script');
+            el.src = src;
+            el.onload = () => w.kakao.maps.load(() => resolve(w.kakao));
+            el.onerror = reject;
+            document.head.appendChild(el);
+        }
+    });
+}
+
+/** 날씨 위젯 */
+function initWeatherWidgets() {
+    const apikey = '89d6c114ec7bbbfd4be0ebc38e323833';
+    const des = document.getElementById('map-weather-des');
+    const temp = document.getElementById('map-weather-temp');
+    const wind = document.getElementById('map-weather-wind');
+    const icon = document.getElementById('map-weather-icon');
+
+    if (!des || !temp || !wind || !icon) return; // 해당 DOM이 없으면 스킵
+
+    const getWeather = async (lat, lon) => {
+        const res = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=metric&lang=kr`
+        );
+        const data = await res.json();
+        des.textContent = data.weather?.[0]?.description ?? '';
+        temp.textContent = `${Math.floor(data.main?.temp ?? 0)} °C`;
+        wind.textContent = `${data.wind?.speed ?? 0} m/s`;
+        const iconNum = data.weather?.[0]?.icon;
+        if (iconNum) {
+            // ⚠️ 혼합콘텐츠 방지: http → https
+            icon.setAttribute('src', `https://openweathermap.org/img/wn/${iconNum}@2x.png`);
+        }
+    };
+
+    navigator.geolocation.getCurrentPosition(
+        (pos) => getWeather(pos.coords.latitude, pos.coords.longitude),
+        () => getWeather(37.5665, 126.978) // 서울
+    );
+}
+
+/** 시계 */
+function initClock() {
+    const dayEl = document.getElementById('map-day');
+    const timeEl = document.getElementById('map-time');
+    if (!dayEl || !timeEl) return;
+
+    const pad = (n) => (n < 10 ? `0${n}` : `${n}`);
+    const tick = () => {
+        const d = new Date();
+        dayEl.textContent = `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
+        timeEl.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    };
+    tick();
+    setInterval(tick, 1000);
+}
